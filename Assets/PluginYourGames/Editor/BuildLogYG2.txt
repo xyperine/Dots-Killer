@@ -1,0 +1,3 @@
+Build path: C:/Users/ewsan/Desktop/Gamedev/Builds/Dots Killer/fafa.apk
+Build number: 2
+PluginYG version: 2.0032
