@@ -6,21 +6,43 @@ namespace DotsKiller.Utility
     [Serializable]
     public class Range : ISerializationCallbackReceiver
     {
-        [field: SerializeField] public float Min { get; set; }
-        [field: SerializeField] public float Max { get; set; }
+        public enum RangeFormat
+        {
+            MinMax,
+            StartEnd,
+        }
+        
+        [field: SerializeField] public float A { get; set; }
+        [field: SerializeField] public float B { get; set; }
+        [field: SerializeField] public RangeFormat Format { get; set; }
 
 
         public float Random()
         {
-            return UnityEngine.Random.Range(Min, Max);
+            return UnityEngine.Random.Range(A, B);
+        }
+
+
+        public float Lerp(float t)
+        {
+            return Mathf.Lerp(A, B, t);
+        }
+
+
+        public float InverseLerp(float value)
+        {
+            return Mathf.InverseLerp(A, B, value);
         }
         
         
         public void OnBeforeSerialize()
         {
-            if (Min > Max)
+            if (Format == RangeFormat.MinMax)
             {
-                Debug.LogWarning($"{nameof(Min)} = {Min} cannot be bigger than {nameof(Max)} = {Max}");
+                if (A > B)
+                {
+                    Debug.LogWarning($"{nameof(A)} = {A} cannot be bigger than {nameof(B)} = {B}");
+                }
             }
         }
 
