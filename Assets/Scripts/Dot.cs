@@ -6,6 +6,8 @@ namespace DotsKiller
 {
     public class Dot : MonoBehaviour, IPoolable<Vector2, IMemoryPool>, IDisposable
     {
+        [SerializeField] private Reward reward;
+        
         private IMemoryPool _pool;
         
 
@@ -13,6 +15,13 @@ namespace DotsKiller
         {
             _pool = pool;
             transform.position = position;
+        }
+
+
+        private void OnMouseDown()
+        {
+            reward.Give();
+            Dispose();
         }
 
 

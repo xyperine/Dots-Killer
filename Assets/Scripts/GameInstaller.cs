@@ -5,13 +5,16 @@ namespace DotsKiller
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private DotSpawner dotsSpawner;
+        [SerializeField] private Balance balance;
+        [SerializeField] private DotSpawner dotSpawner;
         [SerializeField] private GameObject dotPrefab;
         
         
         public override void InstallBindings()
         {
-            Container.Bind<DotSpawner>().FromInstance(dotsSpawner).AsSingle().NonLazy();
+            Container.Bind<Balance>().FromInstance(balance).AsSingle().NonLazy();
+            
+            Container.Bind<DotSpawner>().FromInstance(dotSpawner).AsSingle().NonLazy();
             Container.BindFactory<Vector2, Dot, Dot.Factory>()
                 .FromPoolableMemoryPool<Vector2, Dot, Dot.Pool>(poolBinder => poolBinder
                     .WithInitialSize(10)
