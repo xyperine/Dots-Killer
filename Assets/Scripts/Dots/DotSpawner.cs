@@ -9,7 +9,6 @@ using Range = DotsKiller.Utility.Range;
 
 namespace DotsKiller.Dots
 {
-    // TODO: Move time logic in a separate class GameClock
     public class DotSpawner : MonoBehaviour
     {
         [SerializeField] private InterfaceReference<IAreaProvider> areaProviderReference;
@@ -19,15 +18,14 @@ namespace DotsKiller.Dots
 
         private float _spawnInterval;
         
-        private float _elapsedTime;
-        private float _lastSpawnedTime;
+        private float _timeSinceLastSpawn;
         
         private IAreaProvider _areaProvider;
         private Balance _balance;
 
         private Dot.Factory _factory;
 
-        private bool ReadyToSpawn => _elapsedTime - _lastSpawnedTime >= _spawnInterval;
+        private bool ReadyToSpawn => _timeSinceLastSpawn >= _spawnInterval;
 
 
         [Inject]
@@ -46,7 +44,8 @@ namespace DotsKiller.Dots
 
         private void Update()
         {
-            _elapsedTime += Time.deltaTime;
+            _timeSinceLastSpawn += Time.deltaTime;
+            
             float t = _balance.Points.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
             _spawnInterval = spawnIntervalRange.Lerp(spawnIntervalCurve.Evaluate(t));
             
@@ -54,8 +53,8 @@ namespace DotsKiller.Dots
             {
                 Vector2 position = (Vector2) _areaProvider.Center + _areaProvider.Extents * Random.insideUnitCircle;
                 _factory.Create(position);
-                
-                _lastSpawnedTime = _elapsedTime;
+
+                _timeSinceLastSpawn = 0f;
             }
         }
     }
