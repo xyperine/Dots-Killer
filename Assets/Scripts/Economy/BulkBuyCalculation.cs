@@ -1,14 +1,15 @@
 ﻿using System;
 using BreakInfinity;
 
-namespace DotsKiller
+namespace DotsKiller.Economy
 {
     public static class BulkBuyCalculation
     {
-        public static BulkBuy GetBulkBuyData(BigDouble alreadyOwned, BigDouble money, Func<BigDouble, BigDouble> calculatePrice, BigDouble? maxAmount = null)
+        public delegate BigDouble PriceCalculation(BigDouble ownedAmount);
+        
+        
+        public static BulkBuy GetBulkBuyData(BigDouble alreadyOwned, BigDouble money, PriceCalculation calculatePrice, BigDouble? maxAmount = null)
         {
-            //BigDouble alreadyOwned = Amount;
-            //BigDouble money = _balance.Available(currency);
             BigDouble firstPrice = calculatePrice(alreadyOwned);
             if (money < firstPrice)
             {

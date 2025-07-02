@@ -1,8 +1,9 @@
 ﻿using System;
+using DotsKiller.Economy;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Dots
 {
     public class Dot : MonoBehaviour, IPoolable<Vector2, IMemoryPool>, IDisposable
     {

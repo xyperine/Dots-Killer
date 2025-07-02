@@ -4,7 +4,7 @@ using BreakInfinity;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Economy
 {
     public class Reward : MonoBehaviour
     {

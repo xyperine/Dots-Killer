@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using DotsKiller.Economy;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class PurchasableUI : MonoBehaviour
     {

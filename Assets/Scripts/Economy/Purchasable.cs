@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Economy
 {
     public class Purchasable : MonoBehaviour
     {
@@ -12,10 +12,11 @@ namespace DotsKiller
         [SerializeField] private BigDouble priceScaling = BigDouble.One;
         [SerializeField] private Currency currency;
         [SerializeField] private bool hasMaxAmount;
-        [SerializeField] private bool canBeBulkBought;
         [SerializeField, ShowIf(nameof(hasMaxAmount))] private long maxAmount;
+        [SerializeField] private bool canBeBulkBought;
         
         private Balance _balance;
+        private IBulkBuyStateProvider _bulkBuyStateProvider;
 
         private bool _complexScaling;
 
@@ -28,9 +29,10 @@ namespace DotsKiller
         public Currency Currency => currency;
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
-        
-        public bool IsBulkBuyActive { get; private set; }
-        public BigDouble BulkPrice { get; private set; }
+
+        public bool IsBulkBuyActive => canBeBulkBought && _bulkBuyStateProvider.Active;
+        public BigDouble BulkPrice => BulkBuyData.Price;
+        public BulkBuy BulkBuyData => GetBulkBuyData();
 
         public event Action Purchasing;
         public event Action Purchased;
@@ -39,9 +41,10 @@ namespace DotsKiller
         
         
         [Inject]
-        public void Initialize(Balance balance)
+        public void Initialize(Balance balance, IBulkBuyStateProvider bulkBuyStateProvider)
         {
             _balance = balance;
+            _bulkBuyStateProvider = bulkBuyStateProvider;
         }
         
 
@@ -210,28 +213,6 @@ namespace DotsKiller
             Amount = amount;
             
             UpdatePrice();
-        }
-
-
-        private void Update()
-        {
-            if (MaxedOut)
-            {
-                return;
-            }
-
-            if (canBeBulkBought && Input.GetKey(KeyCode.LeftControl))
-            {
-                IsBulkBuyActive = true;
-
-                BulkBuy bb = GetBulkBuyData();
-                BulkPrice = bb.Price;
-            }
-            else
-            {
-                IsBulkBuyActive = false;
-                BulkPrice = BigDouble.Zero;
-            }
         }
 
 

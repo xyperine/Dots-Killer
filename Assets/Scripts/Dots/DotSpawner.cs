@@ -1,10 +1,13 @@
 ﻿using AYellowpaper;
+using BreakInfinity;
+using DotsKiller.Economy;
+using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 using Range = DotsKiller.Utility.Range;
 
-namespace DotsKiller
+namespace DotsKiller.Dots
 {
     // TODO: Move time logic in a separate class GameClock
     public class DotSpawner : MonoBehaviour
@@ -12,7 +15,7 @@ namespace DotsKiller
         [SerializeField] private InterfaceReference<IAreaProvider> areaProviderReference;
         [SerializeField] private AnimationCurve spawnIntervalCurve;
         [SerializeField] private Range spawnIntervalRange;
-        [SerializeField] private Range gameDuration;
+        [SerializeField] private BigDouble maxPoints;
 
         private float _spawnInterval;
         
@@ -20,6 +23,7 @@ namespace DotsKiller
         private float _lastSpawnedTime;
         
         private IAreaProvider _areaProvider;
+        private Balance _balance;
 
         private Dot.Factory _factory;
 
@@ -27,9 +31,10 @@ namespace DotsKiller
 
 
         [Inject]
-        public void Initialize(Dot.Factory factory)
+        public void Initialize(Dot.Factory factory, Balance balance)
         {
             _factory = factory;
+            _balance = balance;
         }
 
 
@@ -42,7 +47,7 @@ namespace DotsKiller
         private void Update()
         {
             _elapsedTime += Time.deltaTime;
-            float t = gameDuration.InverseLerp(_elapsedTime);
+            float t = _balance.Points.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
             _spawnInterval = spawnIntervalRange.Lerp(spawnIntervalCurve.Evaluate(t));
             
             if (ReadyToSpawn)

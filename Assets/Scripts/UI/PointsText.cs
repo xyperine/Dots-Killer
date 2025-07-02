@@ -1,8 +1,9 @@
-﻿using TMPro;
+﻿using DotsKiller.Economy;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class PointsText : MonoBehaviour
     {

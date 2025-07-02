@@ -1,4 +1,4 @@
-﻿namespace DotsKiller
+﻿namespace DotsKiller.Economy
 {
     public enum Currency
     {

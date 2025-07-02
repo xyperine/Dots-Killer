@@ -312,15 +312,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
+  m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4292598747
+  m_fontColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balance: {fileID: 1505296556}
+  bulkBuyDetection: {fileID: 1505296558}
   dotSpawner: {fileID: 1875953197}
   dotPrefab: {fileID: 2710753916160226160, guid: 928217a7032fdc640b08046472c59d08, type: 3}
 --- !u!114 &557269001
@@ -1143,6 +1144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505296557}
   - component: {fileID: 1505296556}
+  - component: {fileID: 1505296558}
   m_Layer: 0
   m_Name: Balance
   m_TagString: Untagged
@@ -1162,6 +1164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834bcb849e424c3e8548ff697b506248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingPoints:
+    mantissa: 0
+    exponent: 0
 --- !u!4 &1505296557
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1182,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505296558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505296555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d665865eabbb4ae0ac9a966dff9bb8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hotKey: 306
 --- !u!1 &1875953196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,10 +1254,9 @@ MonoBehaviour:
     <A>k__BackingField: 3
     <B>k__BackingField: 0.1
     <Format>k__BackingField: 1
-  gameDuration:
-    <A>k__BackingField: 0
-    <B>k__BackingField: 10
-    <Format>k__BackingField: 1
+  maxPoints:
+    mantissa: 1
+    exponent: 100
 --- !u!4 &1875953198
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using BreakInfinity;
 
-namespace DotsKiller
+namespace DotsKiller.Economy
 {
     public record BulkBuy(BigDouble Amount, BigDouble Price);
 }
