@@ -7,21 +7,33 @@ namespace DotsKiller.Dots
 {
     public class Dot : MonoBehaviour, IPoolable<Vector2, IMemoryPool>, IDisposable
     {
-        [SerializeField] private Reward reward;
+        private Reward _reward;
+        private Clickable _clickable;
         
         private IMemoryPool _pool;
-        
+
+
+        [Inject]
+        public void Initialize(Reward reward, Clickable clickable)
+        {
+            _reward = reward;
+            _clickable = clickable;
+        }
+
 
         public void OnSpawned(Vector2 position, IMemoryPool pool)
         {
             _pool = pool;
             transform.position = position;
+            
+            _clickable.OnClicked += Die;
         }
 
 
-        private void OnMouseDown()
+        public void Die()
         {
-            reward.Give();
+            _reward.Give();
+            
             Dispose();
         }
 
@@ -29,6 +41,8 @@ namespace DotsKiller.Dots
         public void OnDespawned()
         {
             _pool = null;
+            
+            _clickable.OnClicked -= Die;
         }
 
 
