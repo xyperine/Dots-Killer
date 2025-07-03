@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8153258985445969603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0f7a04940394844a505e73c3eb8cec, type: 3}
+  m_Name: ZipFileOperation
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: ZipFileOperation
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 0
+    clauses: []
+  inputPath: $BUILDPATH
+  outputPath: $BUILDPATH
+  outputFileName: $PRODUCT_NAME-$VERSION.zip
+--- !u!114 &-5914112599317705487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
+  m_Name: UploadItch
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: UploadItch
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 0
+    clauses: []
+  pathToButlerExe: C:\Users\ewsan\AppData\Roaming\itch\apps\butler\butler.exe
+  nameOfItchUser: xyperine
+  nameOfItchGame: dots-killer
+  useGeneratedBuildVersion: 1
+  channelName: $PLATFORM
+  showUploadProgress: 1
+  itchChannelOverride: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5886119a5c7b34d8872ab527ca3e1b, type: 3}
+  m_Name: SuperUnityBuildSettings
+  m_EditorClassIdentifier: 
+  _basicSettings:
+    baseBuildFolder: C:\Users\ewsan\Desktop\Gamedev\Builds
+    buildPath: Dots Killer/$VERSION/$RELEASE_TYPE/$PLATFORM
+    openFolderPostBuild: 1
+    constantsFileLocation: Assets\Data\SuperUnityBuild
+  _productParameters:
+    buildCounter: 0
+    buildVersion: 0.0.0.1
+    versionTemplate: 0.0.0.$BUILD
+    autoGenerate: 0
+    syncWithPlayerSettings: 0
+  _releaseTypeList:
+    releaseTypes:
+    - typeName: Test
+      bundleIdentifier: com.UnityTechnologies.com.unity.template.urpblank
+      companyName: xyperine
+      productName: Dots Killer
+      syncAppNameWithProduct: 1
+      appBuildName: Dots Killer
+      buildOptions: 0
+      customDefines: 
+      sceneList:
+        releaseScenes:
+        - fileGUID: 99c9720ab356a0642a771bea13969a05
+          sceneActive: 1
+  _platformList:
+    platforms:
+    - {fileID: 6458255303047701387}
+  _projectConfigurations:
+    configSet:
+      _Buckets: ffffffff0400000003000000ffffffff0000000002000000ffffffff
+      _HashCodes: 94620742cdf4c12966dfed70b075cd526678124c0000000000000000
+      _Next: ffffffffffffffff01000000ffffffffffffffff0000000000000000
+      _Count: 5
+      _Version: 5
+      _FreeList: -1
+      _FreeCount: 0
+      _Keys:
+      - Test/WebGL/WebGL/IL2CPP/Itch
+      - Test/WebGL/WebGL/IL2CPP
+      - Test/WebGL/WebGL
+      - Test/WebGL
+      - Test
+      - 
+      - 
+      _Values:
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Test/WebGL/WebGL/IL2CPP/Itch
+      - enabled: 1
+        childKeys:
+        - Test/WebGL/WebGL/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Test/WebGL/WebGL
+      - enabled: 1
+        childKeys:
+        - Test/WebGL
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+    showViewOptions: 0
+    showConfigs: 0
+    showBuildInfo: 0
+    hideDisabled: 0
+    treeView: 0
+    selectedKeyChain: 
+  _preBuildActions:
+    buildActions: []
+  _postBuildActions:
+    buildActions:
+    - {fileID: -8153258985445969603}
+    - {fileID: -5914112599317705487}
+--- !u!114 &6458255303047701387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acaf75cc66fc934ea46bf602fc7c245, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions:
+    - distributionName: Itch
+      enabled: 1
+  architectures:
+  - target: 20
+    name: WebGL
+    enabled: 1
+    binaryNameFormat: '{0}'
+  variants: []
+  scriptingBackends:
+  - scriptingImplementation: 1
+    name: IL2CPP
+    enabled: 1
+  platformName: WebGL
+  targetGroup: 13
