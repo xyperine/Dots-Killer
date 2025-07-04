@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "598292494403",
+    "firebase_url": "https://dots-killer-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "dots-killer",
+    "storage_bucket": "dots-killer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598292494403:android:a443e3d66f2e7cf2fb3cf6",
+        "android_client_info": {
+          "package_name": "com.xyperine.DotsKiller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA41DxI6THmtGQuff8o8LVthsu-PZg04aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
