@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 211f8cbe485634a41a5358f968f0499f
+labels:
+- gpsr
+- gvh
+- gvh_version-12.10.1
+- gvhp_exportpath-Firebase/m2repository/com/google/firebase/firebase-database-unity/12.10.1/firebase-database-unity-12.10.1.srcaar
+PluginImporter:
+  externalObjects: {}
+  serializedVersion: 3
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
+  platformData:
+    Android:
+      enabled: 0
+      settings: {}
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
