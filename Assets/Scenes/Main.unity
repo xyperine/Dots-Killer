@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refreshCooldown: 10
+  entriesAmountToDisplay: 10
   leaderboardManagerReference:
     _underlyingValue: {fileID: 2095658236}
   entriesText:
@@ -1635,6 +1636,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1115376237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115376238}
+  - component: {fileID: 1115376239}
+  m_Layer: 0
+  m_Name: Authentication
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115376238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115376237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1115376239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115376237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e4cee0c61147f09e95a05fe67aee3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205762136
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,8 +4636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ba1721560a4221b1b32e162cb2157f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cacheCooldown: 10
-  username: demon
+  authenticationManager: {fileID: 1115376239}
+  username: dragonofhell
 --- !u!114 &2095658237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4858,8 +4903,9 @@ SceneRoots:
   - {fileID: 1875953198}
   - {fileID: 142169621}
   - {fileID: 1505296557}
-  - {fileID: 550437384}
   - {fileID: 2095658235}
+  - {fileID: 1115376238}
+  - {fileID: 550437384}
   - {fileID: 1365163552}
   - {fileID: 41930830}
   - {fileID: 1044716340}

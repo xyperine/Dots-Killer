@@ -2,17 +2,13 @@
 using System.Threading.Tasks;
 using BreakInfinity;
 using DotsKiller.Economy;
-using Firebase.Auth;
 using Firebase.Database;
-using Google;
 using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
 
 namespace DotsKiller
 {
-    // TODO: Move authorization logic into a separate class
-    // TODO: Optimize async calls, right now it generates too much garbage
     public class FirebaseLeaderboardManager : MonoBehaviour, ILeaderboardManager
     {
         // 1. Get reference to database
@@ -20,6 +16,7 @@ namespace DotsKiller
         // 3. To set data - use push/setvalue
         // 4. To get data - verify that entry exists, then retrieve values and convert them to required types
 
+        [SerializeField] private FirebaseAuthenticationManager authenticationManager;
         [SerializeField] private string username;
 
         private const string ENTRY_PATH = "Entry";
@@ -27,50 +24,20 @@ namespace DotsKiller
         private const string SCORE_PATH = "score";
         private const string SCORE_MANTISSA_PATH = "mantissa";
         private const string SCORE_EXPONENT_PATH = "exponent";
-
-        private const string WEB_CLIENT_ID = "598292494403-vp5c1uog5l4a41916ovlcr9qrith6hie.apps.googleusercontent.com";
-
+        
         private readonly RankComparer _rankComparer = new RankComparer();
         
         private Balance _balance;
         
         private DatabaseReference _db;
-
-        private GoogleSignInConfiguration _googleConfiguration;
-
+        
         private string _userId;
         
         private string ConcreteEntryNameID => _userId;// $"{ENTRY_PATH}_{_userId}";
         
+        public string UserID => _userId;
         public string Username { get; private set; }
         public BigDouble Score { get; private set; }
-        public string UserID => _userId;
-
-
-        public async Task<IEnumerable<LeaderboardEntry>> GetEntriesAsync()
-        {
-            if (_db == null)
-            {
-                return null;
-            }
-
-            DataSnapshot snapshot = await _db.GetValueAsync();
-            LeaderboardEntry[] entries = new LeaderboardEntry[snapshot.ChildrenCount];
-            List<DataSnapshot> children = new List<DataSnapshot>(snapshot.Children);
-            children.Sort(_rankComparer);
-            for (int i = 0; i < snapshot.ChildrenCount; i++)
-            {
-                DataSnapshot userSnapshot = children[i];
-                string u = userSnapshot.Child(USERNAME_PATH).Value.ToString();
-                double mantissa = double.Parse(userSnapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
-                long exponent = (long) userSnapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
-                BigDouble s = new BigDouble(mantissa, exponent);
-
-                entries[i] = new LeaderboardEntry(userSnapshot.Key, i + 1, u, s);
-            }
-
-            return entries;
-        }
 
 
         [Inject]
@@ -84,12 +51,6 @@ namespace DotsKiller
         {
             Username = username;
             Score = _balance.Points;
-            
-            _googleConfiguration = new GoogleSignInConfiguration
-            {
-                RequestIdToken = true,
-                WebClientId = WEB_CLIENT_ID,
-            };
         }
 
 
@@ -101,99 +62,19 @@ namespace DotsKiller
 
         private async Task InitializeAsync()
         {
-            await AuthenticateAsync();
+            await authenticationManager.AuthenticateAsync();
 
             await InitializeDatabaseAsync();
         }
-        
-        
-        private async Task AuthenticateAsync()
-        {
-#if UNITY_ANDROID
-            GoogleSignIn.Configuration = _googleConfiguration;
-            await GoogleSignIn.DefaultInstance.SignIn();
-            await OnGoogleAuthFinished();
-#elif UNITY_EDITOR
-            FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-
-            await auth.SignInAnonymouslyAsync().ContinueWith(task => 
-            {
-                if (task.IsCanceled) {
-                    Debug.LogError("SignInAnonymouslyAsync was canceled.");
-                    return;
-                }
-                if (task.IsFaulted) {
-                    Debug.LogError("SignInAnonymouslyAsync encountered an error: " + task.Exception);
-                    return;
-                }
-
-                AuthResult result = task.Result;
-                Debug.LogFormat("User signed in successfully: {0} ({1})",
-                    result.User.DisplayName, result.User.UserId);
-
-                _userId = result.User.UserId;
-            });
-#endif
-        }
 
 
-        private async Task OnGoogleAuthFinished(Task<GoogleSignInUser> task)
-        {
-            if (task.IsCanceled)
-            {
-                Debug.LogError($"Google authorization canceled: {task.Exception}");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.LogError($"Google authorization failed: {task.Exception}");
-            }
-            else if (task.IsCompletedSuccessfully)
-            {
-                Debug.Log("Google sign in successful!");
-                
-                await PerformFirebaseSignIn(task.Result);
-            }
-        }
-
-
-        private async Task PerformFirebaseSignIn(GoogleSignInUser googleSignInUser)
-        {
-            FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-
-            string googleIdToken = googleSignInUser.IdToken;
-            Credential credential = GoogleAuthProvider.GetCredential(googleIdToken, null);
-
-            await auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWith(task =>
-            {
-                if (task.IsCanceled)
-                {
-                    Debug.LogError($"Firebase authentication canceled: {task.Exception}");
-                }
-                else if (task.IsFaulted)
-                {
-                    Debug.LogError($"Firebase authentication failed: {task.Exception}");
-                }
-                else if (task.IsCompletedSuccessfully)
-                {
-                    Debug.Log("Firebase authentication successful!");
-
-                    _userId = task.Result.User.UserId;
-                }
-            });
-        }
-
-
-        private void OnDestroy()
-        {
-            _db.ValueChanged -= OnValueChanged;
-        }
-
-        
         private async Task InitializeDatabaseAsync()
         {
+            _userId = authenticationManager.UserID;
+            
             _db = FirebaseDatabase.DefaultInstance.GetReference("/Leaderboard");
 
-            await CheckIfUserExistsAsync();
+            await TryFetchUserDataAsync();
             
             _db.ValueChanged += OnValueChanged;
         }
@@ -209,16 +90,9 @@ namespace DotsKiller
 
             FetchUserDataAsync();
         }
-        
 
-        [Button]
-        public void SignInAsync()
-        {
-            CheckIfUserExistsAsync();
-        }
-        
 
-        private async Task CheckIfUserExistsAsync()
+        private async Task TryFetchUserDataAsync()
         {
             Task<DataSnapshot> task = _db.Child(ConcreteEntryNameID).GetValueAsync();
 
@@ -313,6 +187,38 @@ namespace DotsKiller
                     Debug.LogError($"User {_userId} was not found!");
                 }
             }
+        }
+
+
+        public async Task<IEnumerable<LeaderboardEntry>> GetEntriesAsync()
+        {
+            if (_db == null)
+            {
+                return null;
+            }
+
+            DataSnapshot snapshot = await _db.GetValueAsync();
+            LeaderboardEntry[] entries = new LeaderboardEntry[snapshot.ChildrenCount];
+            List<DataSnapshot> children = new List<DataSnapshot>(snapshot.Children);
+            children.Sort(_rankComparer);
+            for (int i = 0; i < snapshot.ChildrenCount; i++)
+            {
+                DataSnapshot userSnapshot = children[i];
+                string u = userSnapshot.Child(USERNAME_PATH).Value.ToString();
+                double mantissa = double.Parse(userSnapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
+                long exponent = (long) userSnapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
+                BigDouble s = new BigDouble(mantissa, exponent);
+
+                entries[i] = new LeaderboardEntry(userSnapshot.Key, i + 1, u, s);
+            }
+
+            return entries;
+        }
+
+
+        private void OnDestroy()
+        {
+            _db.ValueChanged -= OnValueChanged;
         }
     }
 }
