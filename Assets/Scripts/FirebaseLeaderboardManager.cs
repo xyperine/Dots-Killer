@@ -44,28 +44,29 @@ namespace DotsKiller
         
         public string Username { get; private set; }
         public BigDouble Score { get; private set; }
-        
-        
-        public async Task<LeaderboardEntry[]> GetEntriesAsync()
+        public string UserID => _userId;
+
+
+        public async Task<IEnumerable<LeaderboardEntry>> GetEntriesAsync()
         {
             if (_db == null)
             {
                 return null;
             }
 
-            DataSnapshot ds = await _db.GetValueAsync();
-            LeaderboardEntry[] entries = new LeaderboardEntry[ds.ChildrenCount];
-            List<DataSnapshot> children = new List<DataSnapshot>(ds.Children);
+            DataSnapshot snapshot = await _db.GetValueAsync();
+            LeaderboardEntry[] entries = new LeaderboardEntry[snapshot.ChildrenCount];
+            List<DataSnapshot> children = new List<DataSnapshot>(snapshot.Children);
             children.Sort(_rankComparer);
-            for (int i = 0; i < ds.ChildrenCount; i++)
+            for (int i = 0; i < snapshot.ChildrenCount; i++)
             {
-                DataSnapshot snapshot = children[i];
-                string u = snapshot.Child(USERNAME_PATH).Value.ToString();
-                double mantissa = double.Parse(snapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
-                long exponent = (long) snapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
+                DataSnapshot userSnapshot = children[i];
+                string u = userSnapshot.Child(USERNAME_PATH).Value.ToString();
+                double mantissa = double.Parse(userSnapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
+                long exponent = (long) userSnapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
                 BigDouble s = new BigDouble(mantissa, exponent);
 
-                entries[i] = new LeaderboardEntry(i + 1, u, s);
+                entries[i] = new LeaderboardEntry(userSnapshot.Key, i + 1, u, s);
             }
 
             return entries;
