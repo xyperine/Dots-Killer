@@ -38,17 +38,17 @@ namespace DotsKiller
             _timeSinceLastUpdate += Time.deltaTime;
             if (_timeSinceLastUpdate >= refreshCooldown)
             {
-                UpdateEntriesAsync();
+                _leaderboardManager.GetEntriesAsync(OnGetEntries);
                 
                 _timeSinceLastUpdate = 0f;
             }
         }
 
 
-        private async void UpdateEntriesAsync()
+        private void OnGetEntries(IEnumerable<LeaderboardEntry> entriesCollection)
         {
-            List<LeaderboardEntry> entries = new List<LeaderboardEntry>(await _leaderboardManager.GetEntriesAsync());
-
+            List<LeaderboardEntry> entries = new List<LeaderboardEntry>(entriesCollection);
+            
             int length = Mathf.Min(entries.Count, entriesAmountToDisplay);
             if (entriesText.Length < length)
             {
@@ -65,7 +65,7 @@ namespace DotsKiller
                 }
             }
 
-            LeaderboardEntry entry = entries.Find(e => e.UserID == _leaderboardManager.UserID);
+            LeaderboardEntry entry = entries.Find(e => e.Mine);
             thisUserEntryText.text = string.Format(_entryFormat, entry.Rank, entry.Username, entry.Score);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BreakInfinity;
 using DotsKiller.Economy;
@@ -25,7 +26,7 @@ namespace DotsKiller
         private const string SCORE_MANTISSA_PATH = "mantissa";
         private const string SCORE_EXPONENT_PATH = "exponent";
         
-        private readonly RankComparer _rankComparer = new RankComparer();
+        private readonly FirebaseRankComparer _rankComparer = new FirebaseRankComparer();
         
         private Balance _balance;
         
@@ -34,23 +35,12 @@ namespace DotsKiller
         private string _userId;
         
         private string ConcreteEntryNameID => _userId;// $"{ENTRY_PATH}_{_userId}";
-        
-        public string UserID => _userId;
-        public string Username { get; private set; }
-        public BigDouble Score { get; private set; }
 
 
         [Inject]
         public void Initialize(Balance balance)
         {
             _balance = balance;
-        }
-
-
-        private void Awake()
-        {
-            Username = username;
-            Score = _balance.Points;
         }
 
 
@@ -175,12 +165,12 @@ namespace DotsKiller
                 {
                     Debug.Log($"User {_userId} exists!");
 
-                    Username = snapshot.Child(USERNAME_PATH).Value.ToString();
+                    username = snapshot.Child(USERNAME_PATH).Value.ToString();
                     double mantissa = double.Parse(snapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
                     long exponent = (long) snapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
-                    Score = new BigDouble(mantissa, exponent);
+                    BigDouble score  = new BigDouble(mantissa, exponent);
                     
-                    Debug.Log($"Fetched user {_userId} data!: Score {Score}");
+                    Debug.Log($"Fetched user {_userId} data!: Score {score}");
                 }
                 else
                 {
@@ -190,7 +180,7 @@ namespace DotsKiller
         }
 
 
-        public async Task<IEnumerable<LeaderboardEntry>> GetEntriesAsync()
+        public async Task<IEnumerable<LeaderboardEntry>> GetEntriesAsync(Action<IEnumerable<LeaderboardEntry>> successCallback = null)
         {
             if (_db == null)
             {
@@ -209,8 +199,10 @@ namespace DotsKiller
                 long exponent = (long) userSnapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
                 BigDouble s = new BigDouble(mantissa, exponent);
 
-                entries[i] = new LeaderboardEntry(userSnapshot.Key, i + 1, u, s);
+                entries[i] = new LeaderboardEntry(i + 1, u, s, userSnapshot.Key == _userId);
             }
+            
+            successCallback?.Invoke(entries);
 
             return entries;
         }

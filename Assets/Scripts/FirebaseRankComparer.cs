@@ -4,7 +4,7 @@ using Firebase.Database;
 
 namespace DotsKiller
 {
-    public class RankComparer : IComparer<DataSnapshot>
+    public class FirebaseRankComparer : IComparer<DataSnapshot>
     {
         private const string SCORE_PATH = "score";
         private const string SCORE_MANTISSA_PATH = "mantissa";
@@ -12,7 +12,7 @@ namespace DotsKiller
         
         
         /// <summary>
-        /// Used to sort entries in DESCENDING order based on the score value
+        /// Used to sort entries in DESCENDING order based on the BigDouble score value
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
