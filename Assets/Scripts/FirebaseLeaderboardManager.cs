@@ -143,6 +143,12 @@ namespace DotsKiller
         }
 
 
+        public void Submit(BigDouble score)
+        {
+            PushDataAsync();
+        }
+
+
         private async Task FetchUserDataAsync()
         {
             Task<DataSnapshot> task = _db.Child(ConcreteEntryNameID).GetValueAsync();

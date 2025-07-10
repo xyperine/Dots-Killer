@@ -5,7 +5,6 @@ using BreakInfinity;
 using Dan.Main;
 using Dan.Models;
 using DotsKiller.Economy;
-using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
 
@@ -33,18 +32,6 @@ namespace DotsKiller
         {
             _leaderboardReference = Leaderboards.Dots_Killer_leaderboard;
             
-        }
-
-
-        public bool EntryBelongsToThisUser(LeaderboardEntry entry)
-        {
-            bool b = false;
-            _leaderboardReference.GetPersonalEntry(callback: e =>
-            {
-                b = entry.Equals(ConvertToEntry(e));
-            });
-            
-            return b;
         }
 
 
@@ -85,10 +72,9 @@ namespace DotsKiller
         }
 
 
-        [Button]
-        public void SubmitScore()
+        public void Submit(BigDouble score)
         {
-            _leaderboardReference.UploadNewEntry(username, 0, $"{_balance.Points}");
+            _leaderboardReference.UploadNewEntry(username, 0, score.ToString());
         }
     }
 }
