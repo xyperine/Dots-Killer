@@ -215,35 +215,6 @@ MonoBehaviour:
         rank: 5
         score: 0
         extraData: 1e7
-    - technoName: byPointsScore
-      entries: '1. Max: 20
-
-        2. Maria: 15321
-
-        3. anonymous: 62000
-
-        4.
-        Player 4: 122000
-
-        5. Player current: 127000
-
-        6. Player 6:
-        340000'
-      isDefault: 0
-      isInvertSortOrder: 1
-      decimalOffset: 0
-      type: numeric
-      players:
-      - rank: 1
-        name: Max
-        score: 0
-        photo: demo image
-        uniqueID: 789
-        extraData: 1e23
-      currentPlayer:
-        rank: 5
-        score: 0
-        extraData: 1e7
   Localization:
     setLanguageMod: 1
   Basic:

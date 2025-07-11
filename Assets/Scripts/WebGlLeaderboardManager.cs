@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 using BreakInfinity;
 using Dan.Main;
 using Dan.Models;
-using DotsKiller.Economy;
 using UnityEngine;
-using Zenject;
 
 namespace DotsKiller
 {
@@ -18,20 +16,13 @@ namespace DotsKiller
         
         private LeaderboardReference _leaderboardReference;
 
-        private Balance _balance;
 
-
-        [Inject]
-        public void Initialize(Balance balance)
+        public void StartUp()
         {
-            _balance = balance;
-        }
-        
-
-        private void Awake()
-        {
-            _leaderboardReference = Leaderboards.Dots_Killer_leaderboard;
+            gameObject.SetActive(true);
+            enabled = true;
             
+            _leaderboardReference = Leaderboards.Dots_Killer_leaderboard;
         }
 
 

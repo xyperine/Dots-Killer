@@ -16,6 +16,13 @@ namespace DotsKiller
 
         private IEnumerable<LeaderboardEntry> _entries;
         private Action<IEnumerable<LeaderboardEntry>> _queuedCallback;
+
+
+        public void StartUp()
+        {
+            gameObject.SetActive(true);
+            enabled = true;
+        }
         
         
         private void OnEnable()

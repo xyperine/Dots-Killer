@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BreakInfinity;
-using DotsKiller.Economy;
 using Firebase.Database;
-using NaughtyAttributes;
 using UnityEngine;
-using Zenject;
 
 namespace DotsKiller
 {
@@ -27,28 +24,22 @@ namespace DotsKiller
         private const string SCORE_EXPONENT_PATH = "exponent";
         
         private readonly FirebaseRankComparer _rankComparer = new FirebaseRankComparer();
-        
-        private Balance _balance;
-        
+
         private DatabaseReference _db;
         
         private string _userId;
         
         private string ConcreteEntryNameID => _userId;// $"{ENTRY_PATH}_{_userId}";
+        
 
-
-        [Inject]
-        public void Initialize(Balance balance)
+        public void StartUp()
         {
-            _balance = balance;
-        }
+            gameObject.SetActive(true);
+            enabled = true;
 
-
-        private void Start()
-        {
             InitializeAsync();
         }
-
+        
 
         private async Task InitializeAsync()
         {
@@ -63,67 +54,14 @@ namespace DotsKiller
             _userId = authenticationManager.UserID;
             
             _db = FirebaseDatabase.DefaultInstance.GetReference("/Leaderboard");
-
-            await TryFetchUserDataAsync();
-            
-            _db.ValueChanged += OnValueChanged;
         }
 
 
-        private void OnValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            if (e.DatabaseError != null)
-            {
-                Debug.LogError(e.DatabaseError.Message);
-                return;
-            }
-
-            FetchUserDataAsync();
-        }
-
-
-        private async Task TryFetchUserDataAsync()
-        {
-            Task<DataSnapshot> task = _db.Child(ConcreteEntryNameID).GetValueAsync();
-
-            await task;
-
-            if (task.IsCanceled)
-            {
-                Debug.LogError($"Checking user canceled: {task.Exception}");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.LogError($"Checking user failed: {task.Exception}");
-            }
-            else if (task.IsCompletedSuccessfully)
-            {
-                DataSnapshot snapshot = task.Result;
-
-                if (snapshot is {HasChildren: true})
-                {
-                    Debug.Log($"User {_userId} exists!");
-
-                    await FetchUserDataAsync();
-                }
-                else
-                {
-                    Debug.LogError($"User {_userId} was not found!");
-
-                    await PushDataAsync();
-
-                    await FetchUserDataAsync();
-                }
-            }
-        }
-
-
-        [Button]
-        private async Task PushDataAsync()
+        private async Task PushDataAsync(BigDouble score)
         {
             Task t1 = _db.Child(ConcreteEntryNameID).Child(USERNAME_PATH).SetValueAsync(username);
-            Task t2 = _db.Child(ConcreteEntryNameID).Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).SetValueAsync(_balance.Points.Mantissa);
-            Task t3 = _db.Child(ConcreteEntryNameID).Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).SetValueAsync(_balance.Points.Exponent);
+            Task t2 = _db.Child(ConcreteEntryNameID).Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).SetValueAsync(score);
+            Task t3 = _db.Child(ConcreteEntryNameID).Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).SetValueAsync(score);
 
             Task[] ts = {t1, t2, t3};
             await Task.WhenAll(ts);
@@ -145,44 +83,7 @@ namespace DotsKiller
 
         public void Submit(BigDouble score)
         {
-            PushDataAsync();
-        }
-
-
-        private async Task FetchUserDataAsync()
-        {
-            Task<DataSnapshot> task = _db.Child(ConcreteEntryNameID).GetValueAsync();
-
-            await task;
-
-            if (task.IsCanceled)
-            {
-                Debug.LogError($"Fetching user data canceled: {task.Exception}");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.LogError($"Fetching user data failed: {task.Exception}");
-            }
-            else if (task.IsCompletedSuccessfully)
-            {
-                DataSnapshot snapshot = task.Result;
-
-                if (snapshot is {HasChildren: true})
-                {
-                    Debug.Log($"User {_userId} exists!");
-
-                    username = snapshot.Child(USERNAME_PATH).Value.ToString();
-                    double mantissa = double.Parse(snapshot.Child(SCORE_PATH).Child(SCORE_MANTISSA_PATH).Value.ToString());
-                    long exponent = (long) snapshot.Child(SCORE_PATH).Child(SCORE_EXPONENT_PATH).Value;
-                    BigDouble score  = new BigDouble(mantissa, exponent);
-                    
-                    Debug.Log($"Fetched user {_userId} data!: Score {score}");
-                }
-                else
-                {
-                    Debug.LogError($"User {_userId} was not found!");
-                }
-            }
+            PushDataAsync(score);
         }
 
 
@@ -211,12 +112,6 @@ namespace DotsKiller
             successCallback?.Invoke(entries);
 
             return entries;
-        }
-
-
-        private void OnDestroy()
-        {
-            _db.ValueChanged -= OnValueChanged;
         }
     }
 }
