@@ -2,7 +2,7 @@
 using BreakInfinity;
 using YG.Utils.LB;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.Yandex
 {
     public class YandexRankComparer : IComparer<LBPlayerData>
     {

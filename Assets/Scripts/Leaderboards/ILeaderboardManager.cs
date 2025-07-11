@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BreakInfinity;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards
 {
     public interface ILeaderboardManager
     {

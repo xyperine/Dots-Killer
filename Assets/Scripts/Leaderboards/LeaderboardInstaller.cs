@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using DotsKiller.Leaderboards.Firebase;
+using DotsKiller.Leaderboards.WebGL;
+using DotsKiller.Leaderboards.Yandex;
+using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards
 {
     public class LeaderboardInstaller : MonoInstaller
     {

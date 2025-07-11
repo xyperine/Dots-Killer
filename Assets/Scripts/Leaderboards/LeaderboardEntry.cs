@@ -1,6 +1,6 @@
 ﻿using BreakInfinity;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards
 {
     public struct LeaderboardEntry
     {

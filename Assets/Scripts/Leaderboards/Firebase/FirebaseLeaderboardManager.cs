@@ -5,7 +5,7 @@ using BreakInfinity;
 using Firebase.Database;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.Firebase
 {
     public class FirebaseLeaderboardManager : MonoBehaviour, ILeaderboardManager
     {

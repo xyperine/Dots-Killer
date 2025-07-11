@@ -6,7 +6,7 @@ using Dan.Main;
 using Dan.Models;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.WebGL
 {
     public class WebGlLeaderboardManager : MonoBehaviour, ILeaderboardManager
     {
@@ -22,7 +22,7 @@ namespace DotsKiller
             gameObject.SetActive(true);
             enabled = true;
             
-            _leaderboardReference = Leaderboards.Dots_Killer_leaderboard;
+            _leaderboardReference = Dan.Main.Leaderboards.Dots_Killer_leaderboard;
         }
 
 

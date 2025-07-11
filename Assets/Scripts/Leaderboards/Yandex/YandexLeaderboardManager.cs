@@ -6,7 +6,7 @@ using UnityEngine;
 using YG;
 using YG.Utils.LB;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.Yandex
 {
     public class YandexLeaderboardManager : MonoBehaviour, ILeaderboardManager
     {

@@ -2,7 +2,7 @@
 using BreakInfinity;
 using Dan.Models;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.WebGL
 {
     public class WebGlRankComparer : IComparer<Entry>
     {

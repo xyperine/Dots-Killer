@@ -2,7 +2,7 @@
 using BreakInfinity;
 using Firebase.Database;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards.Firebase
 {
     public class FirebaseRankComparer : IComparer<DataSnapshot>
     {

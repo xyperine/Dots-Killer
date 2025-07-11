@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Leaderboards
 {
     public class LeaderboardUI : MonoBehaviour
     {
