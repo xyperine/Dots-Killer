@@ -72,6 +72,8 @@ namespace DotsKiller.Economy
             basePrice = price;
             this.priceScaling = priceScaling;
             this.currency = currency;
+
+            Price = basePrice;
         }
 
 

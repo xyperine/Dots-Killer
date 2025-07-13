@@ -1,4 +1,6 @@
-﻿using DotsKiller.Economy;
+﻿using BreakInfinity;
+using DotsKiller.Economy;
+using DotsKiller.Utility;
 using TMPro;
 using UnityEngine;
 
@@ -26,12 +28,12 @@ namespace DotsKiller.UI
                 return;
             }
             
-            string priceText = purchasable.IsBulkBuyActive
-                ? purchasable.BulkPrice.ToString()
-                : purchasable.Price.ToString();
-            string amountText = purchasable.IsBulkBuyActive
-                ? purchasable.BulkBuyData.Amount.ToString()
-                : 1.ToString();
+            string priceText = Formatting.DefaultFormat(purchasable.IsBulkBuyActive
+                ? purchasable.BulkPrice
+                : purchasable.Price);
+            string amountText = Formatting.DefaultFormat(purchasable.IsBulkBuyActive
+                ? purchasable.BulkBuyData.Amount
+                : BigDouble.One);
 
             text.text = string.Format(_format, priceText, amountText);
         }

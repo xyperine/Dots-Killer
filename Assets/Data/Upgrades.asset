@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382f10b4c4bd43e4b978e8b036cc2620, type: 3}
+  m_Name: Upgrades
+  m_EditorClassIdentifier: 
+  foldoutImportGUI: 1
+  documentId: 1j81nkuVXazCGAjSyU1HHuDc0tVdLVGpvwogZ9OOsyhk
+  selectedTogglesIds:
+  - entries
+  foldoutSerializationGUI: 1
+  serializationOutputPath: ../../Configs
+  serializationFileName: Configs.v0.1
+  serializationFormat: 0
+  content:
+    entries:
+    - ID: 0
+      Title: Points Income
+      Description: Increase points on kill by 1
+      Price: 10
+      PriceScaling: 5
+      MaxLevel: 1000
+    - ID: 1
+      Title: Kills Factor
+      Description: Gain multiplier to your points income based on kills
+      Price: 10000
+      PriceScaling: None
+      MaxLevel: 1
+    - ID: 2
+      Title: Cleanse
+      Description: Gain points income multiplier based on the field cleanliness
+      Price: 100
+      PriceScaling: 10
+      MaxLevel: 5
+    - ID: 3
+      Title: Time
+      Description: Gain points income multiplier based on the playtime
+      Price: 1.00E+06
+      PriceScaling: None
+      MaxLevel: 1
+    - ID: 4
+      Title: Killing Spree
+      Description: Gain points income multiplier based on the amount of kills per
+        minute
+      Price: 1.00E+05
+      PriceScaling: None
+      MaxLevel: 1
+    - ID: 5
+      Title: Accumulate
+      Description: Gain points income multiplier based on the amount of points earned
+      Price: 1.00E+10
+      PriceScaling: None
+      MaxLevel: 1
+    - ID: 6
+      Title: Power Farm
+      Description: Empower points gain ^1.05
+      Price: 1.00E+15
+      PriceScaling: 1.00E+05
+      MaxLevel: 1000

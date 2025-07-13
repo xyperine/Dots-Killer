@@ -15,8 +15,25 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: fdf1051cec6b8ff45bc1a9408a4f70cb
   m_SerializeEntries:
+  - m_GUID: 663b7024251aa3642970b090d65a0474
+    m_Address: AzeretMono-Regular SDF
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-es
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8397e2c050726c1428c95e62ad549c9a
     m_Address: Assets/Data/Localization/Tables/AppName Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5ac71fe06fc7d84ba2842c4f00642d0
+    m_Address: Assets/Data/Localization/Tables/RegularUpgrades Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9a7779df2f79634f8c009f8e312d5e3
+    m_Address: Assets/Data/Localization/Tables/Fonts Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

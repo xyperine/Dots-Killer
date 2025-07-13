@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DotsKiller.SaveSystem
 {
@@ -7,5 +8,7 @@ namespace DotsKiller.SaveSystem
         public bool IsDirty { get; set; }
         
         public DateTime LastSeen { get; set; }
+
+        public Dictionary<int, int> RegularUpgradeLevels { get; } = new Dictionary<int, int>();
     }
 }

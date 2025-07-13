@@ -37,8 +37,11 @@ namespace DotsKiller.UI
         }
 
 
+        // No notifications for now
         public void ShowNotification(int amount)
         {
+            return;
+            
             notificationAmountText.text = amount.ToString();
             notificationVisual.SetActive(true);
         }
@@ -46,6 +49,8 @@ namespace DotsKiller.UI
 
         public void HideNotification()
         {
+            return;
+            
             notificationVisual.SetActive(false);
         }
     }

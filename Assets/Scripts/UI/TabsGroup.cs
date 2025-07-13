@@ -13,18 +13,13 @@ namespace DotsKiller.UI
         [SerializeField] private Color selectColor;
         [SerializeField] private Color clickColor;
 
-        private readonly List<TabButton> _clickedTabs = new List<TabButton>();
+        private TabButton _clickedTab;
 
         private readonly Dictionary<int, int> _newItems = new Dictionary<int, int>();
 
 
         private void Start()
         {
-            for (int i = 0; i < tabs.Count; i++)
-            {
-                _newItems.Add(i, 0);
-            }
-            
             Close();
         }
 
@@ -34,7 +29,7 @@ namespace DotsKiller.UI
             ResetTabs();
             for (int i = 0; i < tabs.Count; i++)
             {
-                pages[i].SetActive(_clickedTabs.Contains(tabs[i]));
+                pages[i].SetActive(_clickedTab == tabs[i]);
             }
         }
 
@@ -43,7 +38,7 @@ namespace DotsKiller.UI
         {
             foreach (TabButton tabButton in tabs)
             {
-                if (_clickedTabs.Contains(tabButton))
+                if (_clickedTab == tabButton)
                 {
                     continue;
                 }
@@ -55,7 +50,7 @@ namespace DotsKiller.UI
 
         public void AddItem(int tabIndex)
         {
-            if (_clickedTabs.Exists(t => t.transform.GetSiblingIndex() == tabIndex))
+            if (_clickedTab.transform.GetSiblingIndex() == tabIndex)
             {
                 return;
             }
@@ -97,7 +92,7 @@ namespace DotsKiller.UI
         {
             ResetTabs();
 
-            if (_clickedTabs.Contains(tabButton))
+            if (_clickedTab == tabButton)
             {
                 return;
             }
@@ -110,7 +105,7 @@ namespace DotsKiller.UI
         {
             audioSource.Play();
             
-            if (_clickedTabs.Contains(tabButton))
+            if (_clickedTab == tabButton)
             {
                 ClosePage(tabButton);
                 return;
@@ -123,7 +118,7 @@ namespace DotsKiller.UI
             pages[index].transform.SetAsLastSibling();
             pages[index].SetActive(true);
 
-            _clickedTabs.Add(tabButton);
+            _clickedTab = tabButton;
             ResetTabs();
             tabButton.background.color = clickColor;
         }
@@ -131,7 +126,7 @@ namespace DotsKiller.UI
 
         private void ClosePage(TabButton tabButton)
         {
-            _clickedTabs.Remove(tabButton);
+            _clickedTab = null;
             Close();
         }
         

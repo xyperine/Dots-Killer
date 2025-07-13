@@ -1,4 +1,5 @@
 ﻿using DotsKiller.Economy;
+using DotsKiller.Utility;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -21,7 +22,7 @@ namespace DotsKiller.UI
 
         private void Update()
         {
-            text.text = _balance.Points.ToString("F0");
+            text.text = Formatting.DefaultFormat(_balance.Points);
         }
     }
 }
