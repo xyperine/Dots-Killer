@@ -1,4 +1,5 @@
-﻿using NaughtyAttributes;
+﻿using DotsKiller.RegularUpgrading;
+using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;

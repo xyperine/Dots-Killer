@@ -1,5 +1,6 @@
 using DotsKiller.Dots;
 using DotsKiller.Economy;
+using DotsKiller.RegularUpgrading;
 using UnityEngine;
 using Zenject;
 

@@ -779,8 +779,9 @@ GameObject:
   - component: {fileID: 2099172896116619737}
   - component: {fileID: 8643780230376068196}
   - component: {fileID: 4021694764754159677}
+  - component: {fileID: 5633206031079946526}
   m_Layer: 0
-  m_Name: Upgrade
+  m_Name: Regular_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,9 +877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248e027d0c4453c82f0f011aff873fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLse: {fileID: 7567274582548735125}
-  descriptionLse: {fileID: 1241642325708198595}
-  bonusText: {fileID: 5618034527130401782}
   purchasable: {fileID: 8643780230376068196}
 --- !u!114 &8643780230376068196
 MonoBehaviour:
@@ -916,6 +914,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   purchasable: {fileID: 8643780230376068196}
   purchaseButton: {fileID: 2735592478297823368}
+--- !u!114 &5633206031079946526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334226097492836897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131902eab7ef4ff3bb280f2714173849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameLse: {fileID: 7567274582548735125}
+  descriptionLse: {fileID: 1241642325708198595}
+  bonusText: {fileID: 5618034527130401782}
+  regularUpgrade: {fileID: 2099172896116619737}
+  regularUpgrades: {fileID: 0}
 --- !u!1 &7454667402824021401
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,24 +1,19 @@
 ﻿using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Components;
 using Zenject;
 
-namespace DotsKiller.UI
+namespace DotsKiller.RegularUpgrading
 {
-    public class Upgrade : MonoBehaviour
+    public class RegularUpgrade : MonoBehaviour
     {
-        [SerializeField] private LocalizeStringEvent nameLse;
-        [SerializeField] private LocalizeStringEvent descriptionLse;
-        [SerializeField] private TMP_Text bonusText;
         [SerializeField] private Purchasable purchasable;
         
         private RegularUpgrades _regularUpgrades;
 
-        
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
+        public bool MaxedOut => purchasable.MaxedOut;
 
 
         [Inject]
@@ -30,14 +25,10 @@ namespace DotsKiller.UI
 
         private void Start()
         {
-            
             RegularUpgradeEntry entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
-            nameLse.SetEntry(_regularUpgrades.GetName(entry.ID));
-            descriptionLse.SetEntry(_regularUpgrades.GetDescription(entry.ID));
             
             purchasable.SetPrice(entry.Price, entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(entry.MaxLevel);
-            bonusText.text = _regularUpgrades.GetBonusText(entry.ID, 0, false);
 
             ID = entry.ID;
 
@@ -51,10 +42,27 @@ namespace DotsKiller.UI
         }
 
 
+        public void Load()
+        {
+            RegularUpgradeEntry entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            
+            purchasable.SetPrice(entry.Price, entry.PriceScaling, Currency.Points);
+            purchasable.SetMaxAmount(entry.MaxLevel);
+
+            ID = entry.ID;
+
+            if (GameStateHandler.Loaded)
+            {
+                if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(entry.ID))
+                {
+                    purchasable.Load(GameStateHandler.State.RegularUpgradeLevels[entry.ID]);
+                }
+            }
+        }
+        
+
         private void Update()
         {
-            bonusText.text = _regularUpgrades.GetBonusText(ID, Level, purchasable.MaxedOut);
-            
             if (!GameStateHandler.State.RegularUpgradeLevels.TryAdd(ID, Level))
             {
                 GameStateHandler.State.RegularUpgradeLevels[ID] = Level;

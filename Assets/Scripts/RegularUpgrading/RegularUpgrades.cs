@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using BreakInfinity;
 using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
-using DotsKiller.UI;
 using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.RegularUpgrading
 {
     public class RegularUpgrades : MonoBehaviour
     {
         [SerializeField] private RegularUpgradesSO regularUpgradesSO;
-        [SerializeField] private List<Upgrade> upgrades; 
+        [SerializeField] private List<RegularUpgrade> upgrades; 
         
         private Stats _stats;
         private DotsTracker _dotsTracker;
@@ -53,6 +52,11 @@ namespace DotsKiller
                 return;
             }
 
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].Load();
+            }
+            
             foreach ((int id, int level) in GameStateHandler.State.RegularUpgradeLevels)
             {
                 SetAppropriateValue(id, level);
@@ -60,9 +64,9 @@ namespace DotsKiller
         }
 
 
-        private void SetAppropriateValue(Upgrade upgrade)
+        private void SetAppropriateValue(RegularUpgrade regularUpgrade)
         {
-            SetAppropriateValue(upgrade.ID, upgrade.Level);
+            SetAppropriateValue(regularUpgrade.ID, regularUpgrade.Level);
         }
 
 
@@ -129,9 +133,9 @@ namespace DotsKiller
         {
             for (int i = 0; i < upgrades.Count; i++)
             {
-                Upgrade upgrade = upgrades[i];
+                RegularUpgrade regularUpgrade = upgrades[i];
                 
-                SetAppropriateValue(upgrade);
+                SetAppropriateValue(regularUpgrade);
             }
         }
 

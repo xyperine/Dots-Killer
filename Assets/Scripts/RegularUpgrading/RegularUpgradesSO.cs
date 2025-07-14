@@ -6,7 +6,7 @@ using BreakInfinity;
 using NorskaLib.Spreadsheets;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.RegularUpgrading
 {
     [CreateAssetMenu(fileName = "Regular_Upgrades", menuName = "Regular Upgrades SO", order = 0)]
     public class RegularUpgradesSO : SpreadsheetsContainerBase

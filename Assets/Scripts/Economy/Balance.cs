@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BreakInfinity;
+using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;

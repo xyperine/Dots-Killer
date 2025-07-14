@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DotsKiller.SaveSystem
 {
@@ -25,6 +26,13 @@ namespace DotsKiller.SaveSystem
         {
             State = state;
             Loaded = true;
+        }
+
+
+        private void OnDestroy()
+        {
+            State = null;
+            Loaded = false;
         }
     }
 }

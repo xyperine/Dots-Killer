@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using BreakInfinity;
+using DotsKiller.RegularUpgrading;
 using UnityEngine;
 using Zenject;
 
