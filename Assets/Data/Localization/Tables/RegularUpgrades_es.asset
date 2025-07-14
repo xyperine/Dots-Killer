@@ -44,6 +44,47 @@ MonoBehaviour:
       del campo"
     m_Metadata:
       m_Items: []
+  - m_Id: 283443421560832
+    m_Localized: Obtenga un multiplicador de ingresos de puntos basado en la cantidad
+      de puntos ganados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283326262067200
+    m_Localized: "Factor de acumulaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319054325006336
+    m_Localized: Crecimiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319183664758784
+    m_Localized: Ganancia de puntos exponenciales ^1.05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319378485985280
+    m_Localized: Aumentar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319480617287680
+    m_Localized: "Aumenta todas las dem\xE1s mejoras en x1.01"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321652897660928
+    m_Localized: Generosidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321837862273024
+    m_Localized: Oportunidad de obtener x2 puntos por una muerte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 322230847586304
+    m_Localized: "Gana puntos multiplicadores de ingresos seg\xFAn el tiempo de juego"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 322130695995392
+    m_Localized: Factor tiempo
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

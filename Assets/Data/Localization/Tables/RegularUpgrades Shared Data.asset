@@ -39,6 +39,46 @@ MonoBehaviour:
     m_Key: RegularUpgrades.CleanFactor.Description
     m_Metadata:
       m_Items: []
+  - m_Id: 283326262067200
+    m_Key: RegularUpgrades.AccumulationFactor.Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283443421560832
+    m_Key: RegularUpgrades.AccumulationFactor.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319054325006336
+    m_Key: RegularUpgrades.Growth.Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319183664758784
+    m_Key: RegularUpgrades.Growth.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319378485985280
+    m_Key: RegularUpgrades.Boost.Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319480617287680
+    m_Key: RegularUpgrades.Boost.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321652897660928
+    m_Key: RegularUpgrades.Bounty.Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321837862273024
+    m_Key: RegularUpgrades.Bounty.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 322130695995392
+    m_Key: RegularUpgrades.TimeFactor.Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 322230847586304
+    m_Key: RegularUpgrades.TimeFactor.Description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

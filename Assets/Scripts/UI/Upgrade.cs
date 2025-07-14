@@ -2,17 +2,18 @@
 using DotsKiller.SaveSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using Zenject;
 
 namespace DotsKiller.UI
 {
     public class Upgrade : MonoBehaviour
     {
-        [SerializeField] private TMP_Text titleText;
-        [SerializeField] private TMP_Text descriptionText;
+        [SerializeField] private LocalizeStringEvent nameLse;
+        [SerializeField] private LocalizeStringEvent descriptionLse;
         [SerializeField] private TMP_Text bonusText;
         [SerializeField] private Purchasable purchasable;
-
+        
         private RegularUpgrades _regularUpgrades;
 
         
@@ -29,10 +30,11 @@ namespace DotsKiller.UI
 
         private void Start()
         {
-            UpgradeEntry entry = _regularUpgrades.GetEntry(transform.GetSiblingIndex());
             
-            titleText.text = entry.Title;
-            descriptionText.text = entry.Description;
+            RegularUpgradeEntry entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            nameLse.SetEntry(_regularUpgrades.GetName(entry.ID));
+            descriptionLse.SetEntry(_regularUpgrades.GetDescription(entry.ID));
+            
             purchasable.SetPrice(entry.Price, entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(entry.MaxLevel);
             bonusText.text = _regularUpgrades.GetBonusText(entry.ID, 0, false);

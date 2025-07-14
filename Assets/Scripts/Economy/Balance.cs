@@ -12,12 +12,14 @@ namespace DotsKiller.Economy
         [SerializeField] private BigDouble startingPoints = BigDouble.Zero;
 
         private RegularUpgrades _regularUpgrades;
-        
+
         private Dictionary<Currency, BigDouble> Currencies { get; } =
             EnumHelpers.EnumToDictionary<Currency, BigDouble>(BigDouble.Zero);
 
         public BigDouble Points => Currencies[Currency.Points];
         public BigDouble Shards => Currencies[Currency.Shards];
+        
+        public BigDouble TotalPoints { get; private set; }
 
 
         [Inject]
@@ -30,6 +32,7 @@ namespace DotsKiller.Economy
         private void Awake()
         {
             Currencies[Currency.Points] = startingPoints;
+            TotalPoints = startingPoints;
         }
 
 
@@ -45,11 +48,19 @@ namespace DotsKiller.Economy
                 BigDouble multiplier = _regularUpgrades.KillsFactor;
                 multiplier *= _regularUpgrades.CleanFactor;
                 multiplier *= _regularUpgrades.TimeFactor;
-                
-                amount *= multiplier;
+                multiplier *= _regularUpgrades.AccumulationFactor;
+
+                BigDouble exponent = _regularUpgrades.GrowthExponent;
+
+                amount = BigDouble.Pow(amount * multiplier, exponent);
             }
 
             Currencies[currency] += amount;
+
+            if (currency == Currency.Points)
+            {
+                TotalPoints += amount;
+            }
         }
         
         

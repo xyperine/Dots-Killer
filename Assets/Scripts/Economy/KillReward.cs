@@ -31,15 +31,24 @@ namespace DotsKiller.Economy
 
         public void Give(Dictionary<Currency, BigDouble> value)
         {
-            foreach (KeyValuePair<Currency,BigDouble> kvp in value)
+            foreach ((Currency currency, BigDouble reward) in value)
             {
-                if (kvp.Key == Currency.Points)
+                if (currency == Currency.Points)
                 {
-                    _balance.Add(kvp.Value + _regularUpgrades.PointsOnKill, kvp.Key);
+                    BigDouble pointsReward = reward;
+                    
+                    pointsReward += _regularUpgrades.PointsOnKill;
+                    
+                    if (_regularUpgrades.BountyChancePercent >= Random.Range(0f, 100f))
+                    {
+                        pointsReward *= 2f;
+                    }
+                    
+                    _balance.Add(pointsReward, currency);
                     continue;
                 }
-                
-                _balance.Add(kvp.Value, kvp.Key);
+
+                _balance.Add(reward, currency);
             }
         }
     }

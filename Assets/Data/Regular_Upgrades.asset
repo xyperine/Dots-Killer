@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 382f10b4c4bd43e4b978e8b036cc2620, type: 3}
-  m_Name: Upgrades
+  m_Name: Regular_Upgrades
   m_EditorClassIdentifier: 
   foldoutImportGUI: 1
   documentId: 1j81nkuVXazCGAjSyU1HHuDc0tVdLVGpvwogZ9OOsyhk
@@ -23,45 +23,50 @@ MonoBehaviour:
   content:
     entries:
     - ID: 0
-      Title: Points Income
+      Title: Points On Kill
       Description: Increase points on kill by 1
       Price: 10
       PriceScaling: 5
       MaxLevel: 1000
     - ID: 1
       Title: Kills Factor
-      Description: Gain multiplier to your points income based on kills
-      Price: 10000
-      PriceScaling: None
+      Description: Gain multiplier to points income based on kills
+      Price: 5000
+      PriceScaling: 1
       MaxLevel: 1
     - ID: 2
-      Title: Cleanse
+      Title: Clean Factor
       Description: Gain points income multiplier based on the field cleanliness
       Price: 100
       PriceScaling: 10
       MaxLevel: 5
     - ID: 3
-      Title: Time
+      Title: Time Factor
       Description: Gain points income multiplier based on the playtime
-      Price: 1.00E+06
-      PriceScaling: None
+      Price: 1.00E+05
+      PriceScaling: 1
       MaxLevel: 1
     - ID: 4
-      Title: Killing Spree
-      Description: Gain points income multiplier based on the amount of kills per
-        minute
-      Price: 1.00E+05
-      PriceScaling: None
-      MaxLevel: 1
+      Title: Bounty
+      Description: Chance to get x2 points for a kill
+      Price: 1.00E+04
+      PriceScaling: 100
+      MaxLevel: 10
     - ID: 5
-      Title: Accumulate
+      Title: Accumulation Factor
       Description: Gain points income multiplier based on the amount of points earned
-      Price: 1.00E+10
-      PriceScaling: None
+      Price: 1.00E+06
+      PriceScaling: 1
       MaxLevel: 1
     - ID: 6
-      Title: Power Farm
-      Description: Empower points gain ^1.05
-      Price: 1.00E+15
-      PriceScaling: 1.00E+05
+      Title: Growth
+      Description: Exponentiate points gain ^1.05
+      Price: 1.00E+10
+      PriceScaling: 100000
       MaxLevel: 1000
+    - ID: 7
+      Title: Boost
+      Description: Boosts all other upgrades by x1.01
+      Price: 1.00E+15
+      PriceScaling: 1.00E+06
+      MaxLevel: 10
