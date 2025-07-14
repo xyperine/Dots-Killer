@@ -6,5 +6,6 @@ namespace DotsKiller
     {
         Vector3 Center { get; }
         Vector3 Extents { get; }
+        Vector3 RandomPoint { get; }
     }
 }

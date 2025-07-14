@@ -53,5 +53,20 @@ namespace DotsKiller.Utility
         {
             return Mathf.Max(a.x, a.y, a.z);
         }
+
+
+        /// <summary>
+        /// Makes a new component-wise randomized vector
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static Vector3 RandomInsideCuboid(this Vector3 a)
+        {
+            float x = Random.Range(-a.x, a.x);
+            float y = Random.Range(-a.y, a.y);
+            float z = Random.Range(-a.z, a.z);
+            
+            return new Vector3(x, y, z);
+        }
     }
 }

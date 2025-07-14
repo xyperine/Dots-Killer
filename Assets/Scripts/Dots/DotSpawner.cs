@@ -51,7 +51,7 @@ namespace DotsKiller.Dots
             
             if (ReadyToSpawn)
             {
-                Vector2 position = (Vector2) _areaProvider.Center + _areaProvider.Extents * Random.insideUnitCircle;
+                Vector2 position = _areaProvider.RandomPoint;
                 _factory.Create(position);
 
                 _timeSinceLastSpawn = 0f;

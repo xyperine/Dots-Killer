@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DotsKiller.Utility;
+using UnityEngine;
 
 namespace DotsKiller
 {
@@ -10,5 +11,7 @@ namespace DotsKiller
 
         public Vector3 Center => collider.bounds.center;
         public Vector3 Extents => collider.bounds.extents;
+
+        public Vector3 RandomPoint => Center + Extents.RandomInsideCuboid();
     }
 }
