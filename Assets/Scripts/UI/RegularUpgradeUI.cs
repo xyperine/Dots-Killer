@@ -12,6 +12,7 @@ namespace DotsKiller.UI
         [SerializeField] private LocalizeStringEvent descriptionLse;
         [SerializeField] private TMP_Text bonusText;
         [SerializeField] private RegularUpgrade regularUpgrade;
+        [SerializeField] private Color bonusColor;
 
         private RegularUpgrades _regularUpgrades;
 
@@ -27,13 +28,13 @@ namespace DotsKiller.UI
         {
             nameLse.SetEntry(_regularUpgrades.GetName(regularUpgrade.ID));
             descriptionLse.SetEntry(_regularUpgrades.GetDescription(regularUpgrade.ID));
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, false);
+            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, false, bonusColor);
         }
 
         
         private void Update()
         {
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level, regularUpgrade.MaxedOut);
+            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level, regularUpgrade.MaxedOut, bonusColor);
         }
     }
 }

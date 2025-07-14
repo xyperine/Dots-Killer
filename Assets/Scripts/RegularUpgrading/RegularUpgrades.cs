@@ -192,16 +192,16 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
-        public string GetBonusText(int id, int level, bool maxedOut)
+        public string GetBonusText(int id, int level, bool maxedOut, Color bonusColor)
         {
             string bonusPrefix = GetBonusPrefix(id);
             string bonusSuffix = GetBonusSuffix(id);
             string currentBonus = Formatting.DefaultFormat(GetBonus(id, level));
-            string bonuses = $"{bonusPrefix}{currentBonus}{bonusSuffix}";
+            string bonuses = $"<color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{currentBonus}{bonusSuffix}</color>";
             if (!maxedOut)
             {
                 string nextLevelBonus = Formatting.DefaultFormat(GetBonus(id, level + 1));
-                bonuses += $" >> {bonusPrefix}{nextLevelBonus}{bonusSuffix}";   
+                bonuses += $" >> <color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{nextLevelBonus}{bonusSuffix}</color>";   
             }
 
             return bonuses;
