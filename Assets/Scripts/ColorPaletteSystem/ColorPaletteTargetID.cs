@@ -9,5 +9,6 @@
         DarkText,
         Primary,
         Secondary,
+        AccentText,
     }
 }

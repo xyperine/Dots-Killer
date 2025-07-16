@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BreakInfinity;
 
 namespace DotsKiller.SaveSystem
 {
@@ -10,5 +11,7 @@ namespace DotsKiller.SaveSystem
         public DateTime LastSeen { get; set; }
 
         public Dictionary<int, int> RegularUpgradeLevels { get; } = new Dictionary<int, int>();
+        
+        public BigDouble Kills { get; set; }
     }
 }

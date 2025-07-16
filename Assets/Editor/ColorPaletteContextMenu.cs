@@ -15,6 +15,7 @@ namespace DotsKiller.Editor
         private const string SECONDARY_NAME = nameof(ColorPaletteTargetID.Secondary);
         private const string DARK_TEXT_NAME = nameof(ColorPaletteTargetID.DarkText);
         private const string LIGHT_TEXT_NAME = nameof(ColorPaletteTargetID.LightText);
+        private const string ACCENT_TEXT_NAME = nameof(ColorPaletteTargetID.AccentText);
 
 
         private static void AddIDScript(ColorPaletteTargetID id)
@@ -75,6 +76,13 @@ namespace DotsKiller.Editor
         private static void AddIDScriptLightText()
         {
             AddIDScript(ColorPaletteTargetID.LightText);
+        }
+        
+        [MenuItem(COMPONENT_CONTEXT_PATH + ACCENT_TEXT_NAME, false, 10)]
+        [MenuItem(GAME_OBJECT_CONTEXT_PATH + ACCENT_TEXT_NAME, false, 10)]
+        private static void AddIDScriptAccentText()
+        {
+            AddIDScript(ColorPaletteTargetID.AccentText);
         }
     }
 }

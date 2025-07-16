@@ -30,7 +30,7 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
-        private void Convert()
+        public void Convert()
         {
             Entries = new List<RegularUpgradeEntry>();
             for (int i = 0; i < content.ImportData.Count; i++)
@@ -38,7 +38,7 @@ namespace DotsKiller.RegularUpgrading
                 Entries.Add(new RegularUpgradeEntry(content.ImportData[i]));
             }
             
-            Debug.Log("Successfully converted imported data!");
+            Debug.Log("Successfully converted upgrades imported data!");
         }
     }
 

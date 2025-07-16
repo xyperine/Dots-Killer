@@ -1,4 +1,5 @@
 ﻿using BreakInfinity;
+using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
 using TMPro;
@@ -16,17 +17,21 @@ namespace DotsKiller.UI
         [SerializeField] private TMP_Text accumulationFactorText;
         [SerializeField] private TMP_Text powerFarmExponentText;
         [SerializeField] private TMP_Text totalPointsPerKillText;
+        [SerializeField] private TMP_Text milestone1MultiplierText;
+        [SerializeField] private TMP_Text upgradesFactorText;
         [SerializeField] private TMP_Text killsText;
 
         private Stats _stats;
         private RegularUpgrades _regularUpgrades;
+        private Milestones _milestones;
 
 
         [Inject]
-        public void Initialize(Stats stats, RegularUpgrades regularUpgrades)
+        public void Initialize(Stats stats, RegularUpgrades regularUpgrades, Milestones milestones)
         {
             _stats = stats;
             _regularUpgrades = regularUpgrades;
+            _milestones = milestones;
         }
         
 
@@ -38,10 +43,16 @@ namespace DotsKiller.UI
             timeFactorText.text = "Time factor: " + Formatting.DefaultFormat(_regularUpgrades.TimeFactor);
             accumulationFactorText.text = "Accumulation factor: " + Formatting.DefaultFormat(_regularUpgrades.AccumulationFactor);
             powerFarmExponentText.text = "Power Farm Exponent: " + Formatting.DefaultFormat(_regularUpgrades.GrowthExponent);
-            
+            milestone1MultiplierText.text = "Milestone 1 Multiplier: " +
+                                            Formatting.DefaultFormat(_milestones.PointsIncomeMultiplier);
+            upgradesFactorText.text = "Upgrades factor: " + Formatting.DefaultFormat(_milestones.UpgradesFactor);
+
             BigDouble multiplier = _regularUpgrades.KillsFactor *
-                                   _regularUpgrades.CleanFactor * _regularUpgrades.TimeFactor *
-                                   _regularUpgrades.AccumulationFactor;
+                                   _regularUpgrades.CleanFactor *
+                                   _regularUpgrades.TimeFactor *
+                                   _regularUpgrades.AccumulationFactor *
+                                   _milestones.PointsIncomeMultiplier *
+                                   _milestones.UpgradesFactor;
             totalPointsPerKillText.text = "Total points per kill: " + Formatting.DefaultFormat(
                 BigDouble.Pow((_regularUpgrades.PointsOnKill + BigDouble.One) * multiplier, _regularUpgrades.GrowthExponent));
             

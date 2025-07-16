@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BreakInfinity;
+using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace DotsKiller.Economy
         [SerializeField] private BigDouble startingPoints = BigDouble.Zero;
 
         private RegularUpgrades _regularUpgrades;
+        private Milestones _milestones;
 
         private Dictionary<Currency, BigDouble> Currencies { get; } =
             EnumHelpers.EnumToDictionary<Currency, BigDouble>(BigDouble.Zero);
@@ -24,9 +26,10 @@ namespace DotsKiller.Economy
 
 
         [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades)
+        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones)
         {
             _regularUpgrades = regularUpgrades;
+            _milestones = milestones;
         }
         
         
@@ -50,6 +53,8 @@ namespace DotsKiller.Economy
                 multiplier *= _regularUpgrades.CleanFactor;
                 multiplier *= _regularUpgrades.TimeFactor;
                 multiplier *= _regularUpgrades.AccumulationFactor;
+                multiplier *= _milestones.PointsIncomeMultiplier;
+                multiplier *= _milestones.UpgradesFactor;
 
                 BigDouble exponent = _regularUpgrades.GrowthExponent;
 

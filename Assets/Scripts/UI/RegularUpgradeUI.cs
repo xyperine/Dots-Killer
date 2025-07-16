@@ -26,8 +26,8 @@ namespace DotsKiller.UI
         
         private void Start()
         {
-            nameLse.SetEntry(_regularUpgrades.GetName(regularUpgrade.ID));
-            descriptionLse.SetEntry(_regularUpgrades.GetDescription(regularUpgrade.ID));
+            nameLse.SetEntry(_regularUpgrades.GetNameEntryName(regularUpgrade.ID));
+            descriptionLse.SetEntry(_regularUpgrades.GetDescriptionEntryName(regularUpgrade.ID));
             bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, false, bonusColor);
         }
 

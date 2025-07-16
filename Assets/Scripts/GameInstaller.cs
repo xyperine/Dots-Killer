@@ -1,6 +1,8 @@
 using DotsKiller.Dots;
 using DotsKiller.Economy;
+using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
+using DotsKiller.Unlocking;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +13,8 @@ namespace DotsKiller
         [SerializeField] private Balance balance;
         [SerializeField] private BulkBuyDetection bulkBuyDetection;
         [SerializeField] private RegularUpgrades regularUpgrades;
+        [SerializeField] private Milestones milestones;
+        [SerializeField] private UnlockablesManager unlockablesManager;
         [SerializeField] private Stats stats;
         [SerializeField] private GameClock gameClock;
         [SerializeField] private DotSpawner dotSpawner;
@@ -25,7 +29,11 @@ namespace DotsKiller
             Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
             
             Container.Bind<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
+
+            Container.Bind<Milestones>().FromInstance(milestones).AsCached().NonLazy();
             
+            Container.Bind<UnlockablesManager>().FromInstance(unlockablesManager).AsCached().NonLazy();
+
             Container.Bind<Stats>().FromInstance(stats).AsSingle().NonLazy();
 
             Container.Bind<GameClock>().FromInstance(gameClock).AsSingle().NonLazy();

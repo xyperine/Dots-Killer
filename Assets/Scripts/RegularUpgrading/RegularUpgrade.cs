@@ -11,6 +11,8 @@ namespace DotsKiller.RegularUpgrading
         
         private RegularUpgrades _regularUpgrades;
 
+        private RegularUpgradeEntry _entry;
+
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
         public bool MaxedOut => purchasable.MaxedOut;
@@ -23,40 +25,33 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
+        private void Awake()
+        {
+            _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            
+            purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
+            purchasable.SetMaxAmount(_entry.MaxLevel);
+
+            ID = _entry.ID;
+        }
+
+
         private void Start()
         {
-            RegularUpgradeEntry entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
-            
-            purchasable.SetPrice(entry.Price, entry.PriceScaling, Currency.Points);
-            purchasable.SetMaxAmount(entry.MaxLevel);
-
-            ID = entry.ID;
-
-            if (GameStateHandler.Loaded)
-            {
-                if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(entry.ID))
-                {
-                    purchasable.Load(GameStateHandler.State.RegularUpgradeLevels[entry.ID]);
-                }
-            }
+            Load();
         }
 
 
         public void Load()
         {
-            RegularUpgradeEntry entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
-            
-            purchasable.SetPrice(entry.Price, entry.PriceScaling, Currency.Points);
-            purchasable.SetMaxAmount(entry.MaxLevel);
-
-            ID = entry.ID;
-
-            if (GameStateHandler.Loaded)
+            if (!GameStateHandler.Loaded)
             {
-                if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(entry.ID))
-                {
-                    purchasable.Load(GameStateHandler.State.RegularUpgradeLevels[entry.ID]);
-                }
+                return;
+            }
+
+            if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(_entry.ID))
+            {
+                purchasable.Load(GameStateHandler.State.RegularUpgradeLevels[_entry.ID]);
             }
         }
         

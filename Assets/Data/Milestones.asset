@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31cf844ca1a4dd4a441be9f414008a4, type: 3}
+  m_Name: Milestones
+  m_EditorClassIdentifier: 
+  foldoutImportGUI: 1
+  documentId: 1j81nkuVXazCGAjSyU1HHuDc0tVdLVGpvwogZ9OOsyhk
+  selectedTogglesIds:
+  - entries
+  foldoutSerializationGUI: 0
+  serializationOutputPath: ../../Configs
+  serializationFileName: Configs.v0.1
+  serializationFormat: 0
+  content:
+    entries:
+    - ID: 0
+      KillsThreshold: 1
+      Reward: x1.25 points gain
+    - ID: 1
+      KillsThreshold: 2
+      Reward: Unlock automatons
+    - ID: 2
+      KillsThreshold: 3
+      Reward: Unlock generators
+    - ID: 3
+      KillsThreshold: 4
+      Reward: ^1.5 to 1st upgrade power
+    - ID: 4
+      KillsThreshold: 5
+      Reward: Points income multiplier based on upgrades amount
+    - ID: 5
+      KillsThreshold: 6
+      Reward: Generator multiplier based on points per kill

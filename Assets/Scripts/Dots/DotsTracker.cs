@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DotsKiller.Dots;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Dots
 {
     public class DotsTracker : MonoBehaviour
     {

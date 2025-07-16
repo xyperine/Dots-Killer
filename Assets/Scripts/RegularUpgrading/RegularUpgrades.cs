@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using BreakInfinity;
+using DotsKiller.Dots;
 using DotsKiller.Economy;
+using DotsKiller.MilestonesLogic;
 using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
 using UnityEngine;
@@ -18,6 +20,7 @@ namespace DotsKiller.RegularUpgrading
         private DotsTracker _dotsTracker;
         private GameClock _gameClock;
         private Balance _balance;
+        private Milestones _milestones;
         
         public BigDouble PointsOnKill { get; private set; } = BigDouble.Zero;
         public BigDouble KillsFactor { get; private set; } = BigDouble.One;
@@ -30,12 +33,13 @@ namespace DotsKiller.RegularUpgrading
 
 
         [Inject]
-        public void Initialize(Stats stats, DotsTracker dotsTracker, GameClock gameClock, Balance balance)
+        public void Initialize(Stats stats, DotsTracker dotsTracker, GameClock gameClock, Balance balance, Milestones milestones)
         {
             _stats = stats;
             _dotsTracker = dotsTracker;
             _gameClock = gameClock;
             _balance = balance;
+            _milestones = milestones;
         }
 
 
@@ -109,7 +113,7 @@ namespace DotsKiller.RegularUpgrading
         {
             BigDouble bonus = id switch
             {
-                0 => 1f * level,
+                0 => BigDouble.Pow(1f * level, _milestones.FirstUpgradeBoost),
                 1 => BigDouble.Log10(_stats.Kills + BigDouble.One) * level + BigDouble.One,
                 2 => Formulas.CalculateCleanFactor(_dotsTracker.AmountAlive, level),
                 3 => Formulas.CalculateTimeFactor(TimeSpan.FromMilliseconds(_gameClock.UnscaledTimeInMilliseconds).TotalSeconds),
@@ -131,12 +135,17 @@ namespace DotsKiller.RegularUpgrading
 
         private void Update()
         {
+            int upgradesBought = 0;
             for (int i = 0; i < upgrades.Count; i++)
             {
                 RegularUpgrade regularUpgrade = upgrades[i];
                 
                 SetAppropriateValue(regularUpgrade);
+
+                upgradesBought += regularUpgrade.Level;
             }
+
+            _stats.RegularUpgradesBought = upgradesBought;
         }
 
 
@@ -152,7 +161,7 @@ namespace DotsKiller.RegularUpgrading
         }
         
         
-        public string GetName(int id)
+        public string GetNameEntryName(int id)
         {
             string tableName = "RegularUpgrades";
             string entryName = id switch
@@ -172,7 +181,7 @@ namespace DotsKiller.RegularUpgrading
         }
         
         
-        public string GetDescription(int id)
+        public string GetDescriptionEntryName(int id)
         {
             string tableName = "RegularUpgrades";
             string entryName = id switch
