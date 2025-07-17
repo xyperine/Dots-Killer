@@ -20,6 +20,12 @@ namespace DotsKiller.MilestonesLogic
 
         private void Awake()
         {
+            SetData();
+        }
+
+
+        public void SetData()
+        {
             MilestoneEntry entry = _milestones.GetSorted(transform.GetSiblingIndex());
 
             ID = entry.ID;

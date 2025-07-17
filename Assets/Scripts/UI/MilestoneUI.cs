@@ -1,11 +1,12 @@
-﻿using DotsKiller.Utility;
+﻿using DotsKiller.MilestonesLogic;
+using DotsKiller.Utility;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using Zenject;
 
-namespace DotsKiller.MilestonesLogic
+namespace DotsKiller.UI
 {
     public class MilestoneUI : MonoBehaviour
     {

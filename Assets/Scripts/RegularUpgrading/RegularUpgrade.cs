@@ -48,6 +48,13 @@ namespace DotsKiller.RegularUpgrading
             {
                 return;
             }
+            
+            _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            
+            purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
+            purchasable.SetMaxAmount(_entry.MaxLevel);
+
+            ID = _entry.ID;
 
             if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(_entry.ID))
             {

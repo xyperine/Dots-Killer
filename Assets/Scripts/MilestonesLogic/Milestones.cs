@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BreakInfinity;
 using UnityEngine;
 using Zenject;
@@ -32,6 +33,15 @@ namespace DotsKiller.MilestonesLogic
         private void Awake()
         {
             _entries = milestonesSO.SortedByThreshold;
+        }
+
+
+        private void Start()
+        {
+            foreach (Milestone milestone in milestones)
+            {
+                milestone.SetData();
+            }
         }
 
 

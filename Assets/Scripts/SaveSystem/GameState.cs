@@ -9,6 +9,7 @@ namespace DotsKiller.SaveSystem
         public bool IsDirty { get; set; }
         
         public DateTime LastSeen { get; set; }
+        public DateTime FirstTimePlayedAt { get; set; } = DateTime.MaxValue;
 
         public Dictionary<int, int> RegularUpgradeLevels { get; } = new Dictionary<int, int>();
         

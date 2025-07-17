@@ -116,7 +116,7 @@ namespace DotsKiller.RegularUpgrading
                 0 => BigDouble.Pow(1f * level, _milestones.FirstUpgradeBoost),
                 1 => BigDouble.Log10(_stats.Kills + BigDouble.One) * level + BigDouble.One,
                 2 => Formulas.CalculateCleanFactor(_dotsTracker.AmountAlive, level),
-                3 => Formulas.CalculateTimeFactor(TimeSpan.FromMilliseconds(_gameClock.UnscaledTimeInMilliseconds).TotalSeconds),
+                3 => Formulas.CalculateTimeFactor(_gameClock.UnscaledTotalPlaytimeSeconds),
                 4 => 10f * level,
                 5 => BigDouble.Log10(_balance.TotalPoints + BigDouble.One),
                 6 => (0.05f * level) + BigDouble.One,
