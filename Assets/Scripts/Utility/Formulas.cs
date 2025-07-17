@@ -12,11 +12,11 @@ namespace DotsKiller.Utility
         public static BigDouble CalculateCleanFactor(int amountAlive, int level)
         {
             const int fullFieldThreshold = 5000;
-            const int cleanFieldThreshold = 0;
+            const int cleanFieldThreshold = 1;
             return Mathf.InverseLerp(Mathf.Log10(fullFieldThreshold), Mathf.Log10(cleanFieldThreshold + 1f),
-                Mathf.Log10(amountAlive)) * level + BigDouble.One;
+                Mathf.Log10(amountAlive + 1f)) * level + BigDouble.One;
         }
-
+        
         
         public static BigDouble CalculateTimeFactor(double seconds)
         {

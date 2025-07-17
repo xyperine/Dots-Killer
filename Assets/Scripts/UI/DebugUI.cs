@@ -1,4 +1,5 @@
 ﻿using BreakInfinity;
+using DotsKiller.Dots;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
@@ -8,8 +9,9 @@ using Zenject;
 
 namespace DotsKiller.UI
 {
-    public class StatsDebugUI : MonoBehaviour
+    public class DebugUI : MonoBehaviour
     {
+        [SerializeField] private TMP_Text spawnRateText;
         [SerializeField] private TMP_Text pointsMultText;
         [SerializeField] private TMP_Text killsFactorText;
         [SerializeField] private TMP_Text cleanFactorText;
@@ -24,19 +26,23 @@ namespace DotsKiller.UI
         private Stats _stats;
         private RegularUpgrades _regularUpgrades;
         private Milestones _milestones;
+        private DotSpawner _dotSpawner;
 
 
         [Inject]
-        public void Initialize(Stats stats, RegularUpgrades regularUpgrades, Milestones milestones)
+        public void Initialize(Stats stats, RegularUpgrades regularUpgrades, Milestones milestones, DotSpawner dotSpawner)
         {
             _stats = stats;
             _regularUpgrades = regularUpgrades;
             _milestones = milestones;
+            _dotSpawner = dotSpawner;
         }
         
 
         private void Update()
         {
+            spawnRateText.text = _dotSpawner.SpawnRate.ToString("F2");
+            
             pointsMultText.text = "Points per kill: " + Formatting.DefaultFormat(_regularUpgrades.PointsOnKill);
             killsFactorText.text = "Kills factor: " + Formatting.DefaultFormat(_regularUpgrades.KillsFactor);
             cleanFactorText.text = "Clean factor: " + Formatting.DefaultFormat(_regularUpgrades.CleanFactor);

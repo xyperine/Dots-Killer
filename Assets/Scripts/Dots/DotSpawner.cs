@@ -4,7 +4,6 @@ using DotsKiller.Economy;
 using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 using Range = DotsKiller.Utility.Range;
 
 namespace DotsKiller.Dots
@@ -26,6 +25,7 @@ namespace DotsKiller.Dots
         private Dot.Factory _factory;
 
         private bool ReadyToSpawn => _timeSinceLastSpawn >= _spawnInterval;
+        public float SpawnRate => 1f / _spawnInterval;
 
 
         [Inject]
@@ -46,7 +46,7 @@ namespace DotsKiller.Dots
         {
             _timeSinceLastSpawn += Time.deltaTime;
             
-            float t = _balance.Points.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
+            float t = _balance.TotalPoints.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
             _spawnInterval = spawnIntervalRange.Lerp(spawnIntervalCurve.Evaluate(t));
             
             if (ReadyToSpawn)
