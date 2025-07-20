@@ -13,6 +13,7 @@ namespace DotsKiller
         [SerializeField] private Balance balance;
         [SerializeField] private BulkBuyDetection bulkBuyDetection;
         [SerializeField] private RegularUpgrades regularUpgrades;
+        [SerializeField] private AutomatonUpgrades automatonUpgrades;
         [SerializeField] private Milestones milestones;
         [SerializeField] private UnlockablesManager unlockablesManager;
         [SerializeField] private Stats stats;
@@ -29,6 +30,8 @@ namespace DotsKiller
             Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
             
             Container.Bind<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
+            
+            Container.Bind<AutomatonUpgrades>().FromInstance(automatonUpgrades).AsSingle().NonLazy();
 
             Container.Bind<Milestones>().FromInstance(milestones).AsCached().NonLazy();
             

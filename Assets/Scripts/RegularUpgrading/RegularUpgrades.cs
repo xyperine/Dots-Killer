@@ -49,6 +49,18 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
+        public void PurchaseAll()
+        {
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                if (upgrades[i].IsAffordable)
+                {
+                    upgrades[i].Purchase();
+                }
+            }
+        }
+        
+
         private void LoadUpgrades()
         {
             if (!GameStateHandler.Loaded)
@@ -127,6 +139,11 @@ namespace DotsKiller.RegularUpgrading
             if (id != 7)
             {
                 bonus *= BoostMultiplier;
+            }
+
+            if (id == 4)
+            {
+                bonus = Math.Clamp(bonus.ToDouble(), 0d, 100d);
             }
 
             return bonus;

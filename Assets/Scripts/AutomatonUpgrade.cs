@@ -3,32 +3,31 @@ using DotsKiller.SaveSystem;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller.RegularUpgrading
+namespace DotsKiller
 {
-    public class RegularUpgrade : MonoBehaviour
+    public class AutomatonUpgrade : MonoBehaviour
     {
         [SerializeField] private Purchasable purchasable;
         
-        private RegularUpgrades _regularUpgrades;
+        private AutomatonUpgrades _automatonUpgrades;
 
-        private RegularUpgradeEntry _entry;
+        private AutomatonUpgradeEntry _entry;
 
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
         public bool MaxedOut => purchasable.MaxedOut;
-        public bool IsAffordable => purchasable.IsAffordable;
 
 
         [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades)
+        public void Initialize(AutomatonUpgrades automatonUpgrades)
         {
-            _regularUpgrades = regularUpgrades;
+            _automatonUpgrades = automatonUpgrades;
         }
 
 
         private void Awake()
         {
-            _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex());
             
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(_entry.MaxLevel);
@@ -50,32 +49,26 @@ namespace DotsKiller.RegularUpgrading
                 return;
             }
             
-            _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
+            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex());
             
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(_entry.MaxLevel);
 
             ID = _entry.ID;
 
-            if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(_entry.ID))
+            if (GameStateHandler.State.AutomatonUpgradeLevels.ContainsKey(_entry.ID))
             {
-                purchasable.Load(GameStateHandler.State.RegularUpgradeLevels[_entry.ID]);
+                purchasable.Load(GameStateHandler.State.AutomatonUpgradeLevels[_entry.ID]);
             }
         }
         
 
         private void Update()
         {
-            if (!GameStateHandler.State.RegularUpgradeLevels.TryAdd(ID, Level))
+            if (!GameStateHandler.State.AutomatonUpgradeLevels.TryAdd(ID, Level))
             {
-                GameStateHandler.State.RegularUpgradeLevels[ID] = Level;
+                GameStateHandler.State.AutomatonUpgradeLevels[ID] = Level;
             }
-        }
-
-        
-        public void Purchase()
-        {
-            purchasable.Purchase();
         }
     }
 }

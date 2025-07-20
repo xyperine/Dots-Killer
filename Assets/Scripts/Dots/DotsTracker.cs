@@ -16,6 +16,12 @@ namespace DotsKiller.Dots
         }
 
 
+        public Dot GetFirstAvailable()
+        {
+            return ActiveDots[0];
+        }
+        
+
         public void Unregister(Dot dot)
         {
             ActiveDots.Remove(dot);

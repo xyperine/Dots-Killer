@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: fdf1051cec6b8ff45bc1a9408a4f70cb
   m_SerializeEntries:
+  - m_GUID: 424eb211de4f70440b69102c32bb316c
+    m_Address: Assets/Data/Localization/Tables/AutomatonUpgrades Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 663b7024251aa3642970b090d65a0474
     m_Address: AzeretMono-Regular SDF
     m_ReadOnly: 1
