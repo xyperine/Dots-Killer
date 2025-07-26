@@ -23,14 +23,30 @@ MonoBehaviour:
   content:
     entries:
     - ID: 0
-      Name: Auto Killer speed
-      Description: Increases the rate
+      AutomatonID: 0
+      Name: Tickspeed
+      Description: 
       Price: 1000
       PriceScaling: 10
-      MaxLevel: 0
+      MaxLevel: 25
     - ID: 1
-      Name: Purchaser speed
-      Description: Increases the purchase rate
+      AutomatonID: 1
+      Name: Tickspeed
+      Description: 
       Price: 1.00E+06
       PriceScaling: 100
-      MaxLevel: 0
+      MaxLevel: 25
+    - ID: 2
+      AutomatonID: 0
+      Name: Actions Per Tick
+      Description: 
+      Price: 1.00E+07
+      PriceScaling: 100
+      MaxLevel: 10
+    - ID: 3
+      AutomatonID: 1
+      Name: Actions Per Tick
+      Description: 
+      Price: 1.00E+08
+      PriceScaling: 1000
+      MaxLevel: 10

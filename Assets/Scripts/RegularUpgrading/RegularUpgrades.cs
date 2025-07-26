@@ -59,6 +59,24 @@ namespace DotsKiller.RegularUpgrading
                 }
             }
         }
+
+
+        public void PurchaseAllInBulk()
+        {
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].PurchaseInBulk();
+            }
+        }
+        
+        
+        public void PurchaseAllInBulk(int amount)
+        {
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].PurchaseInBulk(amount);
+            }
+        }
         
 
         private void LoadUpgrades()

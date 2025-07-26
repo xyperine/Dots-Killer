@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BreakInfinity;
 using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
@@ -11,9 +12,12 @@ namespace DotsKiller
     {
         [SerializeField] private AutomatonUpgradesSO automatonUpgradesSO;
         [SerializeField] private List<AutomatonUpgrade> upgrades;
-        
-        public float KillsPerSecondMultiplier { get; private set; }
-        public float PurchasesPerSecondMultiplier { get; private set; }
+
+        public float KillsTickspeedMultiplier { get; private set; } = 1f;
+        public float PurchasesTickspeedMultiplier { get; private set; } = 1f;
+        public float KillsActionsPerTickMultiplier { get; private set; } = 1f;
+        public float PurchasesActionsPerTickMultiplier { get; private set; } = 1f;
+        public bool AutoPurchaseAptMaxedOut { get; private set; } = false;
         
         
         private void Start()
@@ -33,30 +37,35 @@ namespace DotsKiller
             {
                 upgrades[i].Load();
             }
-            
-            foreach ((int id, int level) in GameStateHandler.State.AutomatonUpgradeLevels)
-            {
-                SetAppropriateValue(id, level);
-            }
         }
 
 
         private void SetAppropriateValue(AutomatonUpgrade upgrade)
         {
-            SetAppropriateValue(upgrade.ID, upgrade.Level);
+            SetAppropriateValue(upgrade.ID, upgrade.Level, upgrade.MaxedOut);
         }
 
 
-        private void SetAppropriateValue(int id, int level)
+        private void SetAppropriateValue(int id, int level, bool maxedOut)
         {
             BigDouble bonus = GetBonus(id, level);
             switch (id)
             {
                 case 0:
-                    KillsPerSecondMultiplier = (float) bonus.ToDouble();
+                    KillsTickspeedMultiplier = (float) bonus.ToDouble();
                     return;
                 case 1:
-                    PurchasesPerSecondMultiplier = (float) bonus.ToDouble();
+                    PurchasesTickspeedMultiplier = (float) bonus.ToDouble();
+                    return;
+                case 2:
+                    KillsActionsPerTickMultiplier = (float) bonus.ToDouble();
+                    return;
+                case 3:
+                    PurchasesActionsPerTickMultiplier = (float) bonus.ToDouble();
+                    if (maxedOut)
+                    {
+                        AutoPurchaseAptMaxedOut = true;
+                    }
                     return;
                 default:
                     return;
@@ -68,8 +77,10 @@ namespace DotsKiller
         {
             BigDouble bonus = id switch
             {
-                0 => BigDouble.Pow(2f, level),
-                1 => BigDouble.Pow(2f, level),
+                0 => BigDouble.Pow(1.25f, level),
+                1 => BigDouble.Pow(1.25f, level),
+                2 => BigDouble.Pow(2f, level),
+                3 => BigDouble.Pow(2f, level),
                 _ => BigDouble.One,
             };
 
@@ -94,64 +105,81 @@ namespace DotsKiller
         }
 
 
-        public AutomatonUpgradeEntry GetSorted(int i)
+        public AutomatonUpgradeEntry GetSorted(int i, AutomatonID automatonID)
         {
-            return automatonUpgradesSO.SortedByPrice[i];
+            AutomatonUpgradeEntry[] a = automatonUpgradesSO.Entries.Where(e => e.AutomatonID == automatonID)
+                .OrderBy(e => e.Price)
+                .ToArray();
+            return a[i];
         }
         
         
-        public string GetNameEntryName(int id)
+        public string GetNameTableEntryName(int id)
         {
             string tableName = "AutomatonUpgrades";
-            string entryName = id switch
-            {
-                0 => "KillerSpeed",
-                1 => "PurchaserSpeed",
-                _ => "",
-            };
+            string entryName = GetEntryTableName(id);
 
             return string.Join('.', tableName, entryName, "Name");
         }
-        
-        
-        public string GetDescriptionEntryName(int id)
+
+
+        private string GetEntryTableName(int id)
         {
-            string tableName = "AutomatonUpgrades";
-            string entryName = id switch
+            return id switch
             {
-                0 => "KillerSpeed",
-                1 => "PurchaserSpeed",
+                0 => "AutoKill.Tickspeed",
+                1 => "AutoPurchase.Tickspeed",
+                2 => "AutoKill.APT",
+                3 => "AutoPurchase.APT",
                 _ => "",
             };
-
-            return string.Join('.', tableName, entryName, "Description");
         }
+        
 
-
-        public string GetBonusText(int id, int level, bool maxedOut, Color bonusColor)
+        public string GetBonusText(int id, int level, int maxLevel, Color bonusColor)
         {
-            string bonusPrefix = GetBonusPrefix(id);
-            string bonusSuffix = GetBonusSuffix(id);
-            string currentBonus = Formatting.DefaultFormat(GetBonus(id, level));
+            bool maxedOut = level >= maxLevel;
+            bool maxedOutNextLevel = level + 1 >= maxLevel;
+
+            string bonusPrefix = GetBonusPrefix(id, maxedOut);
+            string bonusSuffix = GetBonusSuffix(id, maxedOut);
+            string currentBonus =
+                maxedOut ? GetMaxedOutBonusText(id, maxLevel) : Formatting.DefaultFormat(GetBonus(id, level));
             string bonuses = $"<color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{currentBonus}{bonusSuffix}</color>";
             if (!maxedOut)
             {
-                string nextLevelBonus = Formatting.DefaultFormat(GetBonus(id, level + 1));
-                bonuses += $" >> <color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{nextLevelBonus}{bonusSuffix}</color>";   
+                string nextLevelBonus = maxedOutNextLevel
+                    ? GetMaxedOutBonusText(id, maxLevel)
+                    : Formatting.DefaultFormat(GetBonus(id, level + 1));
+                bonuses +=
+                    $" >> <color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{GetBonusPrefix(id, maxedOutNextLevel)}{nextLevelBonus}{GetBonusSuffix(id, maxedOutNextLevel)}</color>";
             }
-
+            
             return bonuses;
+        }
+
+
+        private string GetMaxedOutBonusText(int id, int maxLevel)
+        {
+            return id switch
+            {
+                0 => Formatting.DefaultFormat(GetBonus(id, maxLevel)),
+                1 => Formatting.DefaultFormat(GetBonus(id, maxLevel)),
+                2 => Formatting.DefaultFormat(GetBonus(id, maxLevel)),
+                3 => "BULK",
+                _ => throw new ArgumentOutOfRangeException(nameof(id)),
+            };
         }
         
 
-        private string GetBonusPrefix(int id)
+        private string GetBonusPrefix(int id, bool maxedOut)
         {
             return id switch
             {
                 0 => "x",
                 1 => "x",
                 2 => "x",
-                3 => "x",
+                3 => maxedOut? string.Empty : "x",
                 4 => string.Empty,
                 5 => "x",
                 6 => "^",
@@ -161,7 +189,7 @@ namespace DotsKiller
         }
         
         
-        private string GetBonusSuffix(int id)
+        private string GetBonusSuffix(int id, bool maxedOut)
         {
             return id switch
             {

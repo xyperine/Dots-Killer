@@ -1,4 +1,5 @@
-﻿using DotsKiller.Economy;
+﻿using System;
+using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
 using UnityEngine;
 using Zenject;
@@ -8,13 +9,16 @@ namespace DotsKiller
     public class AutomatonUpgrade : MonoBehaviour
     {
         [SerializeField] private Purchasable purchasable;
-        
+
+        [SerializeField] private Transform automatonUiTransform;
+
         private AutomatonUpgrades _automatonUpgrades;
 
         private AutomatonUpgradeEntry _entry;
 
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
+        public int MaxLevel => purchasable.MaxAmount;
         public bool MaxedOut => purchasable.MaxedOut;
 
 
@@ -27,7 +31,8 @@ namespace DotsKiller
 
         private void Awake()
         {
-            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex());
+            AutomatonID automatonID = (AutomatonID) automatonUiTransform.GetSiblingIndex();
+            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex(), automatonID);
             
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(_entry.MaxLevel);
@@ -48,9 +53,10 @@ namespace DotsKiller
             {
                 return;
             }
-            
-            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex());
-            
+
+            AutomatonID automatonID = (AutomatonID) automatonUiTransform.GetSiblingIndex();
+            _entry = _automatonUpgrades.GetSorted(transform.GetSiblingIndex(), automatonID);
+
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
             purchasable.SetMaxAmount(_entry.MaxLevel);
 

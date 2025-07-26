@@ -13,7 +13,6 @@ namespace DotsKiller
     {
         [SpreadsheetContent, SerializeField] private AutomatonUpgradesSOContent content;
         [field: SerializeField] public List<AutomatonUpgradeEntry> Entries { get; private set; }
-        public List<AutomatonUpgradeEntry> SortedByPrice => Entries.OrderBy(e => e.Price).ToList();
 
 
 #if UNITY_EDITOR
@@ -38,7 +37,7 @@ namespace DotsKiller
                 Entries.Add(new AutomatonUpgradeEntry(content.ImportData[i]));
             }
             
-            Debug.Log("Successfully converted upgrades imported data!");
+            Debug.Log("Successfully converted automatons upgrades imported data!");
         }
     }
 
@@ -56,6 +55,7 @@ namespace DotsKiller
     public class AutomatonUpgradeImportData
     {
         public int ID;
+        public int AutomatonID;
         public string Name;
         public string Description;
         public string Price;
@@ -67,6 +67,7 @@ namespace DotsKiller
     public struct AutomatonUpgradeEntry
     {
         public int ID { get; init; }
+        public AutomatonID AutomatonID { get; init; }
         public string Name { get; init; }
         public string Description { get; init; }
         public BigDouble Price { get; init; }
@@ -77,6 +78,7 @@ namespace DotsKiller
         public AutomatonUpgradeEntry(AutomatonUpgradeImportData importData)
         {
             ID = importData.ID;
+            AutomatonID = (AutomatonID) importData.AutomatonID;
             Name = importData.Name;
             Description = importData.Description;
             Price = BigDouble.Parse(PrepareForBigDoubleParse(importData.Price));

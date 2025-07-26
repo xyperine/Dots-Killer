@@ -1,60 +1,51 @@
 ﻿using DotsKiller.RegularUpgrading;
-using UnityEngine;
 using Zenject;
 
 namespace DotsKiller
 {
-    public class PurchasingAutomaton : MonoBehaviour
+    public class PurchasingAutomaton : Automaton
     {
-        [SerializeField] private float purchasesPerSecond;
-        
         private RegularUpgrades _regularUpgrades;
-        private AutomatonUpgrades _automatonUpgrades;
-        
-        private float _purchaseInterval;
 
-        private float _timeSinceLastPurchase;
-
-        public float PurchasesPerSecond => purchasesPerSecond;
+        public override AutomatonID ID => AutomatonID.Purchase;
+        public override string Name => "Auto Purchase";
 
 
         [Inject]
         public void Initialize(RegularUpgrades regularUpgrades, AutomatonUpgrades automatonUpgrades)
         {
             _regularUpgrades = regularUpgrades;
-            _automatonUpgrades = automatonUpgrades;
+            upgrades = automatonUpgrades;
         }
+        
 
-
-        private void Awake()
+        protected override float CalculateTickInterval()
         {
-            _purchaseInterval = 1f / purchasesPerSecond;
+            return 1f / (ticksPerSecond * upgrades.PurchasesTickspeedMultiplier);
         }
 
 
-        private void Update()
+        protected override float CalculateActionsPerTick()
         {
-            _purchaseInterval = 1f / (purchasesPerSecond * 1f);
-            
-            _timeSinceLastPurchase += Time.deltaTime;
-            if (_timeSinceLastPurchase >= _purchaseInterval)
-            {
-                Purchase();
-
-                _timeSinceLastPurchase = 0f;
-            }
+            return upgrades.PurchasesActionsPerTickMultiplier;
         }
 
 
-        private void Purchase()
+        protected override void PerformAction()
         {
             _regularUpgrades.PurchaseAll();
         }
 
 
-        public void SetStatus(bool value)
+        protected override void PerformActions(int amount)
         {
-            enabled = value;
+            if (upgrades.AutoPurchaseAptMaxedOut)
+            {
+                _regularUpgrades.PurchaseAllInBulk();
+                return;
+            }
+            
+            _regularUpgrades.PurchaseAllInBulk(amount);
         }
     }
 }

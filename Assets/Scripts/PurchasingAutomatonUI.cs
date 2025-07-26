@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DotsKiller.Utility;
+using TMPro;
 using UnityEngine;
 
 namespace DotsKiller
@@ -6,7 +7,7 @@ namespace DotsKiller
     public class PurchasingAutomatonUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text nameText;
-        [SerializeField] private TMP_Text purchasesAutomaton;
+        [SerializeField] private TMP_Text purchasesPerSecondText;
         [SerializeField] private PurchasingAutomaton automaton;
 
         private string _format;
@@ -14,14 +15,14 @@ namespace DotsKiller
 
         private void Awake()
         {
-            _format = purchasesAutomaton.text;
+            _format = purchasesPerSecondText.text;
         }
 
 
         private void Update()
         {
-            nameText.text = "Purchasing Automaton";
-            purchasesAutomaton.text = string.Format(_format, automaton.PurchasesPerSecond);
+            nameText.text = "Auto Purchase";
+            purchasesPerSecondText.text = string.Format(_format,Formatting.DefaultFormat(automaton.Tickspeed));
         }
 
 

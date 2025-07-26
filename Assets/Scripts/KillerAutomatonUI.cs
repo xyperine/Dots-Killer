@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DotsKiller.Utility;
+using TMPro;
 using UnityEngine;
 
 namespace DotsKiller
@@ -20,8 +21,8 @@ namespace DotsKiller
 
         private void Update()
         {
-            nameText.text = "Killer";
-            killsPerSecondText.text = string.Format(_format, automaton.KillsPerSecond);
+            nameText.text = "Auto Kill";
+            killsPerSecondText.text = string.Format(_format, Formatting.DefaultFormat(automaton.Tickspeed));
         }
 
 

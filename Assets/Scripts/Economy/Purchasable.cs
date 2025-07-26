@@ -12,7 +12,7 @@ namespace DotsKiller.Economy
         [SerializeField] private BigDouble priceScaling = BigDouble.One;
         [SerializeField] private Currency currency;
         [SerializeField] private bool hasMaxAmount;
-        [SerializeField, ShowIf(nameof(hasMaxAmount))] private long maxAmount;
+        [SerializeField, ShowIf(nameof(hasMaxAmount))] private int maxAmount;
         [SerializeField] private bool canBeBulkBought;
         
         private Balance _balance;
@@ -26,6 +26,7 @@ namespace DotsKiller.Economy
         public BigDouble Price { get; private set; }
         
         public int Amount { get; private set; }
+        public int MaxAmount => maxAmount;
         public Currency Currency => currency;
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
@@ -160,6 +161,31 @@ namespace DotsKiller.Economy
             _balance.Subtract(bb.Price, currency);
 
             Amount += (int) bb.Amount.ToDouble();
+            UpdatePrice();
+                
+            BulkPurchased?.Invoke(bb.Amount);
+        }
+
+
+        public void BulkPurchase(int amountLimit)
+        {
+            if (MaxedOut)
+            {
+                return;
+            }
+
+            BulkBuy bb = GetBulkBuyData();
+
+            if (!_balance.IsAffordable(bb.Price, currency))
+            {
+                return;
+            }
+
+            BigDouble amount = BigDouble.Min(bb.Amount, amountLimit);
+
+            _balance.Subtract(bb.Price, currency);
+
+            Amount += (int) amount.ToDouble();
             UpdatePrice();
                 
             BulkPurchased?.Invoke(bb.Amount);

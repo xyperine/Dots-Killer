@@ -18,20 +18,20 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 512895533056
-    m_Localized: "Velocidad del asesino autom\xE1tico"
+  - m_Id: 1858767179530240
+    m_Localized: Velocidad de tictac
     m_Metadata:
       m_Items: []
-  - m_Id: 512895533057
-    m_Localized: Aumenta la tasa
+  - m_Id: 1858767187918848
+    m_Localized: Velocidad de tictac
     m_Metadata:
       m_Items: []
-  - m_Id: 232288305856512
-    m_Localized: Velocidad del comprador
+  - m_Id: 1858767187918849
+    m_Localized: Acciones por tick
     m_Metadata:
       m_Items: []
-  - m_Id: 232288360382464
-    m_Localized: Aumenta la tasa de compra
+  - m_Id: 1858767187918850
+    m_Localized: Acciones por tick
     m_Metadata:
       m_Items: []
   references:

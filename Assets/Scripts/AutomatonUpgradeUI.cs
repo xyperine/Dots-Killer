@@ -8,7 +8,6 @@ namespace DotsKiller
     public class AutomatonUpgradeUI : MonoBehaviour
     {
         [SerializeField] private LocalizeStringEvent nameLse;
-        [SerializeField] private LocalizeStringEvent descriptionLse;
         [SerializeField] private TMP_Text bonusText;
         [SerializeField] private AutomatonUpgrade automatonUpgrade;
         [SerializeField] private Color bonusColor;
@@ -25,15 +24,14 @@ namespace DotsKiller
         
         private void Start()
         {
-            nameLse.SetEntry(_automatonUpgrades.GetNameEntryName(automatonUpgrade.ID));
-            descriptionLse.SetEntry(_automatonUpgrades.GetDescriptionEntryName(automatonUpgrade.ID));
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, false, bonusColor);
+            nameLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
+            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, automatonUpgrade.MaxLevel, bonusColor);
         }
 
         
         private void Update()
         {
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.MaxedOut, bonusColor);
+            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.MaxLevel, bonusColor);
         }
     }
 }

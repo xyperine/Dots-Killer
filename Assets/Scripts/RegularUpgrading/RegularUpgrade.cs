@@ -77,5 +77,17 @@ namespace DotsKiller.RegularUpgrading
         {
             purchasable.Purchase();
         }
+
+
+        public void PurchaseInBulk()
+        {
+            purchasable.BulkPurchase();
+        }
+        
+        
+        public void PurchaseInBulk(int amount)
+        {
+            purchasable.BulkPurchase(amount);
+        }
     }
 }

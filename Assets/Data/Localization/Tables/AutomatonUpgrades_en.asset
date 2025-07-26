@@ -18,20 +18,20 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 512895533056
-    m_Localized: Auto Killer speed
+  - m_Id: 1858767179530240
+    m_Localized: Tickspeed
     m_Metadata:
       m_Items: []
-  - m_Id: 512895533057
-    m_Localized: Increases the rate
+  - m_Id: 1858767187918848
+    m_Localized: Tickspeed
     m_Metadata:
       m_Items: []
-  - m_Id: 232288305856512
-    m_Localized: Purchaser speed
+  - m_Id: 1858767187918849
+    m_Localized: Actions Per Tick
     m_Metadata:
       m_Items: []
-  - m_Id: 232288360382464
-    m_Localized: Increases the purchase rate
+  - m_Id: 1858767187918850
+    m_Localized: Actions Per Tick
     m_Metadata:
       m_Items: []
   references:

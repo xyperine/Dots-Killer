@@ -1,65 +1,53 @@
 ﻿using DotsKiller.Dots;
-using UnityEngine;
 using Zenject;
 
 namespace DotsKiller
 {
-    public class KillerAutomaton : MonoBehaviour
+    public class KillerAutomaton : Automaton
     {
-        [SerializeField] private float killsPerSecond;
-
         private DotsTracker _dotsTracker;
-        private AutomatonUpgrades _automatonUpgrades;
-        
-        private float _killInterval;
 
-        private float _timeSinceLastKill;
-
-        public float KillsPerSecond => killsPerSecond;
+        public override AutomatonID ID => AutomatonID.Kill;
+        public override string Name => "Auto Kill";
 
 
         [Inject]
         public void Initialize(DotsTracker dotsTracker, AutomatonUpgrades automatonUpgrades)
         {
             _dotsTracker = dotsTracker;
-            _automatonUpgrades = automatonUpgrades;
+            upgrades = automatonUpgrades;
         }
+        
 
-
-        private void Awake()
+        protected override float CalculateTickInterval()
         {
-            _killInterval = 1f / killsPerSecond;
+            return 1f / (ticksPerSecond * upgrades.KillsTickspeedMultiplier);
         }
 
 
-        private void Update()
+        protected override float CalculateActionsPerTick()
         {
-            _killInterval = 1f / (killsPerSecond * _automatonUpgrades.KillsPerSecondMultiplier);
-            
-            _timeSinceLastKill += Time.deltaTime;
-            if (_timeSinceLastKill >= _killInterval)
-            {
-                Kill();
-
-                _timeSinceLastKill = 0f;
-            }
+            return upgrades.KillsActionsPerTickMultiplier;
         }
 
 
-        private void Kill()
+        protected override void PerformAction()
         {
             if (_dotsTracker.AmountAlive == 0)
             {
                 return;
             }
-            
+
             _dotsTracker.GetFirstAvailable().Die();
         }
 
 
-        public void SetStatus(bool value)
+        protected override void PerformActions(int amount)
         {
-            enabled = value;
+            for (int i = 0; i < amount; i++)
+            {
+                PerformAction();
+            }
         }
     }
 }
