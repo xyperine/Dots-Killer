@@ -1,4 +1,5 @@
 ﻿using DotsKiller.Dots;
+using DotsKiller.Utility;
 using Zenject;
 
 namespace DotsKiller
@@ -9,6 +10,7 @@ namespace DotsKiller
 
         public override AutomatonID ID => AutomatonID.Kill;
         public override string Name => "Auto Kill";
+        public override string FormattedActionsPerTick => $"{Formatting.DefaultFormat(ActionsPerTick)}/tick";
 
 
         [Inject]

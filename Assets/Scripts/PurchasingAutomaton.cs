@@ -1,4 +1,5 @@
 ﻿using DotsKiller.RegularUpgrading;
+using DotsKiller.Utility;
 using Zenject;
 
 namespace DotsKiller
@@ -9,6 +10,9 @@ namespace DotsKiller
 
         public override AutomatonID ID => AutomatonID.Purchase;
         public override string Name => "Auto Purchase";
+
+        public override string FormattedActionsPerTick =>
+            upgrades.AutoPurchaseAptMaxedOut ? "BULK" :  $"{Formatting.DefaultFormat(ActionsPerTick)}/tick";
 
 
         [Inject]

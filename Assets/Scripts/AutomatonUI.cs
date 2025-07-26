@@ -26,7 +26,7 @@ namespace DotsKiller
         {
             nameText.text = automaton.Name;
             tickspeedText.text = string.Format(_tickspeedFormat, Formatting.DefaultFormat(automaton.Tickspeed));
-            actionsPerTickText.text = string.Format(_actionsFormat, Formatting.DefaultFormat(automaton.ActionsPerTick));
+            actionsPerTickText.text = string.Format(_actionsFormat, automaton.FormattedActionsPerTick);
         }
 
 

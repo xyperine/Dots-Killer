@@ -19,6 +19,7 @@ namespace DotsKiller
         
         public abstract AutomatonID ID { get; }
         public abstract string Name { get; }
+        public abstract string FormattedActionsPerTick { get; }
 
 
         private void Awake()
