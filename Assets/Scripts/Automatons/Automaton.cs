@@ -42,23 +42,22 @@ namespace DotsKiller.Automatons
             
             if (timeSinceLastAction >= tickInterval)
             {
-                float actionsThisFrame = _previousFrameActionsRemainder;
-                float ticksThisFrame = tickInterval < Time.deltaTime
-                    ? Time.deltaTime / tickInterval
-                    : 1f;
-                actionsThisFrame += ticksThisFrame * ActionsPerTick;
-
-                for (int i = Mathf.FloorToInt(actionsThisFrame); i >= 1; i--)
+                if (tickInterval >= Time.deltaTime)
                 {
                     PerformAction();
                 }
+                else
+                {
+                    float actionsThisFrame = _previousFrameActionsRemainder;
+                    float ticksThisFrame = Time.deltaTime / tickInterval;
+                    actionsThisFrame += ticksThisFrame * ActionsPerTick;
+                    
+                    PerformActions(Mathf.FloorToInt(actionsThisFrame));
+                    
+                    _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
+                }
                 
-                PerformActions(Mathf.FloorToInt(actionsThisFrame));
-                
-                _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
-
                 timeSinceLastAction = 0f;
-                
             }
         }
 
