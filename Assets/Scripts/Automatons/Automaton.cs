@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DotsKiller.Automatons.Upgrades;
+using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Automatons
 {
     //TODO: Move some data definition to sheets
     public abstract class Automaton : MonoBehaviour
@@ -19,7 +20,6 @@ namespace DotsKiller
         
         public abstract AutomatonID ID { get; }
         public abstract string Name { get; }
-        public abstract string FormattedActionsPerTick { get; }
 
 
         private void Awake()

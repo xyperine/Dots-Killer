@@ -6,7 +6,7 @@ using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Automatons.Upgrades
 {
     public class AutomatonUpgrades : MonoBehaviour
     {

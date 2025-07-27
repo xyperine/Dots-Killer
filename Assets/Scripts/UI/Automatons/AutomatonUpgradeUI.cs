@@ -1,9 +1,10 @@
-﻿using TMPro;
+﻿using DotsKiller.Automatons.Upgrades;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.UI.Automatons
 {
     public class AutomatonUpgradeUI : MonoBehaviour
     {

@@ -1,16 +1,15 @@
-﻿using DotsKiller.Dots;
-using DotsKiller.Utility;
+﻿using DotsKiller.Automatons.Upgrades;
+using DotsKiller.Dots;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Automatons
 {
-    public class KillerAutomaton : Automaton
+    public class AutoKillAutomaton : Automaton
     {
         private DotsTracker _dotsTracker;
 
         public override AutomatonID ID => AutomatonID.Kill;
         public override string Name => "Auto Kill";
-        public override string FormattedActionsPerTick => $"{Formatting.DefaultFormat(ActionsPerTick)}/tick";
 
 
         [Inject]

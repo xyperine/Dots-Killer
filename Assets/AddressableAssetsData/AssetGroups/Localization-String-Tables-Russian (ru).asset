@@ -21,8 +21,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a765c43d0239f74295a066e0def8a29
+    m_Address: Units_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44c418b335a77d54a8782c342a051fea
     m_Address: AutomatonUpgrades_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fce6de40082be84790e03a4a8bc2b54
+    m_Address: Automatons_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru

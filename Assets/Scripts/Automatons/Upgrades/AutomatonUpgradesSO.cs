@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BreakInfinity;
-using DotsKiller.RegularUpgrading;
 using NorskaLib.Spreadsheets;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.Automatons.Upgrades
 {
     [CreateAssetMenu(fileName = "Automaton_Upgrades", menuName = "Automaton Upgrades SO", order = 0)]
     public class AutomatonUpgradesSO : SpreadsheetsContainerBase

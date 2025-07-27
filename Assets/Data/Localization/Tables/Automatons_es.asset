@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Automatons_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 26aa74f0ebfa7e241a267c33d80f14e3, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 8621218526049337459
+  m_TableData:
+  - m_Id: 127195725824
+    m_Localized: '- Velocidad de tictac: {value}{units}'
+    m_Metadata:
+      m_Items:
+      - rid: 8621218526049337459
+  - m_Id: 182849945600
+    m_Localized: '- Acciones por tick: {value}{units}'
+    m_Metadata:
+      m_Items:
+      - rid: 8621218526049337459
+  - m_Id: 9268674560
+    m_Localized: "Automatizaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 242576834560
+    m_Localized: Compra de Auto
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 8621218526049337459
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 127195725824
+        - id: 182849945600

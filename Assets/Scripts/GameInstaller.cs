@@ -1,3 +1,5 @@
+using DotsKiller.Automatons;
+using DotsKiller.Automatons.Upgrades;
 using DotsKiller.Dots;
 using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;

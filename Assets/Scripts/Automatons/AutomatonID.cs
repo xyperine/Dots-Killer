@@ -1,4 +1,4 @@
-﻿namespace DotsKiller
+﻿namespace DotsKiller.Automatons
 {
     public enum AutomatonID
     {

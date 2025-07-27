@@ -1,10 +1,9 @@
-﻿using System;
-using DotsKiller.Economy;
+﻿using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.Automatons.Upgrades
 {
     public class AutomatonUpgrade : MonoBehaviour
     {

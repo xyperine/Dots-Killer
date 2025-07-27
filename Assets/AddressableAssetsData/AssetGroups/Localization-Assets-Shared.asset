@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: fdf1051cec6b8ff45bc1a9408a4f70cb
   m_SerializeEntries:
+  - m_GUID: 26aa74f0ebfa7e241a267c33d80f14e3
+    m_Address: Assets/Data/Localization/Tables/Automatons Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 424eb211de4f70440b69102c32bb316c
     m_Address: Assets/Data/Localization/Tables/AutomatonUpgrades Shared Data.asset
     m_ReadOnly: 1
@@ -26,6 +31,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Locale-es
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d4425c94143ebc4887d341aa8c02561
+    m_Address: Assets/Data/Localization/Units Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8397e2c050726c1428c95e62ad549c9a
     m_Address: Assets/Data/Localization/Tables/AppName Shared Data.asset
