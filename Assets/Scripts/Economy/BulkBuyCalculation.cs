@@ -47,7 +47,7 @@ namespace DotsKiller.Economy
 
             if (maxAmount.HasValue)
             {
-                canBuy = BigDouble.Min(canBuy, maxAmount.Value);
+                canBuy = BigDouble.Min(canBuy, maxAmount.Value - alreadyOwned);
             }
 
             // Calculate the total price
