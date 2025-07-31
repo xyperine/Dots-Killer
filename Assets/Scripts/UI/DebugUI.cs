@@ -1,5 +1,6 @@
 ﻿using BreakInfinity;
 using DotsKiller.Dots;
+using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
@@ -27,15 +28,17 @@ namespace DotsKiller.UI
         private RegularUpgrades _regularUpgrades;
         private Milestones _milestones;
         private DotSpawner _dotSpawner;
+        private BalanceModifiersCalculator _balanceModifiersCalculator;
 
 
         [Inject]
-        public void Initialize(Stats stats, RegularUpgrades regularUpgrades, Milestones milestones, DotSpawner dotSpawner)
+        public void Initialize(Stats stats, RegularUpgrades regularUpgrades, Milestones milestones, DotSpawner dotSpawner, BalanceModifiersCalculator balanceModifiersCalculator)
         {
             _stats = stats;
             _regularUpgrades = regularUpgrades;
             _milestones = milestones;
             _dotSpawner = dotSpawner;
+            _balanceModifiersCalculator = balanceModifiersCalculator;
         }
         
 
@@ -53,14 +56,10 @@ namespace DotsKiller.UI
                                             Formatting.DefaultFormat(_milestones.PointsIncomeMultiplier);
             upgradesFactorText.text = "Upgrades factor: " + Formatting.DefaultFormat(_milestones.UpgradesFactor);
 
-            BigDouble multiplier = _regularUpgrades.KillsFactor *
-                                   _regularUpgrades.CleanFactor *
-                                   _regularUpgrades.TimeFactor *
-                                   _regularUpgrades.AccumulationFactor *
-                                   _milestones.PointsIncomeMultiplier *
-                                   _milestones.UpgradesFactor;
-            totalPointsPerKillText.text = "Total points per kill: " + Formatting.DefaultFormat(
-                BigDouble.Pow((_regularUpgrades.PointsOnKill + BigDouble.One) * multiplier, _regularUpgrades.GrowthExponent));
+            totalPointsPerKillText.text = "Total points per kill: " +
+                                          Formatting.DefaultFormat(
+                                              _balanceModifiersCalculator.ApplyPointsModifiers(BigDouble.One +
+                                                  _regularUpgrades.PointsOnKill));
             
             killsText.text = "Kills: " + Formatting.DefaultFormat(_stats.Kills);
         }

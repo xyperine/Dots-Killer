@@ -77,7 +77,7 @@ namespace DotsKiller.MilestonesLogic
                     FirstUpgradeBoost = 1.5d;
                     break;
                 case 4:
-                    UpgradesFactor = _stats.RegularUpgradesBought;
+                    UpgradesFactor = _stats.RegularUpgradesBought + BigDouble.One;
                     break;
                 case 5:
                     GeneratorsBoost = BigDouble.One; // 10% of points per kill or smth

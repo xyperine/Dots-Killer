@@ -1,5 +1,5 @@
-﻿using BreakInfinity;
-using DotsKiller.SaveSystem;
+﻿using System;
+using BreakInfinity;
 using UnityEngine;
 
 namespace DotsKiller
@@ -7,23 +7,10 @@ namespace DotsKiller
     public class Stats : MonoBehaviour
     {
         public BigDouble Kills { get; set; } = BigDouble.Zero;
+        public BigDouble PointsPerKill { get; set; } = BigDouble.One;
+        public BigDouble TotalPoints { get; set; } = BigDouble.Zero;
+        public TimeSpan TotalPlaytime { get; set; } = TimeSpan.Zero;
+        
         public int RegularUpgradesBought { get; set; } = 0;
-
-
-        private void Start()
-        {
-            if (!GameStateHandler.Loaded)
-            {
-                return;
-            }
-
-            Kills = GameStateHandler.State.Kills;
-        }
-
-
-        private void Update()
-        {
-            GameStateHandler.State.Kills = Kills;
-        }
     }
 }

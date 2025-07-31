@@ -66,6 +66,8 @@ namespace DotsKiller.UI
         {
             for (int i = 0; i < _newItems.Count; i++)
             {
+                continue;
+                
                 if (_newItems[i] < 1)
                 {
                     tabs[i].HideNotification();

@@ -13,6 +13,7 @@ namespace DotsKiller
     public class GameInstaller : MonoInstaller
     {
         [SerializeField] private Balance balance;
+        [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;
         [SerializeField] private BulkBuyDetection bulkBuyDetection;
         [SerializeField] private RegularUpgrades regularUpgrades;
         [SerializeField] private AutomatonUpgrades automatonUpgrades;
@@ -29,8 +30,10 @@ namespace DotsKiller
         {
             Container.Bind<Balance>().FromInstance(balance).AsSingle().NonLazy();
             
-            Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
+            Container.Bind<BalanceModifiersCalculator>().FromInstance(balanceModifiersCalculator).AsSingle().NonLazy();
             
+            Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
+
             Container.Bind<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
             
             Container.Bind<AutomatonUpgrades>().FromInstance(automatonUpgrades).AsSingle().NonLazy();

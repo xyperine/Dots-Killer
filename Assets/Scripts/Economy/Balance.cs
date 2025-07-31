@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using BreakInfinity;
-using DotsKiller.MilestonesLogic;
-using DotsKiller.RegularUpgrading;
 using DotsKiller.Utility;
 using UnityEngine;
-using Zenject;
 
 namespace DotsKiller.Economy
 {
     public class Balance : MonoBehaviour
     {
         [SerializeField] private BigDouble startingPoints = BigDouble.Zero;
-
-        private RegularUpgrades _regularUpgrades;
-        private Milestones _milestones;
-
+        [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;
+        
         private Dictionary<Currency, BigDouble> Currencies { get; } =
             EnumHelpers.EnumToDictionary<Currency, BigDouble>(BigDouble.Zero);
 
@@ -25,14 +20,6 @@ namespace DotsKiller.Economy
         public BigDouble TotalPoints { get; private set; }
 
 
-        [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones)
-        {
-            _regularUpgrades = regularUpgrades;
-            _milestones = milestones;
-        }
-        
-        
         private void Awake()
         {
             Currencies[Currency.Points] = startingPoints;
@@ -46,19 +33,10 @@ namespace DotsKiller.Economy
             {
                 throw new ArgumentOutOfRangeException(nameof(amount));
             }
-
+            
             if (currency == Currency.Points)
             {
-                BigDouble multiplier = _regularUpgrades.KillsFactor;
-                multiplier *= _regularUpgrades.CleanFactor;
-                multiplier *= _regularUpgrades.TimeFactor;
-                multiplier *= _regularUpgrades.AccumulationFactor;
-                multiplier *= _milestones.PointsIncomeMultiplier;
-                multiplier *= _milestones.UpgradesFactor;
-
-                BigDouble exponent = _regularUpgrades.GrowthExponent;
-
-                amount = BigDouble.Pow(amount * multiplier, exponent);
+                amount = balanceModifiersCalculator.ApplyPointsModifiers(amount);
             }
 
             Currencies[currency] += amount;

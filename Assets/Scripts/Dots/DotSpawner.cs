@@ -1,6 +1,5 @@
 ﻿using AYellowpaper;
 using BreakInfinity;
-using DotsKiller.Economy;
 using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
@@ -20,7 +19,7 @@ namespace DotsKiller.Dots
         private float _timeSinceLastSpawn;
         
         private IAreaProvider _areaProvider;
-        private Balance _balance;
+        private Stats _stats;
 
         private Dot.Factory _factory;
 
@@ -29,10 +28,10 @@ namespace DotsKiller.Dots
 
 
         [Inject]
-        public void Initialize(Dot.Factory factory, Balance balance)
+        public void Initialize(Dot.Factory factory, Stats stats)
         {
             _factory = factory;
-            _balance = balance;
+            _stats = stats;
         }
 
 
@@ -46,7 +45,7 @@ namespace DotsKiller.Dots
         {
             _timeSinceLastSpawn += Time.deltaTime;
             
-            float t = _balance.TotalPoints.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
+            float t = _stats.TotalPoints.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
             _spawnInterval = spawnIntervalRange.Lerp(spawnIntervalCurve.Evaluate(t));
             
             if (ReadyToSpawn)

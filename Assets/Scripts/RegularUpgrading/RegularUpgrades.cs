@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using BreakInfinity;
 using DotsKiller.Dots;
-using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
@@ -18,8 +17,6 @@ namespace DotsKiller.RegularUpgrading
         
         private Stats _stats;
         private DotsTracker _dotsTracker;
-        private GameClock _gameClock;
-        private Balance _balance;
         private Milestones _milestones;
         
         public BigDouble PointsOnKill { get; private set; } = BigDouble.Zero;
@@ -33,12 +30,10 @@ namespace DotsKiller.RegularUpgrading
 
 
         [Inject]
-        public void Initialize(Stats stats, DotsTracker dotsTracker, GameClock gameClock, Balance balance, Milestones milestones)
+        public void Initialize(Stats stats, DotsTracker dotsTracker, Milestones milestones)
         {
             _stats = stats;
             _dotsTracker = dotsTracker;
-            _gameClock = gameClock;
-            _balance = balance;
             _milestones = milestones;
         }
 
@@ -146,9 +141,9 @@ namespace DotsKiller.RegularUpgrading
                 0 => BigDouble.Pow(1f * level, _milestones.FirstUpgradeBoost),
                 1 => BigDouble.Log10(_stats.Kills + BigDouble.One) * level + BigDouble.One,
                 2 => Formulas.CalculateCleanFactor(_dotsTracker.AmountAlive, level),
-                3 => level == 0 ? BigDouble.One : Formulas.CalculateTimeFactor(_gameClock.UnscaledTotalPlaytimeSeconds),
+                3 => level == 0 ? BigDouble.One : Formulas.CalculateTimeFactor(_stats.TotalPlaytime.TotalSeconds),
                 4 => 10f * level,
-                5 => level == 0 ? BigDouble.One :_balance.TotalPoints.PositiveSafeLog10() + BigDouble.One,
+                5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() + BigDouble.One,
                 6 => (0.05f * level) + BigDouble.One,
                 7 => (0.01f * level) + BigDouble.One,
                 _ => BigDouble.One,

@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 715031ec69a7f8342bbdfe4a693d0de9
+    m_Address: Stats_zh
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c91422e7c5eff0b488a447c963da318a
     m_Address: Units_zh
     m_ReadOnly: 1
