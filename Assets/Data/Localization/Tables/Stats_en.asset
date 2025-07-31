@@ -16,24 +16,36 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 28a6c359ea143d54c89f9c7062f7e9da, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8621218612449116301
   m_TableData:
   - m_Id: 8625283448832
     m_Localized: 'Kills:'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8621218612449116301
   - m_Id: 8654765211648
     m_Localized: 'Total Points:'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8621218612449116301
   - m_Id: 9459161415680
     m_Localized: 'Points Per Kill:'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8621218612449116301
   - m_Id: 9498973749248
     m_Localized: 'Total Playtime:'
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8621218612449116301
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 8625283448832
+        - id: 8654765211648
+        - id: 9459161415680

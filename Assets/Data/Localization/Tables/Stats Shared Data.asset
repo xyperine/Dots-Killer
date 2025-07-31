@@ -16,21 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 28a6c359ea143d54c89f9c7062f7e9da
   m_Entries:
   - m_Id: 8625283448832
-    m_Key: Stats.Kills
+    m_Key: Stats.Kills.Label
     m_Metadata:
       m_Items: []
   - m_Id: 8654765211648
-    m_Key: 'Stats.TotalPoints
-
-'
+    m_Key: Stats.TotalPoints.Label
     m_Metadata:
       m_Items: []
   - m_Id: 9459161415680
-    m_Key: Stats.PointsPerKill
+    m_Key: Stats.PointsPerKill.Label
     m_Metadata:
       m_Items: []
   - m_Id: 9498973749248
-    m_Key: Stats.TotalPlaytime
+    m_Key: Stats.TotalPlaytime.Label
     m_Metadata:
       m_Items: []
   m_Metadata:
