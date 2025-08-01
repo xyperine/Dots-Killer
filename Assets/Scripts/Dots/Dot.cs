@@ -1,5 +1,6 @@
 ﻿using System;
 using DotsKiller.Economy;
+using DotsKiller.StatsLogic;
 using UnityEngine;
 using Zenject;
 

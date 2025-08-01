@@ -4,6 +4,7 @@ using DotsKiller.Dots;
 using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
+using DotsKiller.StatsLogic;
 using DotsKiller.Unlocking;
 using UnityEngine;
 using Zenject;

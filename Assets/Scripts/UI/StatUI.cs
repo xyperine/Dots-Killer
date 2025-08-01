@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class StatUI : MonoBehaviour
     {

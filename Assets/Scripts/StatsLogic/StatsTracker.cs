@@ -6,7 +6,7 @@ using DotsKiller.SaveSystem;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.StatsLogic
 {
     public class StatsTracker : MonoBehaviour
     {

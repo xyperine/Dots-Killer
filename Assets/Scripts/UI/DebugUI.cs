@@ -3,6 +3,7 @@ using DotsKiller.Dots;
 using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
+using DotsKiller.StatsLogic;
 using DotsKiller.Utility;
 using TMPro;
 using UnityEngine;

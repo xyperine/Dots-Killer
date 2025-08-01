@@ -2,7 +2,7 @@
 using BreakInfinity;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.StatsLogic
 {
     public class Stats : MonoBehaviour
     {

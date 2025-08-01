@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DotsKiller.StatsLogic;
 using DotsKiller.Utility;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class StatsUI : MonoBehaviour
     {

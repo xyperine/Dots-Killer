@@ -4,6 +4,7 @@ using BreakInfinity;
 using DotsKiller.Dots;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.SaveSystem;
+using DotsKiller.StatsLogic;
 using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
