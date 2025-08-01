@@ -26,8 +26,8 @@ namespace DotsKiller.UI
 
         private void Update()
         {
-            statUIs[0].SetText("Kills", _stats.Kills.ToString());
-            statUIs[1].SetText("TotalPoints", _stats.TotalPoints.ToString());
+            statUIs[0].SetText("Kills", Formatting.DefaultFormat(_stats.Kills));
+            statUIs[1].SetText("TotalPoints", Formatting.DefaultFormat(_stats.TotalPoints));
             statUIs[2].SetText("PointsPerKill", Formatting.DefaultFormat(_stats.PointsPerKill));
             statUIs[3].SetText("TotalPlaytime", ConstructTotalPlaytimeString());
         }
