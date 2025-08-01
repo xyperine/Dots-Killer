@@ -1,4 +1,5 @@
-﻿using DotsKiller.Automatons.Upgrades;
+﻿using System;
+using DotsKiller.Automatons.Upgrades;
 using UnityEngine;
 
 namespace DotsKiller.Automatons
@@ -42,11 +43,7 @@ namespace DotsKiller.Automatons
             
             if (timeSinceLastAction >= tickInterval)
             {
-                if (tickInterval >= Time.deltaTime)
-                {
-                    PerformAction();
-                }
-                else
+                if (tickInterval < Time.deltaTime) // compensate for lag or when the tick happens faster than next frame
                 {
                     float actionsThisFrame = _previousFrameActionsRemainder;
                     float ticksThisFrame = Time.deltaTime / tickInterval;
@@ -55,9 +52,26 @@ namespace DotsKiller.Automatons
                     PerformActions(Mathf.FloorToInt(actionsThisFrame));
                     
                     _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
+                    
+                    Debug.Log($"The tick is too fast: {actionsThisFrame}");
                 }
-                
-                timeSinceLastAction = 0f;
+                else if (Math.Abs(ActionsPerTick - 1f) < 1e-6f) // if only 1 action per tick
+                {
+                    PerformAction();
+                }
+                else // if more or less than 1 action per tick and ticks are slower than frames
+                {
+                    float actionsThisFrame = _previousFrameActionsRemainder;
+                    actionsThisFrame += ActionsPerTick;
+                    
+                    PerformActions(Mathf.FloorToInt(actionsThisFrame));
+                    
+                    _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
+                    
+                    Debug.Log(actionsThisFrame);
+                }
+
+                timeSinceLastAction -= tickInterval;
             }
         }
 
