@@ -15,5 +15,9 @@ namespace DotsKiller.SaveSystem
         public Dictionary<int, int> AutomatonUpgradeLevels { get; } = new Dictionary<int, int>();
         
         public BigDouble Kills { get; set; }
+        
+        public BigDouble Points { get; set; }
+        public BigDouble Shards { get; set; }
+        public BigDouble TotalPoints { get; set; }
     }
 }

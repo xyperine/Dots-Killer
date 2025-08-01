@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BreakInfinity;
+using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
 using UnityEngine;
 
@@ -24,6 +25,17 @@ namespace DotsKiller.Economy
         {
             Currencies[Currency.Points] = startingPoints;
             TotalPoints = startingPoints;
+        }
+
+
+        private void Start()
+        {
+            if (GameStateHandler.Loaded)
+            {
+                Currencies[Currency.Points] = GameStateHandler.State.Points;
+                Currencies[Currency.Shards] = GameStateHandler.State.Shards;
+                TotalPoints = GameStateHandler.State.TotalPoints;
+            }
         }
 
 
@@ -68,6 +80,14 @@ namespace DotsKiller.Economy
         public BigDouble Available(Currency currency)
         {
             return Currencies[currency];
+        }
+
+
+        private void Update()
+        {
+            GameStateHandler.State.Points = Points;
+            GameStateHandler.State.Shards = Shards;
+            GameStateHandler.State.TotalPoints = TotalPoints;
         }
     }
 }
