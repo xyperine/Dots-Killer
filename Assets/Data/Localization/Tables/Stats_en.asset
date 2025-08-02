@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: 'Total Playtime:'
     m_Metadata:
       m_Items: []
+  - m_Id: 1470243406135296
+    m_Localized: 'Purges:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

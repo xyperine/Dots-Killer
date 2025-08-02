@@ -88,10 +88,11 @@ namespace DotsKiller.Economy
             Debug.Log("Balance reset");
 
             Currencies[Currency.Points] = startingPoints;
-            //Currencies[Currency.Shards] = SOME AMOUNT;
+            Currencies[Currency.Shards]++;
             TotalPoints = Points;
 
             GameStateHandler.State.Points = Points;
+            GameStateHandler.State.Shards = Shards;
             GameStateHandler.State.TotalPoints = TotalPoints;
         }
 

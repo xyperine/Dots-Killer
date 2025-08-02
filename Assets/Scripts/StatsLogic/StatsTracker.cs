@@ -57,8 +57,10 @@ namespace DotsKiller.StatsLogic
             Debug.Log("Stats reset");
             
             stats.Kills = BigDouble.Zero;
+            stats.Purges++;
             
             GameStateHandler.State.Kills = stats.Kills;
+            GameStateHandler.State.Purges = stats.Purges;
         }
     }
 }

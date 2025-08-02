@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: Stats.TotalPlaytime.Label
     m_Metadata:
       m_Items: []
+  - m_Id: 1470243406135296
+    m_Key: Stats.Purges.Label
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
