@@ -75,5 +75,11 @@ namespace DotsKiller.Automatons.Upgrades
                 GameStateHandler.State.AutomatonUpgradeLevels[ID] = Level;
             }
         }
+
+
+        public void OnPrestige()
+        {
+            purchasable.Clear();
+        }
     }
 }

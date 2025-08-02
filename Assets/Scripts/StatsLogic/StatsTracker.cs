@@ -50,5 +50,15 @@ namespace DotsKiller.StatsLogic
             stats.PointsPerKill =
                 _balanceModifiersCalculator.ApplyPointsModifiers(baseReward + _regularUpgrades.PointsOnKill);
         }
+
+
+        public void OnPurge()
+        {
+            Debug.Log("Stats reset");
+            
+            stats.Kills = BigDouble.Zero;
+            
+            GameStateHandler.State.Kills = stats.Kills;
+        }
     }
 }

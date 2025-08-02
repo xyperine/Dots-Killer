@@ -26,5 +26,17 @@ namespace DotsKiller.Dots
         {
             ActiveDots.Remove(dot);
         }
+
+
+        public void OnPurge()
+        {
+            Debug.Log("Dots reset (all dead haha)");
+
+            for (int i = ActiveDots.Count - 1; i >= 0; i--)
+            {
+                ActiveDots[i].Dispose();
+                ActiveDots.RemoveAt(i);
+            }
+        }
     }
 }

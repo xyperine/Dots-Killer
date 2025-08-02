@@ -280,5 +280,16 @@ namespace DotsKiller.RegularUpgrading
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null),
             };
         }
+
+
+        public void OnPurge()
+        {
+            Debug.Log("Regular upgrades reset");
+
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].OnPrestige();
+            }
+        }
     }
 }

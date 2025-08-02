@@ -36,7 +36,7 @@ namespace DotsKiller.ColorPaletteSystem
             mainCamera.backgroundColor = paletteSO.GetColorFor(ColorPaletteTargetID.Background);
             
             ColorPaletteTarget[] targets =
-                FindObjectsByType<ColorPaletteTarget>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                FindObjectsByType<ColorPaletteTarget>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
             foreach (ColorPaletteTarget target in targets)
             {

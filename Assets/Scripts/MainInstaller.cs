@@ -1,4 +1,3 @@
-using DotsKiller.Automatons;
 using DotsKiller.Automatons.Upgrades;
 using DotsKiller.Dots;
 using DotsKiller.Economy;
@@ -11,7 +10,7 @@ using Zenject;
 
 namespace DotsKiller
 {
-    public class GameInstaller : MonoInstaller
+    public class MainInstaller : MonoInstaller
     {
         [SerializeField] private Balance balance;
         [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;
@@ -21,10 +20,12 @@ namespace DotsKiller
         [SerializeField] private Milestones milestones;
         [SerializeField] private UnlockablesManager unlockablesManager;
         [SerializeField] private Stats stats;
+        [SerializeField] private StatsTracker statsTracker;
         [SerializeField] private GameClock gameClock;
         [SerializeField] private DotSpawner dotSpawner;
         [SerializeField] private DotsTracker dotsTracker;
         [SerializeField] private GameObject dotPrefab;
+        [SerializeField] private Purge purge;
         
         
         public override void InstallBindings()
@@ -44,6 +45,7 @@ namespace DotsKiller
             Container.Bind<UnlockablesManager>().FromInstance(unlockablesManager).AsCached().NonLazy();
 
             Container.Bind<Stats>().FromInstance(stats).AsSingle().NonLazy();
+            Container.Bind<StatsTracker>().FromInstance(statsTracker).AsSingle().NonLazy();
 
             Container.Bind<GameClock>().FromInstance(gameClock).AsSingle().NonLazy();
             
@@ -54,6 +56,23 @@ namespace DotsKiller
                     .FromComponentInNewPrefab(dotPrefab)
                     .UnderTransformGroup("Dots"));
             Container.Bind<DotsTracker>().FromInstance(dotsTracker).AsSingle().NonLazy();
+
+            Container.Bind<Purge>().FromInstance(purge).AsSingle().NonLazy();
+
+            InstallSignals();
+        }
+
+
+        private void InstallSignals()
+        {
+            Container.DeclareSignal<PurgePerformedSignal>();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<Balance>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<StatsTracker>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<RegularUpgrades>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<AutomatonUpgrades>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<DotsTracker>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<UnlockablesManager>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<Milestones>(a => a.OnPurge).FromResolve();
         }
     }
 }

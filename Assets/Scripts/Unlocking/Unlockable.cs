@@ -31,5 +31,12 @@ namespace DotsKiller.Unlocking
             unlocked = true;
             lockedObject.SetActive(true);
         }
+
+
+        public void Lock()
+        {
+            unlocked = false;
+            lockedObject.SetActive(false);
+        }
     }
 }

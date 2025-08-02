@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BreakInfinity;
 using DotsKiller.StatsLogic;
 using UnityEngine;
@@ -121,6 +120,17 @@ namespace DotsKiller.MilestonesLogic
             string entryName = $"Milestone{id + 1}";
 
             return string.Join('.', tableName, entryName, "Reward");
+        }
+
+
+        public void OnPurge()
+        {
+            PointsIncomeMultiplier = BigDouble.One;
+            AutomatonsUnlocked  = false;
+            GeneratorsUnlocked = false;
+            FirstUpgradeBoost = BigDouble.One;
+            UpgradesFactor = BigDouble.One;
+            GeneratorsBoost = BigDouble.One;
         }
     }
 }

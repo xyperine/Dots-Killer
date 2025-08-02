@@ -62,10 +62,7 @@ namespace DotsKiller.Automatons.Upgrades
                     return;
                 case 3:
                     PurchasesActionsPerTickMultiplier = (float) bonus.ToDouble();
-                    if (maxedOut)
-                    {
-                        AutoPurchaseAptMaxedOut = true;
-                    }
+                    AutoPurchaseAptMaxedOut = maxedOut;
                     return;
                 default:
                     return;
@@ -203,6 +200,17 @@ namespace DotsKiller.Automatons.Upgrades
                 7 => string.Empty,
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null),
             };
+        }
+
+
+        public void OnPurge()
+        {
+            Debug.Log("Automaton upgrades reset");
+
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].OnPrestige();
+            }
         }
     }
 }

@@ -89,5 +89,11 @@ namespace DotsKiller.RegularUpgrading
         {
             purchasable.BulkPurchase(amount);
         }
+
+
+        public void OnPrestige()
+        {
+            purchasable.Clear();
+        }
     }
 }

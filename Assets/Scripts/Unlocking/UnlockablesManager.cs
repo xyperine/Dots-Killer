@@ -50,5 +50,25 @@ namespace DotsKiller.Unlocking
                 }
             }
         }
+
+
+        public void OnPurge()
+        {
+            for (int i = 0; i < _unlockables.Count; i++)
+            {
+                Unlockable unlockable = _unlockables[i];
+                switch (unlockable.ID)
+                {
+                    case UnlockableID.Automatons:
+                        unlockable.Lock();
+                        break;
+                    case UnlockableID.Generators:
+                        unlockable.Lock();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
     }
 }
