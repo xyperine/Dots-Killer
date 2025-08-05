@@ -4,6 +4,7 @@ using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
 using DotsKiller.StatsLogic;
+using DotsKiller.UI;
 using DotsKiller.Unlocking;
 using UnityEngine;
 using Zenject;
@@ -26,6 +27,7 @@ namespace DotsKiller
         [SerializeField] private DotsTracker dotsTracker;
         [SerializeField] private GameObject dotPrefab;
         [SerializeField] private Purge purge;
+        [SerializeField] private PopupManager popupManager;
         
         
         public override void InstallBindings()
@@ -58,6 +60,8 @@ namespace DotsKiller
             Container.Bind<DotsTracker>().FromInstance(dotsTracker).AsSingle().NonLazy();
 
             Container.Bind<Purge>().FromInstance(purge).AsSingle().NonLazy();
+            
+            Container.Bind<PopupManager>().FromInstance(popupManager).AsSingle().NonLazy();
 
             InstallSignals();
         }

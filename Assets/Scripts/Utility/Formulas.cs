@@ -22,5 +22,11 @@ namespace DotsKiller.Utility
         {
             return Math.Pow(seconds / 100_000d, 0.6d) * 5f + BigDouble.One;
         }
+
+
+        public static BigDouble CalculateShardsOnPurge()
+        {
+            return BigDouble.One;
+        }
     }
 }
