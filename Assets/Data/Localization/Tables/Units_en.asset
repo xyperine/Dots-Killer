@@ -51,6 +51,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8621218615304913009
+  - m_Id: 3245497279365120
+    m_Localized: '{0:cond:{1:{} Shard|{} Shards}|Shards}'
+    m_Metadata:
+      m_Items:
+      - rid: 8621218615304913009
   references:
     version: 2
     RefIds:
@@ -63,3 +68,4 @@ MonoBehaviour:
         - id: 1435770111180800
         - id: 1435795570606080
         - id: 1435632525426688
+        - id: 3245497279365120

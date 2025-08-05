@@ -53,6 +53,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 8621218615304913026
+  - m_Id: 3245497279365120
+    m_Localized: "{0:cond:{1:{} \u041E\u0441\u043A\u043E\u043B\u043E\u043A|{} \u041E\u0441\u043A\u043E\u043B\u043A\u0430|{}
+      \u041E\u0441\u043A\u043E\u043B\u043E\u0432}|\u041E\u0441\u043A\u043E\u043B\u043A\u043E\u0432}"
+    m_Metadata:
+      m_Items:
+      - rid: 8621218615304913026
   references:
     version: 2
     RefIds:
@@ -65,3 +71,4 @@ MonoBehaviour:
         - id: 1435770111180800
         - id: 1435795570606080
         - id: 1435632525426688
+        - id: 3245497279365120

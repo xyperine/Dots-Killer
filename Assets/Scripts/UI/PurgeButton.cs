@@ -1,7 +1,9 @@
-﻿using DotsKiller.Utility;
+﻿using BreakInfinity;
+using DotsKiller.Utility;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -12,6 +14,8 @@ namespace DotsKiller.UI
     {
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text buttonText;
+        [SerializeField] private LocalizedString purgeLocalizedString;
+        [SerializeField] private LocalizedString shardsLocalizedString;
 
         private string _format;
 
@@ -36,7 +40,17 @@ namespace DotsKiller.UI
         private void Update()
         {
             button.interactable = _purge.Available;
-            buttonText.text = string.Format(_format, Formatting.DefaultFormat(Formulas.CalculateShardsOnPurge()));
+            string purgeText = purgeLocalizedString.GetLocalizedString();
+            BigDouble shardsAmount = Formulas.CalculateShardsOnPurge();
+            float pluralizationThreshold = 1000f;
+            string shardsText =
+                shardsLocalizedString.GetLocalizedString(shardsAmount < pluralizationThreshold,
+                    shardsAmount.ToDouble());
+            if (shardsAmount >= pluralizationThreshold)
+            {
+                shardsText = Formatting.DefaultFormat(shardsAmount) + " " + shardsText;
+            }
+            buttonText.text = string.Format(_format, purgeText, shardsText);
         }
 
 

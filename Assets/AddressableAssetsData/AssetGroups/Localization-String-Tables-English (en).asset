@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f16a85edcac3e342b9d3a98a4a103ca
+    m_Address: Purge_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 68852af3a05a1f940b4e5287b2c2fb67
     m_Address: AppName_en
     m_ReadOnly: 1
@@ -41,6 +47,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc800d10cab3838428ebceab655a296a
     m_Address: Stats_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2d0b7f1f81f44b4eabe791d1416f116
+    m_Address: Popups_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

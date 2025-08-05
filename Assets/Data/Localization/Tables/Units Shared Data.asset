@@ -43,6 +43,11 @@ MonoBehaviour:
     m_Key: Units.Seconds
     m_Metadata:
       m_Items: []
+  - m_Id: 3245497279365120
+    m_Key: Units.Shards
+    m_Metadata:
+      m_Items:
+      - rid: 265930206971691163
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -50,6 +55,17 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 265930206971691163
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: '0 arg - a boolean value representing if the shards amount
+          if over a 1000
+
+          1 arg - a double value representing the shards
+          amount
+
+          If the shards amount is > 1000 then we just use a word
+          for many and prepend a formatted BigDouble value'
     - rid: 8621218526049337442
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:

@@ -39,8 +39,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4f84dc61d6d9764fa9903a423d581c1
+    m_Address: Popups_zh
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c91422e7c5eff0b488a447c963da318a
     m_Address: Units_zh
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9b787800ada2fe4b8b1d8a7882ba5a8
+    m_Address: Purge_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
