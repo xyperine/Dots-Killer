@@ -14868,43 +14868,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaProviderReference:
     _underlyingValue: {fileID: 457945441}
-  spawnIntervalCurve:
+  spawnsPerSecondCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 7.5
-      outSlope: 7.5
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.1
-      value: 0.75
-      inSlope: 0.2804233
-      outSlope: 0.2804233
+      inSlope: 0.3902381
+      outSlope: 0.3902381
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 1
+      inWeight: 0
+      outWeight: 0.06711409
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.2777778
-      outSlope: 0.2777778
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spawnIntervalRange:
+  spawnsPerSecondRange:
     <A>k__BackingField: 1
-    <B>k__BackingField: 0.01
-    <Format>k__BackingField: 1
+    <B>k__BackingField: 100
+    <Format>k__BackingField: 0
   maxPoints:
     mantissa: 1
     exponent: 100

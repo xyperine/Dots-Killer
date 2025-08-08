@@ -11,8 +11,8 @@ namespace DotsKiller.Dots
     public class DotSpawner : MonoBehaviour
     {
         [SerializeField] private InterfaceReference<IAreaProvider> areaProviderReference;
-        [SerializeField] private AnimationCurve spawnIntervalCurve;
-        [SerializeField] private Range spawnIntervalRange;
+        [SerializeField] private AnimationCurve spawnsPerSecondCurve;
+        [SerializeField] private Range spawnsPerSecondRange;
         [SerializeField] private BigDouble maxPoints;
 
         private float _spawnInterval;
@@ -47,7 +47,7 @@ namespace DotsKiller.Dots
             _timeSinceLastSpawn += Time.deltaTime;
             
             float t = _stats.TotalPoints.Add(BigDouble.One).InverseLerpLog10(BigDouble.One, maxPoints);
-            _spawnInterval = spawnIntervalRange.Lerp(spawnIntervalCurve.Evaluate(t));
+            _spawnInterval = 1f / spawnsPerSecondRange.Lerp(spawnsPerSecondCurve.Evaluate(t));
             
             if (ReadyToSpawn)
             {
