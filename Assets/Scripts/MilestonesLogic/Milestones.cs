@@ -16,8 +16,8 @@ namespace DotsKiller.MilestonesLogic
         private Stats _stats;
         
         public BigDouble PointsIncomeMultiplier { get; private set; } = BigDouble.One;
-        public bool AutomatonsUnlocked { get; private set; } = false;
-        public bool GeneratorsUnlocked { get; private set; } = false;
+        public bool KillAutomatonUnlocked { get; private set; } = false;
+        public bool PurchasingAutomatonUnlocked { get; private set; } = false; // Old generators unlocked
         public BigDouble FirstUpgradeBoost { get; private set; } = BigDouble.One;
         public BigDouble UpgradesFactor { get; private set; } = BigDouble.One;
         public BigDouble GeneratorsBoost { get; private set; } = BigDouble.One;
@@ -68,10 +68,10 @@ namespace DotsKiller.MilestonesLogic
                     PointsIncomeMultiplier = 1.25d;
                     break;
                 case 1:
-                    AutomatonsUnlocked = true;
+                    KillAutomatonUnlocked = true;
                     break;
                 case 2:
-                    GeneratorsUnlocked = true;
+                    PurchasingAutomatonUnlocked = true;
                     break;
                 case 3:
                     FirstUpgradeBoost = 1.5d;
@@ -126,8 +126,8 @@ namespace DotsKiller.MilestonesLogic
         public void OnPurge()
         {
             PointsIncomeMultiplier = BigDouble.One;
-            AutomatonsUnlocked  = false;
-            GeneratorsUnlocked = false;
+            KillAutomatonUnlocked  = false;
+            PurchasingAutomatonUnlocked = false;
             FirstUpgradeBoost = BigDouble.One;
             UpgradesFactor = BigDouble.One;
             GeneratorsBoost = BigDouble.One;

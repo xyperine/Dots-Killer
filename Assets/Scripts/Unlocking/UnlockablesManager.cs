@@ -33,14 +33,14 @@ namespace DotsKiller.Unlocking
                 Unlockable unlockable = _unlockables[i];
                 switch (unlockable.ID)
                 {
-                    case UnlockableID.Automatons:
-                        if (_milestones.AutomatonsUnlocked)
+                    case UnlockableID.KillAutomaton:
+                        if (_milestones.KillAutomatonUnlocked)
                         {
                             unlockable.Unlock();
                         }
                         break;
-                    case UnlockableID.Generators:
-                        if (_milestones.GeneratorsUnlocked)
+                    case UnlockableID.PurchasingAutomaton:
+                        if (_milestones.PurchasingAutomatonUnlocked)
                         {
                             unlockable.Unlock();
                         }
@@ -59,10 +59,10 @@ namespace DotsKiller.Unlocking
                 Unlockable unlockable = _unlockables[i];
                 switch (unlockable.ID)
                 {
-                    case UnlockableID.Automatons:
+                    case UnlockableID.KillAutomaton:
                         unlockable.Lock();
                         break;
-                    case UnlockableID.Generators:
+                    case UnlockableID.PurchasingAutomaton:
                         unlockable.Lock();
                         break;
                     default:

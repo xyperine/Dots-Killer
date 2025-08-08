@@ -17,18 +17,18 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: a7cb2d33992a9184fb4fc160df447fb8, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 8621218275935125670
+    - rid: 265930281649963109
   m_TableData:
   - m_Id: 178553974210560
     m_Localized: x1,25 puntos de ganancia
     m_Metadata:
       m_Items: []
   - m_Id: 178553982599168
-    m_Localized: "Desbloquear aut\xF3matas"
+    m_Localized: "Desbloquear mata al aut\xF3mata"
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793472
-    m_Localized: Desbloquear generadores
+    m_Localized: "Desbloquear el aut\xF3mata de compras"
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793473
@@ -39,21 +39,17 @@ MonoBehaviour:
     m_Localized: Multiplicador de ingresos por puntos basado en la cantidad de mejoras
     m_Metadata:
       m_Items: []
-  - m_Id: 178553990987777
-    m_Localized: Multiplicador de generador basado en puntos por muerte
-    m_Metadata:
-      m_Items: []
-  - m_Id: 310041780731904
-    m_Localized: <color=#{color}>{threshold}</color> Mata
+  - m_Id: 8662815559958528
+    m_Localized: <color=#{color}>{threshold}</color>  Mata
     m_Metadata:
       m_Items:
-      - rid: 8621218275935125670
+      - rid: 265930281649963109
   references:
     version: 2
     RefIds:
-    - rid: 8621218275935125670
+    - rid: 265930281649963109
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
-        - id: 310041780731904
+        - id: 8662815559958528

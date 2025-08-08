@@ -5,17 +5,18 @@ using UnityEngine;
 namespace DotsKiller.Automatons
 {
     //TODO: Move some data definition to sheets
-    public abstract class Automaton : MonoBehaviour
+    public abstract class Automaton : MonoBehaviour, IPurchaseLockTarget
     {
         [SerializeField] protected float ticksPerSecond;
 
+        private bool _active;
+        private float _previousFrameActionsRemainder;
+        
         protected AutomatonUpgrades upgrades;
 
         protected float tickInterval;
         protected float timeSinceLastAction;
         
-        private float _previousFrameActionsRemainder;
-
         public float Tickspeed { get; private set; }
         public float ActionsPerTick { get; private set; }
         
@@ -33,6 +34,11 @@ namespace DotsKiller.Automatons
         
         private void Update()
         {
+            if (!_active)
+            {
+                return;
+            }
+            
             tickInterval = CalculateTickInterval();
 
             Tickspeed = 1f / tickInterval;
@@ -87,6 +93,13 @@ namespace DotsKiller.Automatons
 
         protected abstract void PerformActions(int amount);
 
+
+        public void Activate()
+        {
+            _active = true;
+            SetStatus(true);
+        }
+        
 
         public void SetStatus(bool value)
         {

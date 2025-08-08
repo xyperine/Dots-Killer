@@ -17,18 +17,18 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: a7cb2d33992a9184fb4fc160df447fb8, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 8621218275935125668
+    - rid: 265930281649963106
   m_TableData:
   - m_Id: 178553974210560
     m_Localized: "\u83B7\u5F97 1.25 \u70B9\u79EF\u5206"
     m_Metadata:
       m_Items: []
   - m_Id: 178553982599168
-    m_Localized: "\u89E3\u9501\u81EA\u52A8\u673A"
+    m_Localized: "\u89E3\u9501\u6740\u6B7B\u81EA\u52A8\u673A"
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793472
-    m_Localized: "\u89E3\u9501\u53D1\u7535\u673A"
+    m_Localized: "\u89E3\u9501\u8D2D\u4E70\u81EA\u52A8\u673A"
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793473
@@ -39,21 +39,17 @@ MonoBehaviour:
     m_Localized: "\u6839\u636E\u5347\u7EA7\u91D1\u989D\u8BA1\u7B97\u7684\u79EF\u5206\u6536\u5165\u4E58\u6570"
     m_Metadata:
       m_Items: []
-  - m_Id: 178553990987777
-    m_Localized: "\u57FA\u4E8E\u6BCF\u6B21\u51FB\u6740\u5F97\u5206\u7684\u751F\u6210\u5668\u4E58\u6570"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 310041780731904
-    m_Localized: "<color=#{color}>{threshold}</color> \u51FB\u6740\u6570"
+  - m_Id: 8662815559958528
+    m_Localized: "<color=#{color}>{threshold}</color>  \u6740\u6B7B"
     m_Metadata:
       m_Items:
-      - rid: 8621218275935125668
+      - rid: 265930281649963106
   references:
     version: 2
     RefIds:
-    - rid: 8621218275935125668
+    - rid: 265930281649963106
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
-        - id: 310041780731904
+        - id: 8662815559958528

@@ -2,7 +2,7 @@
 {
     public enum UnlockableID
     {
-        Automatons,
-        Generators,
+        KillAutomaton,
+        PurchasingAutomaton,
     }
 }

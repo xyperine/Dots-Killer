@@ -7,7 +7,7 @@ using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 namespace DotsKiller.UI.Automatons
 {
-    public class AutomatonUI : MonoBehaviour
+    public class AutomatonUI : MonoBehaviour, IPurchaseLockTarget
     {
         [SerializeField] private Automaton automaton;
         [SerializeField] private LocalizeStringEvent tickspeedLse;
@@ -38,6 +38,12 @@ namespace DotsKiller.UI.Automatons
         public void SetStatus(bool value)
         {
             automaton.SetStatus(value);
+        }
+
+
+        public void Activate()
+        {
+            automaton.Activate();
         }
     }
 }

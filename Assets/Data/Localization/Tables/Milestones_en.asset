@@ -17,18 +17,18 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: a7cb2d33992a9184fb4fc160df447fb8, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 8621218275935125667
+    - rid: 265930281649963107
   m_TableData:
   - m_Id: 178553974210560
     m_Localized: x1.25 points gain
     m_Metadata:
       m_Items: []
   - m_Id: 178553982599168
-    m_Localized: Unlock automatons
+    m_Localized: Unlock kills automaton
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793472
-    m_Localized: Unlock generators
+    m_Localized: Unlock purchases automaton
     m_Metadata:
       m_Items: []
   - m_Id: 178553986793473
@@ -39,21 +39,17 @@ MonoBehaviour:
     m_Localized: Points income multiplier based on upgrades amount
     m_Metadata:
       m_Items: []
-  - m_Id: 178553990987777
-    m_Localized: Generator multiplier based on points per kill
-    m_Metadata:
-      m_Items: []
-  - m_Id: 310041780731904
+  - m_Id: 8662815559958528
     m_Localized: <color=#{color}>{threshold}</color> Kills
     m_Metadata:
       m_Items:
-      - rid: 8621218275935125667
+      - rid: 265930281649963107
   references:
     version: 2
     RefIds:
-    - rid: 8621218275935125667
+    - rid: 265930281649963107
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 
         m_SharedEntries:
-        - id: 310041780731904
+        - id: 8662815559958528

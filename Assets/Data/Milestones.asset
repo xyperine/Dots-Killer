@@ -27,16 +27,13 @@ MonoBehaviour:
       Reward: x1.25 points gain
     - ID: 1
       KillsThreshold: 500
-      Reward: Unlock automatons
+      Reward: Unlock kills automaton
     - ID: 2
-      KillsThreshold: 1000
-      Reward: Unlock generators
+      KillsThreshold: 25000
+      Reward: Unlock purchases automaton
     - ID: 3
       KillsThreshold: 5000
       Reward: ^1.5 to 1st upgrade power
     - ID: 4
-      KillsThreshold: 10000
+      KillsThreshold: 1000
       Reward: Points income multiplier based on upgrades amount
-    - ID: 5
-      KillsThreshold: 50000
-      Reward: Generator multiplier based on points per kill

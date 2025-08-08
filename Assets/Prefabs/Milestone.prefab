@@ -167,7 +167,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:a7cb2d33992a9184fb4fc160df447fb8
     m_TableEntryReference:
-      m_KeyId: 310041780731904
+      m_KeyId: 8662815559958528
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -525,7 +525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardLse: {fileID: 8935478003047542318}
   thresholdLse: {fileID: 6081523357183178378}
-  thresholdText: {fileID: 1235733926310793536}
   achievedFrameObject: {fileID: 6899633732645353078}
   milestone: {fileID: 2752678042380548191}
   thresholdValueColor: {r: 0.8509804, g: 0.20392157, b: 0.4, a: 1}

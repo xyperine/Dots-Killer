@@ -20,5 +20,7 @@ namespace DotsKiller.SaveSystem
         public BigDouble Points { get; set; }
         public BigDouble Shards { get; set; }
         public BigDouble TotalPoints { get; set; }
+
+        public List<PurchaseLockID> UnlockedPurchasables { get; set; } = new List<PurchaseLockID>();
     }
 }
