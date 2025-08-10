@@ -27,8 +27,8 @@ MonoBehaviour:
       Name: Tickspeed
       Description: 
       Price: 1000
-      PriceScaling: 10
-      MaxLevel: 25
+      PriceScaling: 50
+      MaxLevel: 10
     - ID: 1
       AutomatonID: 1
       Name: Tickspeed
@@ -41,7 +41,7 @@ MonoBehaviour:
       Name: Actions Per Tick
       Description: 
       Price: 1.00E+07
-      PriceScaling: 100
+      PriceScaling: 1000
       MaxLevel: 10
     - ID: 3
       AutomatonID: 1

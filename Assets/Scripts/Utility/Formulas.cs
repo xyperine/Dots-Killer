@@ -14,13 +14,13 @@ namespace DotsKiller.Utility
             const int fullFieldThreshold = 5000;
             const int cleanFieldThreshold = 1;
             return Mathf.InverseLerp(Mathf.Log10(fullFieldThreshold), Mathf.Log10(cleanFieldThreshold + 1f),
-                Mathf.Log10(amountAlive + 1f)) * level + BigDouble.One;
+                Mathf.Log10(amountAlive + 1f)) * level*level + BigDouble.One;
         }
         
         
-        public static BigDouble CalculateTimeFactor(double seconds)
+        public static BigDouble CalculateTimeFactor(double seconds, int level)
         {
-            return Math.Pow(seconds / 100_000d, 0.6d) * 5f + BigDouble.One;
+            return Math.Pow(seconds / 100_000d, 0.6d) * 5f * level + BigDouble.One;
         }
 
 

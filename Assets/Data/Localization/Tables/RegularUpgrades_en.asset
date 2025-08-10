@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 319183664758784
-    m_Localized: Chance to get x2 points for a kill
+    m_Localized: Chance to get x10 points for a kill
     m_Metadata:
       m_Items: []
   - m_Id: 319378485985280
@@ -80,6 +80,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 322230847586304
     m_Localized: Boosts all other upgrades by x1.01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10248544052363264
+    m_Localized: Bomb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10248544090112000
+    m_Localized: Clicks kill in area
     m_Metadata:
       m_Items: []
   references:

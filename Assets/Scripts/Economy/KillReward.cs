@@ -42,7 +42,7 @@ namespace DotsKiller.Economy
                     
                     if (_regularUpgrades.BountyChancePercent >= Random.Range(0f, 100f))
                     {
-                        pointsReward *= 2f;
+                        pointsReward *= _regularUpgrades.BountyMultiplier;
                     }
                     
                     _balance.Add(pointsReward, currency);

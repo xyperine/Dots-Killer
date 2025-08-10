@@ -37,3 +37,6 @@ MonoBehaviour:
     - ID: 4
       KillsThreshold: 1000
       Reward: Points income multiplier based on upgrades amount
+    - ID: 5
+      KillsThreshold: 10000
+      Reward: Free level to all upgrades

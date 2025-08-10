@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: RegularUpgrades.Boost.Name
     m_Metadata:
       m_Items: []
+  - m_Id: 10248544052363264
+    m_Key: RegularUpgrades.Bomb.Name
+    m_Metadata:
+      m_Items: []
   - m_Id: 1815319199744
     m_Key: RegularUpgrades.PointsOnKill.Description
     m_Metadata:
@@ -77,6 +81,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 322230847586304
     m_Key: RegularUpgrades.Boost.Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10248544090112000
+    m_Key: RegularUpgrades.Bomb.Description
     m_Metadata:
       m_Items: []
   m_Metadata:

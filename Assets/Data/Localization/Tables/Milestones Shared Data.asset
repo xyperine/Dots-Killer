@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: Milestones.Milestone5.Reward
     m_Metadata:
       m_Items: []
+  - m_Id: 9367611065548800
+    m_Key: Milestones.Milestone6.Reward
+    m_Metadata:
+      m_Items: []
   - m_Id: 8662815559958528
     m_Key: Milestones.KillsText
     m_Metadata:

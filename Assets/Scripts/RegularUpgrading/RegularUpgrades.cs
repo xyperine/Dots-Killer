@@ -25,9 +25,11 @@ namespace DotsKiller.RegularUpgrading
         public BigDouble CleanFactor { get; private set; } = BigDouble.One;
         public BigDouble TimeFactor { get; private set; } = BigDouble.One;
         public float BountyChancePercent { get; private set; } = 0f;
+        public float BountyMultiplier { get; private set; } = 10f;
         public BigDouble AccumulationFactor { get; private set; } = BigDouble.One;
         public BigDouble GrowthExponent { get; private set; } = BigDouble.One;
         public BigDouble BoostMultiplier { get; private set; } = BigDouble.One;
+        public bool AoeClicks { get; private set; } = false;
 
 
         [Inject]
@@ -102,6 +104,11 @@ namespace DotsKiller.RegularUpgrading
 
         private void SetAppropriateValue(int id, int level)
         {
+            if (id == 8)
+            {
+                AoeClicks = level > 0;
+            }
+            
             BigDouble bonus = GetBonus(id, level);
             switch (id)
             {
@@ -137,14 +144,19 @@ namespace DotsKiller.RegularUpgrading
 
         public BigDouble GetBonus(int id, int level)
         {
+            if (_milestones.FreeLevelToUpgrades)
+            {
+                level++;
+            }
+
             BigDouble bonus = id switch
             {
                 0 => BigDouble.Pow(1f * level, _milestones.FirstUpgradeBoost),
                 1 => BigDouble.Log10(_stats.Kills + BigDouble.One) * level + BigDouble.One,
                 2 => Formulas.CalculateCleanFactor(_dotsTracker.AmountAlive, level),
-                3 => level == 0 ? BigDouble.One : Formulas.CalculateTimeFactor(_stats.TotalPlaytime.TotalSeconds),
+                3 => level == 0 ? BigDouble.One : Formulas.CalculateTimeFactor(_stats.TotalPlaytime.TotalSeconds, level),
                 4 => 10f * level,
-                5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() + BigDouble.One,
+                5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() * 0.7f * level + BigDouble.One,
                 6 => (0.05f * level) + BigDouble.One,
                 7 => (0.01f * level) + BigDouble.One,
                 _ => BigDouble.One,
@@ -195,7 +207,15 @@ namespace DotsKiller.RegularUpgrading
         public string GetNameEntryName(int id)
         {
             string tableName = "RegularUpgrades";
-            string entryName = id switch
+            string entryName = GetEntryName(id);
+
+            return string.Join('.', tableName, entryName, "Name");
+        }
+
+
+        private string GetEntryName(int id)
+        {
+            return id switch
             {
                 0 => "PointsOnKill",
                 1 => "KillsFactor",
@@ -205,28 +225,16 @@ namespace DotsKiller.RegularUpgrading
                 5 => "AccumulationFactor",
                 6 => "Growth",
                 7 => "Boost",
+                8 => "Bomb",
                 _ => "",
             };
-
-            return string.Join('.', tableName, entryName, "Name");
         }
         
         
         public string GetDescriptionEntryName(int id)
         {
             string tableName = "RegularUpgrades";
-            string entryName = id switch
-            {
-                0 => "PointsOnKill",
-                1 => "KillsFactor",
-                2 => "CleanFactor",
-                3 => "TimeFactor",
-                4 => "Bounty",
-                5 => "AccumulationFactor",
-                6 => "Growth",
-                7 => "Boost",
-                _ => "",
-            };
+            string entryName = GetEntryName(id);
 
             return string.Join('.', tableName, entryName, "Description");
         }
@@ -260,6 +268,7 @@ namespace DotsKiller.RegularUpgrading
                 5 => "x",
                 6 => "^",
                 7 => "x",
+                8 => string.Empty,
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null),
             };
         }
@@ -277,6 +286,7 @@ namespace DotsKiller.RegularUpgrading
                 5 => string.Empty,
                 6 => string.Empty,
                 7 => string.Empty,
+                8 => string.Empty,
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null),
             };
         }

@@ -20,7 +20,7 @@ namespace DotsKiller.MilestonesLogic
         public bool PurchasingAutomatonUnlocked { get; private set; } = false; // Old generators unlocked
         public BigDouble FirstUpgradeBoost { get; private set; } = BigDouble.One;
         public BigDouble UpgradesFactor { get; private set; } = BigDouble.One;
-        public BigDouble GeneratorsBoost { get; private set; } = BigDouble.One;
+        public bool FreeLevelToUpgrades { get; private set; } = false;
 
 
         [Inject]
@@ -74,13 +74,13 @@ namespace DotsKiller.MilestonesLogic
                     PurchasingAutomatonUnlocked = true;
                     break;
                 case 3:
-                    FirstUpgradeBoost = 1.5d;
+                    FirstUpgradeBoost = 2d;
                     break;
                 case 4:
                     UpgradesFactor = _stats.RegularUpgradesBought + BigDouble.One;
                     break;
                 case 5:
-                    GeneratorsBoost = BigDouble.One; // 10% of points per kill or smth
+                    FreeLevelToUpgrades = true;
                     break;
             }
         }
@@ -130,7 +130,7 @@ namespace DotsKiller.MilestonesLogic
             PurchasingAutomatonUnlocked = false;
             FirstUpgradeBoost = BigDouble.One;
             UpgradesFactor = BigDouble.One;
-            GeneratorsBoost = BigDouble.One;
+            FreeLevelToUpgrades = false;
         }
     }
 }

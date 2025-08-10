@@ -11,6 +11,12 @@ namespace DotsKiller
 
         private void OnMouseDown()
         {
+            Click();
+        }
+
+
+        public void Click()
+        {
             OnClicked?.Invoke();
         }
     }

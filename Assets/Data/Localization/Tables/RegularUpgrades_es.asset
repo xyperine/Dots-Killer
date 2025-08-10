@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 319183664758784
-    m_Localized: Oportunidad de obtener x2 puntos por una muerte
+    m_Localized: Oportunidad de obtener x10 puntos por una muerte
     m_Metadata:
       m_Items: []
   - m_Id: 319378485985280
@@ -83,6 +83,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 322130695995392
     m_Localized: Aumentar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10248544052363264
+    m_Localized: Bomba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10248544090112000
+    m_Localized: "Los clics matan en el \xE1rea"
     m_Metadata:
       m_Items: []
   references:
