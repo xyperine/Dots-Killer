@@ -33,7 +33,7 @@ MonoBehaviour:
       Reward: Unlock purchases automaton
     - ID: 3
       KillsThreshold: 5000
-      Reward: ^1.5 to 1st upgrade power
+      Reward: ^2 to 1st upgrade power
     - ID: 4
       KillsThreshold: 1000
       Reward: Points income multiplier based on upgrades amount
