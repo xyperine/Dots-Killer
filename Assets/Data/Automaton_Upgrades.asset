@@ -26,7 +26,7 @@ MonoBehaviour:
       AutomatonID: 0
       Name: Tickspeed
       Description: 
-      Price: 1000
+      Price: 10000
       PriceScaling: 50
       MaxLevel: 10
     - ID: 1
