@@ -20,7 +20,7 @@ namespace DotsKiller.UI
 
         private void Update()
         {
-            backgroundOverlay.SetActive(_activePopup is {activeInHierarchy: true});
+            backgroundOverlay.SetActive(_activePopup != null && _activePopup.activeInHierarchy);
         }
     }
     
