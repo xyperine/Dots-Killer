@@ -19,10 +19,9 @@ namespace DotsKiller
 
             if (GameStateHandler.Loaded)
             {
-                if (GameStateHandler.State.FirstTimePlayedAt == DateTime.MaxValue)
+                if (GameStateHandler.State.FirstTimePlayedAt == default)
                 {
-                    FirstTimePlayedAt = GameStartedAt;
-                    GameStateHandler.State.FirstTimePlayedAt = FirstTimePlayedAt;
+                    OnFirstLaunch();
                     return;
                 }
                 
@@ -30,8 +29,15 @@ namespace DotsKiller
             }
             else
             {
-                FirstTimePlayedAt = GameStartedAt;
+                OnFirstLaunch();
             }
+        }
+
+
+        private void OnFirstLaunch()
+        {
+            FirstTimePlayedAt = GameStartedAt;
+            GameStateHandler.State.FirstTimePlayedAt = FirstTimePlayedAt;
         }
     }
 }
