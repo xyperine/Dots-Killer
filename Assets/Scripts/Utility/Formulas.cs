@@ -20,7 +20,7 @@ namespace DotsKiller.Utility
         
         public static BigDouble CalculateTimeFactor(double seconds, int level)
         {
-            return Math.Pow(seconds / 100_000d, 0.6d) * 5f * level + BigDouble.One;
+            return Math.Pow(seconds / 80_000d, 0.6d) * 6d * level + BigDouble.One;
         }
 
 
