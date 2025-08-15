@@ -56,7 +56,7 @@ namespace DotsKiller.UI
 
         public void Perform()
         {
-            if (PlayerPrefs.GetInt("ShowPurgeResetPopup") == 1)
+            if (PlayerPrefs.GetInt(PlayerPrefsKeys.SHOW_PURGE_RESET_POPUP) == 1)
             {
                 _purge.Perform();
                 return;
@@ -70,7 +70,7 @@ namespace DotsKiller.UI
         [Button]
         private void ClearPref()
         {
-            PlayerPrefs.DeleteKey("ShowPurgeResetPopup");
+            PlayerPrefs.DeleteKey(PlayerPrefsKeys.SHOW_PURGE_RESET_POPUP);
         }
     }
 }

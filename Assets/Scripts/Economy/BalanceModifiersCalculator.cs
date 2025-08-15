@@ -1,6 +1,7 @@
 ﻿using BreakInfinity;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
+using DotsKiller.StatsLogic;
 using UnityEngine;
 using Zenject;
 
@@ -10,13 +11,15 @@ namespace DotsKiller.Economy
     {
         private RegularUpgrades _regularUpgrades;
         private Milestones _milestones;
+        private Stats _stats;
 
 
         [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones)
+        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones, Stats stats)
         {
             _regularUpgrades = regularUpgrades;
             _milestones = milestones;
+            _stats = stats;
         }
         
         
@@ -29,7 +32,8 @@ namespace DotsKiller.Economy
             multiplier *= _milestones.PointsIncomeMultiplier;
             multiplier *= _milestones.UpgradesFactor;
 
-            BigDouble exponent = _regularUpgrades.GrowthExponent;
+            BigDouble exponent = _stats.PointsIncomeExponent;
+            exponent *= _regularUpgrades.GrowthExponent;
 
             amount = BigDouble.Pow(amount * multiplier, exponent);
             return amount;

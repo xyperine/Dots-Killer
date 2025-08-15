@@ -22,5 +22,7 @@ namespace DotsKiller.SaveSystem
         public BigDouble TotalPoints { get; set; }
 
         public List<PurchaseLockID> UnlockedPurchasables { get; set; } = new List<PurchaseLockID>();
+        
+        public BigDouble RecalibrationExponent { get; set; } = BigDouble.One;
     }
 }

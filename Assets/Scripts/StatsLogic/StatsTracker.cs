@@ -8,7 +8,7 @@ using Zenject;
 
 namespace DotsKiller.StatsLogic
 {
-    public class StatsTracker : MonoBehaviour
+    public class StatsTracker : MonoBehaviour, IRecalibrationTarget
     {
         [SerializeField] private Stats stats;
         
@@ -16,15 +16,18 @@ namespace DotsKiller.StatsLogic
         private GameClock _gameClock;
         private RegularUpgrades _regularUpgrades;
         private BalanceModifiersCalculator _balanceModifiersCalculator;
+        private Recalibration _recalibration;
 
 
         [Inject]
-        public void Initialize(Balance balance, GameClock gameClock, RegularUpgrades regularUpgrades, BalanceModifiersCalculator balanceModifiersCalculator)
+        public void Initialize(Balance balance, GameClock gameClock, RegularUpgrades regularUpgrades,
+            BalanceModifiersCalculator balanceModifiersCalculator, Recalibration recalibration)
         {
             _balance = balance;
             _gameClock = gameClock;
             _regularUpgrades = regularUpgrades;
             _balanceModifiersCalculator = balanceModifiersCalculator;
+            _recalibration = recalibration;
         }
 
 
@@ -49,6 +52,8 @@ namespace DotsKiller.StatsLogic
             BigDouble baseReward = BigDouble.One;
             stats.PointsPerKill =
                 _balanceModifiersCalculator.ApplyPointsModifiers(baseReward + _regularUpgrades.PointsOnKill);
+
+            stats.PointsIncomeExponent = _recalibration.CurrentExponent;
         }
 
 
@@ -61,6 +66,17 @@ namespace DotsKiller.StatsLogic
             
             GameStateHandler.State.Kills = stats.Kills;
             GameStateHandler.State.Purges = stats.Purges;
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Stats");
+            
+            stats.Kills = BigDouble.Zero;
+            stats.PointsIncomeExponent = _recalibration.CurrentExponent;
+
+            GameStateHandler.State.Kills = stats.Kills;
         }
     }
 }

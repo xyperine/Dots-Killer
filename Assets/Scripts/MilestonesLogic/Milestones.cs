@@ -6,7 +6,7 @@ using Zenject;
 
 namespace DotsKiller.MilestonesLogic
 {
-    public class Milestones : MonoBehaviour
+    public class Milestones : MonoBehaviour, IRecalibrationTarget
     {
         [SerializeField] private MilestonesSO milestonesSO;
         [SerializeField] private List<Milestone> milestones;
@@ -125,6 +125,19 @@ namespace DotsKiller.MilestonesLogic
 
         public void OnPurge()
         {
+            PointsIncomeMultiplier = BigDouble.One;
+            KillAutomatonUnlocked  = false;
+            PurchasingAutomatonUnlocked = false;
+            FirstUpgradeBoost = BigDouble.One;
+            UpgradesFactor = BigDouble.One;
+            FreeLevelToUpgrades = false;
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Milestones");
+            
             PointsIncomeMultiplier = BigDouble.One;
             KillAutomatonUnlocked  = false;
             PurchasingAutomatonUnlocked = false;

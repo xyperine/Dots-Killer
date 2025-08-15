@@ -39,6 +39,11 @@ MonoBehaviour:
     m_Localized: Do not show again
     m_Metadata:
       m_Items: []
+  - m_Id: 3649675625545728
+    m_Localized: You are about to perform a recalibration! Your points, kills, and
+      upgrades will reset!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

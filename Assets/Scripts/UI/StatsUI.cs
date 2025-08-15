@@ -31,6 +31,7 @@ namespace DotsKiller.UI
             statUIs[2].SetText("PointsPerKill", Formatting.DefaultFormat(_stats.PointsPerKill));
             statUIs[3].SetText("TotalPlaytime", ConstructTotalPlaytimeString());
             statUIs[4].SetText("Purges", Formatting.DefaultFormat(_stats.Purges));
+            statUIs[5].SetText("PointsIncomeExponent", "^" + Formatting.DefaultFormat(_stats.PointsIncomeExponent));
         }
 
 

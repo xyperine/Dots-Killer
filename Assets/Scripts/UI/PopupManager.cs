@@ -28,5 +28,13 @@ namespace DotsKiller.UI
     public enum PopupID
     {
         PurgeReset,
+        RecalibrationReset,
+    }
+
+
+    public static class PlayerPrefsKeys
+    {
+        public const string SHOW_PURGE_RESET_POPUP = "ShowPurgeResetPopup";
+        public const string SHOW_RECALIBRATION_RESET_POPUP = "ShowRecalibrationResetPopup";
     }
 }

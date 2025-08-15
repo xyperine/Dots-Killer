@@ -39,6 +39,11 @@ MonoBehaviour:
     m_Localized: No volver a mostrar
     m_Metadata:
       m_Items: []
+  - m_Id: 3649675625545728
+    m_Localized: "\xA1Est\xE1s a punto de realizar una recalibraci\xF3n! \xA1Tus
+      puntos, bajas y mejoras se reiniciar\xE1n!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

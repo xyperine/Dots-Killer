@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DotsKiller.Automatons.Upgrades
 {
-    public class AutomatonUpgrades : MonoBehaviour
+    public class AutomatonUpgrades : MonoBehaviour, IRecalibrationTarget
     {
         [SerializeField] private AutomatonUpgradesSO automatonUpgradesSO;
         [SerializeField] private List<AutomatonUpgrade> upgrades;
@@ -207,6 +207,17 @@ namespace DotsKiller.Automatons.Upgrades
         {
             Debug.Log("Automaton upgrades reset");
 
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].OnPrestige();
+            }
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Automaton Upgrades");
+            
             for (int i = 0; i < upgrades.Count; i++)
             {
                 upgrades[i].OnPrestige();

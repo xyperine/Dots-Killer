@@ -9,6 +9,14 @@ namespace DotsKiller.Utility
         public static BigDouble Limit { get; } = new BigDouble(1f, 1_000_000_000_000_000);
 
 
+        public static BigDouble CalculateRecalibrationExponent(BigDouble totalPoints, BigDouble recalibrationPointsThreshold)
+        {
+            BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
+            BigDouble x = BigDouble.Max(BigDouble.One, BigDouble.Log2(adjustedPoints));
+            return BigDouble.Log10(x) + BigDouble.One;
+        }
+
+
         public static BigDouble CalculateCleanFactor(int amountAlive, int level)
         {
             const int fullFieldThreshold = 5000;
@@ -16,8 +24,8 @@ namespace DotsKiller.Utility
             return Mathf.InverseLerp(Mathf.Log10(fullFieldThreshold), Mathf.Log10(cleanFieldThreshold + 1f),
                 Mathf.Log10(amountAlive + 1f)) * level*level + BigDouble.One;
         }
-        
-        
+
+
         public static BigDouble CalculateTimeFactor(double seconds, int level)
         {
             return Math.Pow(seconds / 80_000d, 0.6d) * 6d * level + BigDouble.One;

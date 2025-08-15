@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DotsKiller.Dots
 {
-    public class DotsTracker : MonoBehaviour
+    public class DotsTracker : MonoBehaviour, IRecalibrationTarget
     {
         public List<Dot> ActiveDots { get; private set; } = new List<Dot>();
 
@@ -32,6 +32,18 @@ namespace DotsKiller.Dots
         {
             Debug.Log("Dots reset (all dead haha)");
 
+            for (int i = ActiveDots.Count - 1; i >= 0; i--)
+            {
+                ActiveDots[i].Dispose();
+                ActiveDots.RemoveAt(i);
+            }
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Dots Tracker");
+            
             for (int i = ActiveDots.Count - 1; i >= 0; i--)
             {
                 ActiveDots[i].Dispose();

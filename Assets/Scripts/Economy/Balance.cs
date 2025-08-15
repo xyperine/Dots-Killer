@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DotsKiller.Economy
 {
-    public class Balance : MonoBehaviour
+    public class Balance : MonoBehaviour, IRecalibrationTarget
     {
         [SerializeField] private BigDouble startingPoints = BigDouble.Zero;
         [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;
@@ -101,6 +101,18 @@ namespace DotsKiller.Economy
         {
             GameStateHandler.State.Points = Points;
             GameStateHandler.State.Shards = Shards;
+            GameStateHandler.State.TotalPoints = TotalPoints;
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Balance");
+            
+            Currencies[Currency.Points] = startingPoints;
+            TotalPoints = Points;
+
+            GameStateHandler.State.Points = Points;
             GameStateHandler.State.TotalPoints = TotalPoints;
         }
     }

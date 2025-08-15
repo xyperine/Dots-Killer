@@ -39,7 +39,7 @@ namespace DotsKiller.RegularUpgrading
 
         private void Start()
         {
-            Load();
+            //Load();
         }
 
 
@@ -65,6 +65,12 @@ namespace DotsKiller.RegularUpgrading
         
 
         private void Update()
+        {
+            Save();
+        }
+
+
+        private void Save()
         {
             if (!GameStateHandler.State.RegularUpgradeLevels.TryAdd(ID, Level))
             {
@@ -94,6 +100,8 @@ namespace DotsKiller.RegularUpgrading
         public void OnPrestige()
         {
             purchasable.Clear();
+            
+            Save();
         }
     }
 }

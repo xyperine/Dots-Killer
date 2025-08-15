@@ -6,7 +6,7 @@ using Zenject;
 
 namespace DotsKiller.Unlocking
 {
-    public class UnlockablesManager : MonoBehaviour
+    public class UnlockablesManager : MonoBehaviour, IRecalibrationTarget
     {
         private readonly List<Unlockable> _unlockables = new List<Unlockable>();
 
@@ -54,6 +54,28 @@ namespace DotsKiller.Unlocking
 
         public void OnPurge()
         {
+            for (int i = 0; i < _unlockables.Count; i++)
+            {
+                Unlockable unlockable = _unlockables[i];
+                switch (unlockable.ID)
+                {
+                    case UnlockableID.KillAutomaton:
+                        unlockable.Lock();
+                        break;
+                    case UnlockableID.PurchasingAutomaton:
+                        unlockable.Lock();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Unlockables Manager");
+            
             for (int i = 0; i < _unlockables.Count; i++)
             {
                 Unlockable unlockable = _unlockables[i];

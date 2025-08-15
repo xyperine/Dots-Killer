@@ -3,17 +3,17 @@ using Zenject;
 
 namespace DotsKiller.UI
 {
-    public class PurgeResetPopupUI : MonoBehaviour
+    public class RecalibrationResetPopupUI : MonoBehaviour
     {
         [SerializeField] private GameObject popupObject;
 
-        private Purge _purge;
+        private Recalibration _recalibration;
 
 
         [Inject]
-        public void Initialize(Purge purge)
+        public void Initialize(Recalibration recalibration)
         {
-            _purge = purge;
+            _recalibration = recalibration;
         }
         
         
@@ -25,7 +25,7 @@ namespace DotsKiller.UI
 
         public void Confirm()
         {
-            _purge.Perform();
+            _recalibration.Perform();
             
             popupObject.SetActive(false);
         }
@@ -40,7 +40,7 @@ namespace DotsKiller.UI
         public void SetDoNotShowAgain(bool value)
         {
             int i = value ? 1 : 0;
-            PlayerPrefs.SetInt(PlayerPrefsKeys.SHOW_PURGE_RESET_POPUP, i);
+            PlayerPrefs.SetInt(PlayerPrefsKeys.SHOW_RECALIBRATION_RESET_POPUP, i);
         }
     }
 }

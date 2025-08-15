@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: 'Purges:'
     m_Metadata:
       m_Items: []
+  - m_Id: 6185878744776704
+    m_Localized: 'Points Income Exponent:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -28,26 +28,27 @@ namespace DotsKiller
         [SerializeField] private GameObject dotPrefab;
         [SerializeField] private Purge purge;
         [SerializeField] private PopupManager popupManager;
+        [SerializeField] private Recalibration recalibration;
         
         
         public override void InstallBindings()
         {
-            Container.Bind<Balance>().FromInstance(balance).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<Balance>().FromInstance(balance).AsSingle().NonLazy();
             
             Container.Bind<BalanceModifiersCalculator>().FromInstance(balanceModifiersCalculator).AsSingle().NonLazy();
             
             Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
 
-            Container.Bind<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
             
-            Container.Bind<AutomatonUpgrades>().FromInstance(automatonUpgrades).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<AutomatonUpgrades>().FromInstance(automatonUpgrades).AsSingle().NonLazy();
 
-            Container.Bind<Milestones>().FromInstance(milestones).AsCached().NonLazy();
+            Container.BindInterfacesAndSelfTo<Milestones>().FromInstance(milestones).AsCached().NonLazy();
             
-            Container.Bind<UnlockablesManager>().FromInstance(unlockablesManager).AsCached().NonLazy();
+            Container.BindInterfacesAndSelfTo<UnlockablesManager>().FromInstance(unlockablesManager).AsCached().NonLazy();
 
             Container.Bind<Stats>().FromInstance(stats).AsSingle().NonLazy();
-            Container.Bind<StatsTracker>().FromInstance(statsTracker).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StatsTracker>().FromInstance(statsTracker).AsSingle().NonLazy();
 
             Container.Bind<GameClock>().FromInstance(gameClock).AsSingle().NonLazy();
             
@@ -57,11 +58,13 @@ namespace DotsKiller
                     .WithInitialSize(10)
                     .FromComponentInNewPrefab(dotPrefab)
                     .UnderTransformGroup("Dots"));
-            Container.Bind<DotsTracker>().FromInstance(dotsTracker).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<DotsTracker>().FromInstance(dotsTracker).AsSingle().NonLazy();
 
             Container.Bind<Purge>().FromInstance(purge).AsSingle().NonLazy();
             
             Container.Bind<PopupManager>().FromInstance(popupManager).AsSingle().NonLazy();
+
+            Container.Bind<Recalibration>().FromInstance(recalibration).AsSingle().NonLazy();
 
             InstallSignals();
         }
@@ -77,6 +80,10 @@ namespace DotsKiller
             Container.BindSignal<PurgePerformedSignal>().ToMethod<DotsTracker>(a => a.OnPurge).FromResolve();
             Container.BindSignal<PurgePerformedSignal>().ToMethod<UnlockablesManager>(a => a.OnPurge).FromResolve();
             Container.BindSignal<PurgePerformedSignal>().ToMethod<Milestones>(a => a.OnPurge).FromResolve();
+
+            Container.DeclareSignal<RecalibrationResetSignal>();
+            Container.BindSignal<RecalibrationResetSignal>().ToMethod<IRecalibrationTarget>(t => t.OnRecalibration)
+                .FromResolveAll();
         }
     }
 }

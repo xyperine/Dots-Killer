@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: fc255b0a6eacc694b811e75efd7bcdc4
   m_Entries:
   - m_Id: 9725853696
-    m_Key: Popups.PurgeReset.Title
+    m_Key: Popups.Title.Warning
     m_Metadata:
       m_Items: []
   - m_Id: 106496835584
@@ -33,6 +33,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 392456093696
     m_Key: Popups.Actions.DoNotShowAgain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3649675625545728
+    m_Key: Popups.RecalibrationReset.Message
     m_Metadata:
       m_Items: []
   m_Metadata:

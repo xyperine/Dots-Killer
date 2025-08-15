@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: Stats.Purges.Label
     m_Metadata:
       m_Items: []
+  - m_Id: 6185878744776704
+    m_Key: Stats.PointsIncomeExponent.Label
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

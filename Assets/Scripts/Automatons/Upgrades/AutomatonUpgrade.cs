@@ -70,6 +70,12 @@ namespace DotsKiller.Automatons.Upgrades
 
         private void Update()
         {
+            Save();
+        }
+
+
+        private void Save()
+        {
             if (!GameStateHandler.State.AutomatonUpgradeLevels.TryAdd(ID, Level))
             {
                 GameStateHandler.State.AutomatonUpgradeLevels[ID] = Level;
@@ -80,6 +86,8 @@ namespace DotsKiller.Automatons.Upgrades
         public void OnPrestige()
         {
             purchasable.Clear();
+            
+            Save();
         }
     }
 }

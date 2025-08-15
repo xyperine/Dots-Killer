@@ -11,7 +11,7 @@ using Zenject;
 
 namespace DotsKiller.RegularUpgrading
 {
-    public class RegularUpgrades : MonoBehaviour
+    public class RegularUpgrades : MonoBehaviour, IRecalibrationTarget
     {
         [SerializeField] private RegularUpgradesSO regularUpgradesSO;
         [SerializeField] private List<RegularUpgrade> upgrades; 
@@ -296,6 +296,17 @@ namespace DotsKiller.RegularUpgrading
         {
             Debug.Log("Regular upgrades reset");
 
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].OnPrestige();
+            }
+        }
+
+
+        public void OnRecalibration()
+        {
+            Debug.Log("Recalibration: Regular Upgrades");
+            
             for (int i = 0; i < upgrades.Count; i++)
             {
                 upgrades[i].OnPrestige();

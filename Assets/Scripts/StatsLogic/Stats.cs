@@ -11,6 +11,7 @@ namespace DotsKiller.StatsLogic
         public BigDouble TotalPoints { get; set; } = BigDouble.Zero;
         public TimeSpan TotalPlaytime { get; set; } = TimeSpan.Zero;
         public BigDouble Purges { get; set; } = BigDouble.Zero;
+        public BigDouble PointsIncomeExponent { get; set; } = BigDouble.One;
         
         public int RegularUpgradesBought { get; set; } = 0;
     }
