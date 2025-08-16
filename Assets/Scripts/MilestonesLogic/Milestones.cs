@@ -6,7 +6,7 @@ using Zenject;
 
 namespace DotsKiller.MilestonesLogic
 {
-    public class Milestones : MonoBehaviour, IRecalibrationTarget
+    public class Milestones : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         [SerializeField] private MilestonesSO milestonesSO;
         [SerializeField] private List<Milestone> milestones;

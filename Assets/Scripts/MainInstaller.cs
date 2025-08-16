@@ -64,7 +64,7 @@ namespace DotsKiller
             
             Container.Bind<PopupManager>().FromInstance(popupManager).AsSingle().NonLazy();
 
-            Container.Bind<Recalibration>().FromInstance(recalibration).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<Recalibration>().FromInstance(recalibration).AsSingle().NonLazy();
 
             InstallSignals();
         }
@@ -73,14 +73,7 @@ namespace DotsKiller
         private void InstallSignals()
         {
             Container.DeclareSignal<PurgePerformedSignal>();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<Balance>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<StatsTracker>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<RegularUpgrades>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<AutomatonUpgrades>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<DotsTracker>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<UnlockablesManager>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<Milestones>(a => a.OnPurge).FromResolve();
-            Container.BindSignal<PurgePerformedSignal>().ToMethod<Recalibration>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<IPurgeTarget>(t => t.OnPurge).FromResolveAll();
 
             Container.DeclareSignal<RecalibrationResetSignal>();
             Container.BindSignal<RecalibrationResetSignal>().ToMethod<IRecalibrationTarget>(t => t.OnRecalibration)

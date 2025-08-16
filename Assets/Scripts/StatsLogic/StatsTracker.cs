@@ -8,7 +8,7 @@ using Zenject;
 
 namespace DotsKiller.StatsLogic
 {
-    public class StatsTracker : MonoBehaviour, IRecalibrationTarget
+    public class StatsTracker : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         [SerializeField] private Stats stats;
         

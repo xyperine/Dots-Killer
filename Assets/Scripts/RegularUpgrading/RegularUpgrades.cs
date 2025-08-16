@@ -11,7 +11,7 @@ using Zenject;
 
 namespace DotsKiller.RegularUpgrading
 {
-    public class RegularUpgrades : MonoBehaviour, IRecalibrationTarget
+    public class RegularUpgrades : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         [SerializeField] private RegularUpgradesSO regularUpgradesSO;
         [SerializeField] private List<RegularUpgrade> upgrades; 

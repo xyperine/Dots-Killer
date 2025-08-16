@@ -6,7 +6,7 @@ using Zenject;
 
 namespace DotsKiller.Unlocking
 {
-    public class UnlockablesManager : MonoBehaviour, IRecalibrationTarget
+    public class UnlockablesManager : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         private readonly List<Unlockable> _unlockables = new List<Unlockable>();
 

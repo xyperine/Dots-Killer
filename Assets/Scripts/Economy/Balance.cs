@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DotsKiller.Economy
 {
-    public class Balance : MonoBehaviour, IRecalibrationTarget
+    public class Balance : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         [SerializeField] private BigDouble startingPoints = BigDouble.Zero;
         [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;

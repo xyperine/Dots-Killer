@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DotsKiller
 {
-    public class Recalibration : MonoBehaviour
+    public class Recalibration : MonoBehaviour, IPurgeTarget
     {
         [SerializeField] private BigDouble pointsThreshold = 1e12;
         
@@ -16,7 +16,7 @@ namespace DotsKiller
 
         private BigDouble _lastRecalibrationPoints;
         
-        public bool Available => _balance.Points >= pointsThreshold && NextExponent > CurrentExponent;
+        public bool Available => _balance.Points >= pointsThreshold && _balance.TotalPoints > _lastRecalibrationPoints;
 
         //public float Progress => Mathf.Clamp01((float) (BigDouble.Log10(_balance.Points) / BigDouble.Log10(pointsThreshold)));
 

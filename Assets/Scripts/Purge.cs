@@ -40,4 +40,10 @@ namespace DotsKiller
     {
         
     }
+
+
+    public interface IPurgeTarget
+    {
+        void OnPurge();
+    }
 }

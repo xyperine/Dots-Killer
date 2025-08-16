@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DotsKiller.Automatons.Upgrades
 {
-    public class AutomatonUpgrades : MonoBehaviour, IRecalibrationTarget
+    public class AutomatonUpgrades : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         [SerializeField] private AutomatonUpgradesSO automatonUpgradesSO;
         [SerializeField] private List<AutomatonUpgrade> upgrades;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DotsKiller.Dots
 {
-    public class DotsTracker : MonoBehaviour, IRecalibrationTarget
+    public class DotsTracker : MonoBehaviour, IRecalibrationTarget, IPurgeTarget
     {
         public List<Dot> ActiveDots { get; private set; } = new List<Dot>();
 
