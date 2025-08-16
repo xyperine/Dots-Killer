@@ -31,8 +31,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 106496835584
-    m_Localized: You are about to perform a purge! Your points, kills, and upgrades
-      will reset
+    m_Localized: You are about to perform a purge! Your points, kills, upgrades,
+      and recalibration bonuses will reset!
     m_Metadata:
       m_Items: []
   - m_Id: 392456093696

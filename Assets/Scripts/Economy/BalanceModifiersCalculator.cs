@@ -12,14 +12,18 @@ namespace DotsKiller.Economy
         private RegularUpgrades _regularUpgrades;
         private Milestones _milestones;
         private Stats _stats;
+        private Recalibration _recalibration;
 
+        public BigDouble PointsIncomeExponent => _recalibration.CurrentExponent * _regularUpgrades.GrowthExponent;
+        
 
         [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones, Stats stats)
+        public void Initialize(RegularUpgrades regularUpgrades, Milestones milestones, Stats stats, Recalibration recalibration)
         {
             _regularUpgrades = regularUpgrades;
             _milestones = milestones;
             _stats = stats;
+            _recalibration = recalibration;
         }
         
         
@@ -31,9 +35,9 @@ namespace DotsKiller.Economy
             multiplier *= _regularUpgrades.AccumulationFactor;
             multiplier *= _milestones.PointsIncomeMultiplier;
             multiplier *= _milestones.UpgradesFactor;
+            multiplier *= _recalibration.CurrentMultiplier;
 
-            BigDouble exponent = _stats.PointsIncomeExponent;
-            exponent *= _regularUpgrades.GrowthExponent;
+            BigDouble exponent = PointsIncomeExponent;
 
             amount = BigDouble.Pow(amount * multiplier, exponent);
             return amount;

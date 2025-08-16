@@ -23,8 +23,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 106496835584
-    m_Localized: "\xA1Est\xE1s a punto de realizar una purga! Tus puntos, bajas y
-      mejoras se reiniciar\xE1n."
+    m_Localized: "\xA1Est\xE1s a punto de realizar una purga! \xA1Tus puntos, bajas,
+      mejoras y bonificaciones de recalibraci\xF3n se reiniciar\xE1n!"
     m_Metadata:
       m_Items: []
   - m_Id: 154928463872

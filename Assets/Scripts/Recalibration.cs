@@ -1,5 +1,4 @@
-﻿using System;
-using BreakInfinity;
+﻿using BreakInfinity;
 using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
 using DotsKiller.Utility;
@@ -15,12 +14,17 @@ namespace DotsKiller
         private Balance _balance;
         private SignalBus _signalBus;
 
+        private BigDouble _lastRecalibrationPoints;
+        
         public bool Available => _balance.Points >= pointsThreshold && NextExponent > CurrentExponent;
 
         //public float Progress => Mathf.Clamp01((float) (BigDouble.Log10(_balance.Points) / BigDouble.Log10(pointsThreshold)));
-        
+
         public BigDouble CurrentExponent { get; private set; } = BigDouble.One;
         public BigDouble NextExponent => Formulas.CalculateRecalibrationExponent(_balance.TotalPoints, pointsThreshold);
+        public BigDouble CurrentMultiplier { get; private set; } = BigDouble.One;
+        public BigDouble NextMultiplier =>
+            Formulas.CalculateRecalibrationMultiplier(_balance.TotalPoints, pointsThreshold);
 
 
         [Inject]
@@ -36,6 +40,7 @@ namespace DotsKiller
             if (GameStateHandler.Loaded)
             {
                 CurrentExponent = GameStateHandler.State.RecalibrationExponent;
+                CurrentMultiplier = GameStateHandler.State.RecalibrationMultiplier;
             }
         }
 
@@ -43,9 +48,26 @@ namespace DotsKiller
         public void Perform()
         {
             Debug.Log("Recalibration performed!");
+            
+            _lastRecalibrationPoints = _balance.TotalPoints;
             CurrentExponent = Formulas.CalculateRecalibrationExponent(_balance.TotalPoints, pointsThreshold);
+            CurrentMultiplier =  Formulas.CalculateRecalibrationMultiplier(_balance.TotalPoints, pointsThreshold);
+            
+            GameStateHandler.State.RecalibrationMultiplier = CurrentMultiplier;
             GameStateHandler.State.RecalibrationExponent = CurrentExponent;
+            
             _signalBus.Fire<RecalibrationResetSignal>();
+        }
+
+
+        public void OnPurge()
+        {
+            _lastRecalibrationPoints = BigDouble.Zero;
+            CurrentExponent = BigDouble.One;
+            CurrentMultiplier = BigDouble.One;
+            
+            GameStateHandler.State.RecalibrationMultiplier = CurrentMultiplier;
+            GameStateHandler.State.RecalibrationExponent = CurrentExponent;
         }
     }
 

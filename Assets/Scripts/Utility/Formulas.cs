@@ -11,9 +11,22 @@ namespace DotsKiller.Utility
 
         public static BigDouble CalculateRecalibrationExponent(BigDouble totalPoints, BigDouble recalibrationPointsThreshold)
         {
+            BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, (totalPoints*1000).Divide(recalibrationPointsThreshold));
+            BigDouble x = BigDouble.Max(BigDouble.One, BigDouble.Log(adjustedPoints, 1000));
+            BigDouble x1 = BigDouble.Log10(x) + BigDouble.One;
+            BigDouble x2 = BigDouble.Pow(x1, 1f);
+
+            adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
+            x = BigDouble.Max(BigDouble.One, BigDouble.Log2(adjustedPoints));
+            x1 = BigDouble.Log10(x) + BigDouble.One;
+            return x2;
+        }
+
+
+        public static BigDouble CalculateRecalibrationMultiplier(BigDouble totalPoints, BigDouble recalibrationPointsThreshold)
+        {
             BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
-            BigDouble x = BigDouble.Max(BigDouble.One, BigDouble.Log2(adjustedPoints));
-            return BigDouble.Log10(x) + BigDouble.One;
+            return BigDouble.Pow(BigDouble.Log10(adjustedPoints), 2d) + BigDouble.One;
         }
 
 

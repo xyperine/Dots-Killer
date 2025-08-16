@@ -2,6 +2,8 @@
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 using Zenject;
 
@@ -12,8 +14,12 @@ namespace DotsKiller.UI
     {
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text buttonText;
+        [SerializeField] private LocalizedStringTable recalibrationTable;
 
         private string _format;
+
+        private const string MULT_TABLE_ENTRY_KEY = "Recalibration.Button.Mult";
+        private const string EXP_TABLE_ENTRY_KEY = "Recalibration.Button.Exp";
 
         private Recalibration _recalibration;
         private PopupManager _popupManager;
@@ -37,7 +43,14 @@ namespace DotsKiller.UI
         {
             button.interactable = _recalibration.Available;
             button.gameObject.SetActive(_recalibration.Available);
-            buttonText.text = string.Format(_format, Formatting.DefaultFormat(_recalibration.CurrentExponent),
+
+            StringTable table = recalibrationTable.GetTable();
+            buttonText.text = string.Format(_format,
+                table.GetEntry(MULT_TABLE_ENTRY_KEY).Value,
+                Formatting.DefaultFormat(_recalibration.CurrentMultiplier),
+                Formatting.DefaultFormat(_recalibration.NextMultiplier),
+                table.GetEntry(EXP_TABLE_ENTRY_KEY).Value,
+                Formatting.DefaultFormat(_recalibration.CurrentExponent),
                 Formatting.DefaultFormat(_recalibration.NextExponent));
         }
 

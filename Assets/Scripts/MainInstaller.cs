@@ -80,6 +80,7 @@ namespace DotsKiller
             Container.BindSignal<PurgePerformedSignal>().ToMethod<DotsTracker>(a => a.OnPurge).FromResolve();
             Container.BindSignal<PurgePerformedSignal>().ToMethod<UnlockablesManager>(a => a.OnPurge).FromResolve();
             Container.BindSignal<PurgePerformedSignal>().ToMethod<Milestones>(a => a.OnPurge).FromResolve();
+            Container.BindSignal<PurgePerformedSignal>().ToMethod<Recalibration>(a => a.OnPurge).FromResolve();
 
             Container.DeclareSignal<RecalibrationResetSignal>();
             Container.BindSignal<RecalibrationResetSignal>().ToMethod<IRecalibrationTarget>(t => t.OnRecalibration)

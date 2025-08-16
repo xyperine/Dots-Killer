@@ -16,18 +16,16 @@ namespace DotsKiller.StatsLogic
         private GameClock _gameClock;
         private RegularUpgrades _regularUpgrades;
         private BalanceModifiersCalculator _balanceModifiersCalculator;
-        private Recalibration _recalibration;
 
 
         [Inject]
-        public void Initialize(Balance balance, GameClock gameClock, RegularUpgrades regularUpgrades,
-            BalanceModifiersCalculator balanceModifiersCalculator, Recalibration recalibration)
+        public void Initialize(Balance balance, GameClock gameClock, RegularUpgrades regularUpgrades, 
+            BalanceModifiersCalculator balanceModifiersCalculator)
         {
             _balance = balance;
             _gameClock = gameClock;
             _regularUpgrades = regularUpgrades;
             _balanceModifiersCalculator = balanceModifiersCalculator;
-            _recalibration = recalibration;
         }
 
 
@@ -53,7 +51,7 @@ namespace DotsKiller.StatsLogic
             stats.PointsPerKill =
                 _balanceModifiersCalculator.ApplyPointsModifiers(baseReward + _regularUpgrades.PointsOnKill);
 
-            stats.PointsIncomeExponent = _recalibration.CurrentExponent;
+            stats.PointsIncomeExponent = _balanceModifiersCalculator.PointsIncomeExponent;
         }
 
 
@@ -74,7 +72,7 @@ namespace DotsKiller.StatsLogic
             Debug.Log("Recalibration: Stats");
             
             stats.Kills = BigDouble.Zero;
-            stats.PointsIncomeExponent = _recalibration.CurrentExponent;
+            stats.PointsIncomeExponent = _balanceModifiersCalculator.PointsIncomeExponent;
 
             GameStateHandler.State.Kills = stats.Kills;
         }
