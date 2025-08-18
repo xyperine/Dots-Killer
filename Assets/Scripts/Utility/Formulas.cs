@@ -26,7 +26,11 @@ namespace DotsKiller.Utility
         public static BigDouble CalculateRecalibrationMultiplier(BigDouble totalPoints, BigDouble recalibrationPointsThreshold)
         {
             BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
-            return BigDouble.Pow(BigDouble.Log10(adjustedPoints), 2d) + BigDouble.One;
+            BigDouble l = BigDouble.Log10(adjustedPoints);
+            double e = 4d;
+            double a = 8d;
+            BigDouble y = BigDouble.Pow(l, e) * a + BigDouble.One;
+            return y;
         }
 
 
