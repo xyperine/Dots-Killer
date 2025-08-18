@@ -11,15 +11,50 @@ namespace DotsKiller.Utility
 
         public static BigDouble CalculateRecalibrationExponent(BigDouble totalPoints, BigDouble recalibrationPointsThreshold)
         {
-            BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, (totalPoints*1000).Divide(recalibrationPointsThreshold));
-            BigDouble x = BigDouble.Max(BigDouble.One, BigDouble.Log(adjustedPoints, 1000));
-            BigDouble x1 = BigDouble.Log10(x) + BigDouble.One;
-            BigDouble x2 = BigDouble.Pow(x1, 1f);
+            BigDouble Formula1()
+            {
+                BigDouble adjustedPoints = BigDouble.Max(BigDouble.One, (totalPoints*1000).Divide(recalibrationPointsThreshold));
+                BigDouble x = BigDouble.Max(BigDouble.One, BigDouble.Log(adjustedPoints, 1000));
+                BigDouble x1 = BigDouble.Log10(x) + BigDouble.One;
+                BigDouble x2 = BigDouble.Pow(x1, 1f);
+                return x2;
+            }
 
-            adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
-            x = BigDouble.Max(BigDouble.One, BigDouble.Log2(adjustedPoints));
-            x1 = BigDouble.Log10(x) + BigDouble.One;
-            return x2;
+            BigDouble Formula2()
+            {
+                var adjustedPoints = BigDouble.Max(BigDouble.One, totalPoints.Divide(recalibrationPointsThreshold));
+                var x = BigDouble.Max(BigDouble.One, BigDouble.Log2(adjustedPoints));
+                var x1 = BigDouble.Log10(x) + BigDouble.One;
+                return x1;
+            }
+
+            BigDouble Formula3()
+            {
+                BigDouble adjustedPoints = BigDouble.One + totalPoints.Divide(recalibrationPointsThreshold);
+                BigDouble x1 = BigDouble.Log(adjustedPoints, new BigDouble(1d, 100));
+                BigDouble x2 = BigDouble.Pow(x1, 0.5d) + BigDouble.One;
+                return x2;
+            }
+            
+            BigDouble Formula4()
+            {
+                BigDouble adjustedPoints = BigDouble.One + totalPoints.Divide(recalibrationPointsThreshold);
+                BigDouble x1 = BigDouble.Log(adjustedPoints, new BigDouble(1d, 30)) + BigDouble.One;
+                return x1;
+            }
+
+            // I think this one is good for now
+            BigDouble Formula5()
+            {
+                BigDouble adjustedPoints = BigDouble.One + totalPoints.Divide(recalibrationPointsThreshold);
+                double a = 1.3d;
+                double e = 0.7d;
+                BigDouble l = BigDouble.Log(adjustedPoints, new BigDouble(1d, 100));
+                BigDouble y = BigDouble.Pow(l, e) * a + BigDouble.One;
+                return y;
+            }
+
+            return Formula5();
         }
 
 
