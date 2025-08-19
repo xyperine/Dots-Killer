@@ -158,7 +158,7 @@ namespace DotsKiller.RegularUpgrading
                 4 => 10f * level,
                 5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() * 0.7f * level + BigDouble.One,
                 6 => (0.05f * level) + BigDouble.One,
-                7 => (0.02f * level) + BigDouble.One,
+                7 => (0.03f * level) + BigDouble.One,
                 _ => BigDouble.One,
             };
 

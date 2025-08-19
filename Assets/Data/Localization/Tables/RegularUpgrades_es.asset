@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 319183664758784
-    m_Localized: Oportunidad de obtener x10 puntos por una muerte
+    m_Localized: Posibilidad de obtener x10 puntos por una muerte
     m_Metadata:
       m_Items: []
   - m_Id: 319378485985280
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 322230847586304
-    m_Localized: "Aumenta todas las dem\xE1s mejoras en x1.01"
+    m_Localized: "Aumenta todas las dem\xE1s mejoras en x1.03"
     m_Metadata:
       m_Items: []
   - m_Id: 322130695995392
