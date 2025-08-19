@@ -72,7 +72,7 @@ namespace DotsKiller.SaveSystem
         {
             GameState state = GameStateHandler.State;
             state.IsDirty = true;
-            state.LastSeen = DateTime.Now;
+            state.LastSeen = DateTime.UtcNow;
             _saveSerializer.SaveFile(state);
         }
 
