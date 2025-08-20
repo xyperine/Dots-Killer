@@ -27,7 +27,7 @@ namespace DotsKiller.RegularUpgrading
         public float BountyChancePercent { get; private set; } = 0f;
         public float BountyMultiplier { get; private set; } = 10f;
         public BigDouble AccumulationFactor { get; private set; } = BigDouble.One;
-        public BigDouble GrowthExponent { get; private set; } = BigDouble.One;
+        public double GrowthExponent { get; private set; } = 1d;
         public BigDouble BoostMultiplier { get; private set; } = BigDouble.One;
         public bool AoeClicks { get; private set; } = false;
 
@@ -131,7 +131,7 @@ namespace DotsKiller.RegularUpgrading
                     AccumulationFactor = bonus;
                     return;
                 case 6:
-                    GrowthExponent = bonus;
+                    GrowthExponent = bonus.ToDouble();
                     return;
                 case 7:
                     BoostMultiplier = bonus;
@@ -157,7 +157,7 @@ namespace DotsKiller.RegularUpgrading
                 3 => level == 0 ? BigDouble.One : Formulas.CalculateTimeFactor(_stats.TotalPlaytime.TotalSeconds, level),
                 4 => 10f * level,
                 5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() * 0.7f * level + BigDouble.One,
-                6 => (0.05f * level) + BigDouble.One,
+                6 => (0.05d * level) + BigDouble.One,
                 7 => (0.03f * level) + BigDouble.One,
                 _ => BigDouble.One,
             };
@@ -170,6 +170,11 @@ namespace DotsKiller.RegularUpgrading
             if (id == 4)
             {
                 bonus = Math.Clamp(bonus.ToDouble(), 0d, 100d);
+            }
+
+            if (id == 6)
+            {
+                bonus = Formulas.SoftcapGrowthExponent(bonus.ToDouble(), 2d);
             }
 
             return bonus;

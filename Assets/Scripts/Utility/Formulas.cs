@@ -88,5 +88,20 @@ namespace DotsKiller.Utility
         {
             return new BigDouble(1, 2931);
         }
+
+
+        public static double SoftcapGrowthExponent(double value, double threshold)
+        {
+            if (value > threshold)
+            {
+                double a = 0.4d;
+                double softcappedValue = threshold + Math.Log10(value - threshold + 1d) * a;
+                return softcappedValue;
+            }
+            else
+            {
+                return value;
+            }
+        }
     }
 }
