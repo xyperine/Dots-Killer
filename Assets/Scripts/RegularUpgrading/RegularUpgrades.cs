@@ -249,11 +249,12 @@ namespace DotsKiller.RegularUpgrading
         {
             string bonusPrefix = GetBonusPrefix(id);
             string bonusSuffix = GetBonusSuffix(id);
-            string currentBonus = Formatting.DefaultFormat(GetBonus(id, level));
+            int decimalDigits = id == 6 ? 3 : 2;
+            string currentBonus = Formatting.DefaultFormat(GetBonus(id, level), decimalDigits);
             string bonuses = $"<color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{currentBonus}{bonusSuffix}</color>";
             if (!maxedOut)
             {
-                string nextLevelBonus = Formatting.DefaultFormat(GetBonus(id, level + 1));
+                string nextLevelBonus = Formatting.DefaultFormat(GetBonus(id, level + 1), decimalDigits);
                 bonuses += $" >> <color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{bonusPrefix}{nextLevelBonus}{bonusSuffix}</color>";   
             }
 

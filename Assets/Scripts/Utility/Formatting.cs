@@ -15,12 +15,13 @@ namespace DotsKiller.Utility
         /// 0 - 999.99: 0.##;
         /// 1K - 999.99T: power of 1000 number suffix;
         /// min value - 0, 1e15 - max value: scientific notation;
-        /// infinity, NaN, >= limit: "://OV#R!OAD"
+        /// infinity, NaN, >= limit: "://OV#R!OAD".
         /// </summary>
-        /// <param name="number"></param>
+        /// <param name="number">Value to format.</param>
+        /// <param name="maxDecimalDigits">Maximum amount of digits shown after the comma.</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public static string DefaultFormat(BigDouble number)
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when abbreviating the number but it is not covered by the abbreviations list</exception>
+        public static string DefaultFormat(BigDouble number, int maxDecimalDigits = 2)
         {
             if (BigDouble.IsInfinity(number) || BigDouble.IsNaN(number))
             {
@@ -32,17 +33,20 @@ namespace DotsKiller.Utility
             {
                 return "://OV#R!OAD";
             }
+
+            string format = $"F{maxDecimalDigits}";
+            string optionalDigitsFormat = "0." + new string('#', maxDecimalDigits);
             //0.72
             if (power is < 0 and > -3)
             {
-                return number.ToDouble().ToString("0.##");
+                return number.ToDouble().ToString(optionalDigitsFormat);
             }
             
             double mantissa = Math.Truncate(number.Mantissa * 100) / 100;
             //2.31e-9.11e7, 1.37e102, 8.32e3.21e8
             if (power is >= 15 or < 0)
             {
-                return mantissa.ToString("f2") + "e" + FormatExponent(number.Exponent);
+                return mantissa.ToString(format) + "e" + FormatExponent(number.Exponent);
             }
             
             long exp = Mathf.FloorToInt(power / 3f) * 3;
@@ -52,7 +56,7 @@ namespace DotsKiller.Utility
             //0 - 999.99
             if (power is < 3 and >= 0 )
             {
-                return mantissa.ToString("0.##");
+                return mantissa.ToString(optionalDigitsFormat);
             }
 
             //1K - 999.99T
@@ -66,7 +70,7 @@ namespace DotsKiller.Utility
                 _ => throw new ArgumentOutOfRangeException(),
             };
                 
-            return mantissa.ToString("f2") + magnitudePrefix;
+            return mantissa.ToString(format) + magnitudePrefix;
         }
 
 
