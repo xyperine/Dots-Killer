@@ -190,6 +190,8 @@ namespace DotsKiller.RegularUpgrading
                 
                 SetAppropriateValue(regularUpgrade);
 
+                regularUpgrade.Save();
+                
                 upgradesBought += regularUpgrade.Level;
             }
 

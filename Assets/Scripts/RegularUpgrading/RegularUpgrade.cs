@@ -70,7 +70,7 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
-        private void Save()
+        public void Save()
         {
             if (!GameStateHandler.State.RegularUpgradeLevels.TryAdd(ID, Level))
             {
