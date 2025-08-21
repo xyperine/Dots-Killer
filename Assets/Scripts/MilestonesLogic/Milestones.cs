@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BreakInfinity;
+using DotsKiller.SaveSystem;
 using DotsKiller.StatsLogic;
 using UnityEngine;
 using Zenject;
@@ -17,7 +18,7 @@ namespace DotsKiller.MilestonesLogic
         
         public BigDouble PointsIncomeMultiplier { get; private set; } = BigDouble.One;
         public bool KillAutomatonUnlocked { get; private set; } = false;
-        public bool PurchasingAutomatonUnlocked { get; private set; } = false; // Old generators unlocked
+        public bool PurchasingAutomatonUnlocked { get; private set; } = false;
         public BigDouble FirstUpgradeBoost { get; private set; } = BigDouble.One;
         public BigDouble UpgradesFactor { get; private set; } = BigDouble.One;
         public bool FreeLevelToUpgrades { get; private set; } = false;
@@ -42,6 +43,14 @@ namespace DotsKiller.MilestonesLogic
             {
                 milestone.SetData();
             }
+
+            if (GameStateHandler.Loaded)
+            {
+                foreach (int id in GameStateHandler.State.RecalibrationPersistentMilestones)
+                {
+                    milestones.Find(m => m.ID == id).Achieved = true;
+                }
+            }
         }
 
 
@@ -49,8 +58,13 @@ namespace DotsKiller.MilestonesLogic
         {
             foreach (Milestone milestone in milestones)
             {
-                bool achieved = _stats.Kills >= milestone.Threshold;
-                SetAppropriateValue(milestone.ID, achieved);
+                milestone.Achieved |= _stats.Kills >= milestone.Threshold;
+                SetAppropriateValue(milestone.ID, milestone.Achieved);
+
+                if (milestone.KeepOnRecalibration && milestone.Achieved)
+                {
+                    GameStateHandler.State.RecalibrationPersistentMilestones.Add(milestone.ID);
+                }
             }
         }
 
@@ -110,9 +124,11 @@ namespace DotsKiller.MilestonesLogic
 
         public bool IsAchieved(int id)
         {
-            return _stats.Kills >= _entries.Find(e => e.ID == id).KillsThreshold;
+            return
+                milestones.Find(m => m.ID == id)
+                    .Achieved; //_stats.Kills >= _entries.Find(e => e.ID == id).KillsThreshold;
         }
-
+        
 
         public string GetRewardEntryName(int id)
         {
@@ -125,25 +141,56 @@ namespace DotsKiller.MilestonesLogic
 
         public void OnPurge()
         {
-            PointsIncomeMultiplier = BigDouble.One;
-            KillAutomatonUnlocked  = false;
-            PurchasingAutomatonUnlocked = false;
-            FirstUpgradeBoost = BigDouble.One;
-            UpgradesFactor = BigDouble.One;
-            FreeLevelToUpgrades = false;
+            foreach (Milestone milestone in milestones)
+            {
+                ResetMilestone(milestone);
+            }
+            
+            GameStateHandler.State.RecalibrationPersistentMilestones.Clear();
+        }
+
+
+        private void ResetMilestone(Milestone milestone)
+        {
+            milestone.Achieved = false;
+            
+            switch (milestone.ID)
+            {
+                case 0:
+                    PointsIncomeMultiplier = BigDouble.One;
+                    break;
+                case 1:
+                    KillAutomatonUnlocked = false;
+                    break;
+                case 2:
+                    PurchasingAutomatonUnlocked = false;
+                    break;
+                case 3:
+                    FirstUpgradeBoost = BigDouble.One;
+                    break;
+                case 4:
+                    UpgradesFactor = BigDouble.One;
+                    break;
+                case 5:
+                    FreeLevelToUpgrades = false;
+                    break;
+            }
         }
 
 
         public void OnRecalibration()
         {
             Debug.Log("Recalibration: Milestones");
-            
-            PointsIncomeMultiplier = BigDouble.One;
-            KillAutomatonUnlocked  = false;
-            PurchasingAutomatonUnlocked = false;
-            FirstUpgradeBoost = BigDouble.One;
-            UpgradesFactor = BigDouble.One;
-            FreeLevelToUpgrades = false;
+
+            foreach (Milestone milestone in milestones)
+            {
+                if (milestone.KeepOnRecalibration)
+                {
+                    continue;
+                }
+
+                ResetMilestone(milestone);
+            }
         }
     }
 }

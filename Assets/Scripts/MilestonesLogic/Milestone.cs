@@ -9,6 +9,9 @@ namespace DotsKiller.MilestonesLogic
         
         public int ID { get; private set; }
         public int Threshold { get; private set; }
+        public bool KeepOnRecalibration { get; private set; }
+        
+        public bool Achieved { get; set; }
 
 
         [Inject]
@@ -30,6 +33,7 @@ namespace DotsKiller.MilestonesLogic
 
             ID = entry.ID;
             Threshold = entry.KillsThreshold;
+            KeepOnRecalibration = entry.KeepOnRecalibration;
         }
     }
 }

@@ -59,6 +59,7 @@ namespace DotsKiller.MilestonesLogic
         public int ID;
         public int KillsThreshold;
         public string Reward;
+        public bool KeepOnRecalibration;
     }
 
 
@@ -67,20 +68,22 @@ namespace DotsKiller.MilestonesLogic
         public int ID { get; init; }
         public int KillsThreshold { get; init; }
         public string Reward { get; init; }
+        public bool KeepOnRecalibration { get; init; }
 
 
         public MilestoneEntry(MilestoneImportData importData) : this(importData.ID, importData.KillsThreshold,
-            importData.Reward)
+            importData.Reward, importData.KeepOnRecalibration)
         {
             
         }
         
         
-        public MilestoneEntry(int id, int killsThreshold, string reward)
+        public MilestoneEntry(int id, int killsThreshold, string reward, bool keepOnRecalibration)
         {
             ID = id;
             KillsThreshold = killsThreshold;
             Reward = reward;
+            KeepOnRecalibration = keepOnRecalibration;
         }
     }
 }

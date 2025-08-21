@@ -25,18 +25,24 @@ MonoBehaviour:
     - ID: 0
       KillsThreshold: 100
       Reward: x1.25 points gain
+      KeepOnRecalibration: 0
     - ID: 1
       KillsThreshold: 500
       Reward: Unlock kills automaton
+      KeepOnRecalibration: 0
     - ID: 2
-      KillsThreshold: 25000
-      Reward: Unlock purchases automaton
+      KillsThreshold: 50000
+      Reward: Unlock and keep purchases automaton
+      KeepOnRecalibration: 1
     - ID: 3
       KillsThreshold: 5000
       Reward: ^2 to 1st upgrade power
+      KeepOnRecalibration: 0
     - ID: 4
       KillsThreshold: 1000
       Reward: Points income multiplier based on upgrades amount
+      KeepOnRecalibration: 0
     - ID: 5
       KillsThreshold: 10000
       Reward: Free level to all upgrades
+      KeepOnRecalibration: 0

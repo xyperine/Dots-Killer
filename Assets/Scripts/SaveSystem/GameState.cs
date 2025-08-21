@@ -25,5 +25,7 @@ namespace DotsKiller.SaveSystem
         
         public BigDouble RecalibrationExponent { get; set; } = BigDouble.One;
         public BigDouble RecalibrationMultiplier { get; set; } = BigDouble.One;
+
+        public HashSet<int> RecalibrationPersistentMilestones { get; set; } = new HashSet<int>();
     }
 }

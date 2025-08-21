@@ -31,22 +31,18 @@ namespace DotsKiller.Unlocking
             for (int i = 0; i < _unlockables.Count; i++)
             {
                 Unlockable unlockable = _unlockables[i];
-                switch (unlockable.ID)
+                bool conditionMet = unlockable.ID switch
                 {
-                    case UnlockableID.KillAutomaton:
-                        if (_milestones.KillAutomatonUnlocked)
-                        {
-                            unlockable.Unlock();
-                        }
-                        break;
-                    case UnlockableID.PurchasingAutomaton:
-                        if (_milestones.PurchasingAutomatonUnlocked)
-                        {
-                            unlockable.Unlock();
-                        }
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    UnlockableID.KillAutomaton => _milestones.KillAutomatonUnlocked,
+                    UnlockableID.PurchasingAutomaton => _milestones.PurchasingAutomatonUnlocked,
+                    UnlockableID.AutomatonsTab => _milestones.KillAutomatonUnlocked ||
+                                                  _milestones.PurchasingAutomatonUnlocked,
+                    _ => throw new ArgumentOutOfRangeException(),
+                };
+
+                if (conditionMet)
+                {
+                    unlockable.Unlock();
                 }
             }
         }
@@ -57,17 +53,7 @@ namespace DotsKiller.Unlocking
             for (int i = 0; i < _unlockables.Count; i++)
             {
                 Unlockable unlockable = _unlockables[i];
-                switch (unlockable.ID)
-                {
-                    case UnlockableID.KillAutomaton:
-                        unlockable.Lock();
-                        break;
-                    case UnlockableID.PurchasingAutomaton:
-                        unlockable.Lock();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                unlockable.Lock();
             }
         }
 
@@ -79,17 +65,7 @@ namespace DotsKiller.Unlocking
             for (int i = 0; i < _unlockables.Count; i++)
             {
                 Unlockable unlockable = _unlockables[i];
-                switch (unlockable.ID)
-                {
-                    case UnlockableID.KillAutomaton:
-                        unlockable.Lock();
-                        break;
-                    case UnlockableID.PurchasingAutomaton:
-                        unlockable.Lock();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                unlockable.Lock();
             }
         }
     }

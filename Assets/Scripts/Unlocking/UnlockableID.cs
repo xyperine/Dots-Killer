@@ -4,5 +4,6 @@
     {
         KillAutomaton,
         PurchasingAutomaton,
+        AutomatonsTab,
     }
 }
