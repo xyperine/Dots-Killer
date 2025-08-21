@@ -81,7 +81,7 @@ namespace DotsKiller.RegularUpgrading
         
         public void Purchase()
         {
-            purchasable.Purchase();
+            purchasable.PurchaseSingle();
         }
 
 

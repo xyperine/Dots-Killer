@@ -123,6 +123,12 @@ namespace DotsKiller.Economy
                 return;
             }
             
+            PurchaseSingle();
+        }
+
+
+        public void PurchaseSingle()
+        {
             if (!_balance.IsAffordable(Price, currency))
             {
                 return;
