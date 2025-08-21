@@ -51,7 +51,7 @@ namespace DotsKiller.Economy
 
         private void Awake()
         {
-            Price = basePrice;
+            UpdatePrice();
         }
 
 

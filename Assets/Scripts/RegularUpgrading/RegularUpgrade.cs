@@ -28,6 +28,7 @@ namespace DotsKiller.RegularUpgrading
 
         private void Awake()
         {
+            return;
             _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
             
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
