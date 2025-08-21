@@ -2,22 +2,39 @@
 using DotsKiller.Economy;
 using DotsKiller.SaveSystem;
 using UnityEngine;
+using Zenject;
 
 namespace DotsKiller
 {
     public class PurchaseLock : MonoBehaviour
     {
         [SerializeField] private Purchasable lockPurchasable;
-        [SerializeField] private GameObject purchasableLockOverlay;
         [SerializeField] private PurchaseLockID id;
         [SerializeField] private InterfaceReference<IPurchaseLockTarget> purchaseLockTargetReference;
 
         private IPurchaseLockTarget _purchaseLockTarget;
+        private PurchaseLocks _purchaseLocks;
+        
+        public bool Unlocked { get; private set; }
 
+
+        [Inject]
+        public void Initialize(PurchaseLocks purchaseLocks)
+        {
+            _purchaseLocks = purchaseLocks;
+        }
+        
 
         private void Awake()
         {
+            Setup();
+        }
+
+
+        public void Setup()
+        {
             _purchaseLockTarget = purchaseLockTargetReference.Value;
+            _purchaseLocks.Register(this);
         }
 
 
@@ -28,6 +45,12 @@ namespace DotsKiller
 
 
         private void Start()
+        {
+            Load();
+        }
+
+
+        public void Load()
         {
             if (GameStateHandler.Loaded)
             {
@@ -41,8 +64,8 @@ namespace DotsKiller
 
         private void Unlock()
         {
-            purchasableLockOverlay.SetActive(false);
             _purchaseLockTarget.Activate();
+            Unlocked = true;
         }
 
 

@@ -29,6 +29,7 @@ namespace DotsKiller
         [SerializeField] private Purge purge;
         [SerializeField] private PopupManager popupManager;
         [SerializeField] private Recalibration recalibration;
+        [SerializeField] private PurchaseLocks purchaseLocks;
         
         
         public override void InstallBindings()
@@ -65,6 +66,8 @@ namespace DotsKiller
             Container.Bind<PopupManager>().FromInstance(popupManager).AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<Recalibration>().FromInstance(recalibration).AsSingle().NonLazy();
+
+            Container.Bind<PurchaseLocks>().FromInstance(purchaseLocks).AsSingle().NonLazy();
 
             InstallSignals();
         }

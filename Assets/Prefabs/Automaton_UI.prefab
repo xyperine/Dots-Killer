@@ -100,7 +100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -161.7}
+  m_AnchoredPosition: {x: 332, y: -261.7}
   m_SizeDelta: {x: 632, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1834459747962754159
@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 4773295839158475059}
   - component: {fileID: 8745082322877145991}
   - component: {fileID: 4149206699729574402}
+  - component: {fileID: 8356908495830767291}
   m_Layer: 0
   m_Name: Purchase_Lock
   m_TagString: Untagged
@@ -786,7 +787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockPurchasable: {fileID: 8745082322877145991}
-  purchasableLockOverlay: {fileID: 4909146369522928314}
   id: 0
   purchaseLockTargetReference:
     _underlyingValue: {fileID: 7561973504193994414}
@@ -832,6 +832,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8356908495830767291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909146369522928314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d05370aa344b919503dae54ef2bb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purchaseLock: {fileID: 4773295839158475059}
+  purchasableLockOverlay: {fileID: 4909146369522928314}
 --- !u!1 &5979883864957757655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1430,7 @@ GameObject:
   - component: {fileID: 4686475839460676459}
   - component: {fileID: 4955763302536900376}
   - component: {fileID: 7463780341486003485}
+  - component: {fileID: 2844889959193355507}
   m_Layer: 0
   m_Name: Automaton_UI
   m_TagString: Untagged
@@ -1568,6 +1583,21 @@ MonoBehaviour:
   unitsTable:
     m_TableReference:
       m_TableCollectionName: GUID:7d4425c94143ebc4887d341aa8c02561
+--- !u!114 &2844889959193355507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939664044270862909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0539a8b2f1c844888a9f1a19125e4a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ID>k__BackingField: 0
+  lockedObject: {fileID: 7939664044270862909}
+  unlocked: 0
 --- !u!1 &8632792380815352694
 GameObject:
   m_ObjectHideFlags: 0
