@@ -20,14 +20,17 @@ namespace DotsKiller.Editor
 
         private static void AddIDScript(ColorPaletteTargetID id)
         {
-            GameObject selectedGameObject = Selection.activeGameObject;
-            if (!selectedGameObject.TryGetComponent(out ColorPaletteTarget target))
+            Transform[] selectedTransforms = Selection.transforms;
+            foreach (Transform transform in selectedTransforms)
             {
-                target = Undo.AddComponent<ColorPaletteTarget>(selectedGameObject);
-            }
+                if (!transform.TryGetComponent(out ColorPaletteTarget target))
+                {
+                    target = Undo.AddComponent<ColorPaletteTarget>(transform.gameObject);
+                }
 
-            Undo.RecordObject(target, "Set Color Palette ID");
-            target.SetID(id);
+                Undo.RecordObject(target, "Set Color Palette ID");
+                target.SetID(id);
+            }
         }
         
         
