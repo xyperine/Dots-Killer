@@ -41,6 +41,7 @@ namespace DotsKiller
             {
                 CurrentExponent = GameStateHandler.State.RecalibrationExponent;
                 CurrentMultiplier = GameStateHandler.State.RecalibrationMultiplier;
+                _lastRecalibrationPoints = GameStateHandler.State.LastRecalibrationPoints;
             }
         }
 
@@ -55,7 +56,8 @@ namespace DotsKiller
             
             GameStateHandler.State.RecalibrationMultiplier = CurrentMultiplier;
             GameStateHandler.State.RecalibrationExponent = CurrentExponent;
-            
+            GameStateHandler.State.LastRecalibrationPoints = _lastRecalibrationPoints;
+
             _signalBus.Fire<RecalibrationResetSignal>();
         }
 
@@ -68,6 +70,7 @@ namespace DotsKiller
             
             GameStateHandler.State.RecalibrationMultiplier = CurrentMultiplier;
             GameStateHandler.State.RecalibrationExponent = CurrentExponent;
+            GameStateHandler.State.LastRecalibrationPoints = _lastRecalibrationPoints;
         }
     }
 
