@@ -74,7 +74,7 @@ namespace DotsKiller.Automatons.Upgrades
         {
             BigDouble bonus = id switch
             {
-                0 => BigDouble.Pow(1.25f, level),
+                0 => BigDouble.Pow(1.315f, level),
                 1 => BigDouble.Pow(1.25f, level),
                 2 => BigDouble.Pow(2f, level),
                 3 => BigDouble.Pow(2f, level),
