@@ -59,7 +59,7 @@ namespace DotsKiller.Automatons
                     
                     _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
                     
-                    Debug.Log($"The tick is too fast: {actionsThisFrame}");
+                    //Debug.Log($"The tick is too fast: {actionsThisFrame}");
                 }
                 else if (Math.Abs(ActionsPerTick - 1f) < 1e-6f) // if only 1 action per tick
                 {
@@ -74,7 +74,7 @@ namespace DotsKiller.Automatons
                     
                     _previousFrameActionsRemainder = actionsThisFrame - Mathf.FloorToInt(actionsThisFrame);
                     
-                    Debug.Log(actionsThisFrame);
+                    //Debug.Log(actionsThisFrame);
                 }
 
                 timeSinceLastAction -= tickInterval;

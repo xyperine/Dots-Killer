@@ -24,11 +24,10 @@ namespace DotsKiller.RegularUpgrading
         {
             _regularUpgrades = regularUpgrades;
         }
+        
 
-
-        private void Awake()
+        public void SetData()
         {
-            return;
             _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
             
             purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
@@ -36,13 +35,7 @@ namespace DotsKiller.RegularUpgrading
 
             ID = _entry.ID;
         }
-
-
-        private void Start()
-        {
-            //Load();
-        }
-
+        
 
         public void Load()
         {
@@ -50,13 +43,6 @@ namespace DotsKiller.RegularUpgrading
             {
                 return;
             }
-            
-            _entry = _regularUpgrades.GetSorted(transform.GetSiblingIndex());
-            
-            purchasable.SetPrice(_entry.Price, _entry.PriceScaling, Currency.Points);
-            purchasable.SetMaxAmount(_entry.MaxLevel);
-
-            ID = _entry.ID;
 
             if (GameStateHandler.State.RegularUpgradeLevels.ContainsKey(_entry.ID))
             {

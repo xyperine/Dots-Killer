@@ -3,6 +3,7 @@ using DotsKiller.Dots;
 using DotsKiller.Economy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.RegularUpgrading;
+using DotsKiller.SaveSystem;
 using DotsKiller.StatsLogic;
 using DotsKiller.UI;
 using DotsKiller.Unlocking;
@@ -30,6 +31,8 @@ namespace DotsKiller
         [SerializeField] private PopupManager popupManager;
         [SerializeField] private Recalibration recalibration;
         [SerializeField] private PurchaseLocks purchaseLocks;
+        [SerializeField] private SaveLoadManager saveLoadManager;
+        [SerializeField] private SettingsManager settingsManager;
         
         
         public override void InstallBindings()
@@ -68,6 +71,10 @@ namespace DotsKiller
             Container.BindInterfacesAndSelfTo<Recalibration>().FromInstance(recalibration).AsSingle().NonLazy();
 
             Container.Bind<PurchaseLocks>().FromInstance(purchaseLocks).AsSingle().NonLazy();
+
+            Container.Bind<SaveLoadManager>().FromInstance(saveLoadManager).AsSingle().NonLazy();
+
+            Container.Bind<SettingsManager>().FromInstance(settingsManager).AsSingle().NonLazy();
 
             InstallSignals();
         }

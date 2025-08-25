@@ -12,7 +12,7 @@ namespace DotsKiller.SaveSystem
 
         private SaveSerializer<GameState> _saveSerializer;
 
-        private float _timeElapsed;
+        public float SecondsSinceLastSave { get; private set; }
 
 
         private void Awake()
@@ -58,12 +58,10 @@ namespace DotsKiller.SaveSystem
                 return;
             }
             
-            _timeElapsed += Time.deltaTime;
-            if (_timeElapsed >= saveIntervalInSeconds)
+            SecondsSinceLastSave += Time.deltaTime;
+            if (SecondsSinceLastSave >= saveIntervalInSeconds)
             {
                 Save();
-                
-                _timeElapsed = 0f;
             }
         }
 
@@ -74,6 +72,8 @@ namespace DotsKiller.SaveSystem
             state.IsDirty = true;
             state.LastSeen = DateTime.UtcNow;
             _saveSerializer.SaveFile(state);
+            
+            SecondsSinceLastSave = 0f;
         }
 
 

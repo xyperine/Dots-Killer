@@ -40,7 +40,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8662815559958528
-    m_Localized: "<color=#{color}>{threshold} \u6740\u6B7B"
+    m_Localized: "<color=#{color}>{threshold}</color> \u6740\u6B7B"
     m_Metadata:
       m_Items:
       - rid: 265930281649963106

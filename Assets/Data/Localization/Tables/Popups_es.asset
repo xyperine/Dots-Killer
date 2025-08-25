@@ -44,6 +44,11 @@ MonoBehaviour:
       puntos, bajas y mejoras se reiniciar\xE1n!"
     m_Metadata:
       m_Items: []
+  - m_Id: 7245031407927296
+    m_Localized: "\xA1Est\xE1s a punto de borrar tus datos guardados! \xA1Esto reiniciar\xE1
+      todo tu progreso! \xA1No podr\xE1s recuperarlos!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

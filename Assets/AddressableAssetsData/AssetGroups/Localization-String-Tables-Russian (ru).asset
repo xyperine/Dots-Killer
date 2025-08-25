@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 068b636b897eb534294e3a6898ab2648
+    m_Address: Options_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1cdb43e68b9b5e146a19f9b8a9fc668c
     m_Address: RegularUpgrades_ru
     m_ReadOnly: 1

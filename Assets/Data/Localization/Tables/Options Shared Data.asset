@@ -10,47 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Popups Shared Data
+  m_Name: Options Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Popups
-  m_TableCollectionNameGuidString: fc255b0a6eacc694b811e75efd7bcdc4
+  m_TableCollectionName: Options
+  m_TableCollectionNameGuidString: 36b4b5f37958a8b488127db99ccea989
   m_Entries:
-  - m_Id: 9725853696
-    m_Key: Popups.Title.Warning
+  - m_Id: 1174471491584
+    m_Key: Options.Audio
     m_Metadata:
       m_Items: []
-  - m_Id: 106496835584
-    m_Key: Popups.PurgeReset.Message
+  - m_Id: 1174500851712
+    m_Key: Options.SFX
     m_Metadata:
       m_Items: []
-  - m_Id: 154928463872
-    m_Key: Popups.Actions.Cancel
+  - m_Id: 1174500851713
+    m_Key: Options.Music
     m_Metadata:
       m_Items: []
-  - m_Id: 226969829376
-    m_Key: Popups.Actions.Confirm
+  - m_Id: 1174500851714
+    m_Key: Options.Data
     m_Metadata:
       m_Items: []
-  - m_Id: 392456093696
-    m_Key: Popups.Actions.DoNotShowAgain
+  - m_Id: 1174500851715
+    m_Key: Options.Save
     m_Metadata:
       m_Items: []
-  - m_Id: 3649675625545728
-    m_Key: Popups.RecalibrationReset.Message
+  - m_Id: 1174500851716
+    m_Key: Options.ClearSave
     m_Metadata:
       m_Items: []
-  - m_Id: 7245031407927296
-    m_Key: Popus.ClearSave.Message
+  - m_Id: 1174500851717
+    m_Key: Options.Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2671854796800
+    m_Key: Options.LastSaved
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 265930206971691167
+    rid: 265930665343582208
   references:
     version: 2
     RefIds:
-    - rid: 265930206971691167
+    - rid: 265930665343582208
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1754420461535
+        m_CustomEpoch: 1756147884632

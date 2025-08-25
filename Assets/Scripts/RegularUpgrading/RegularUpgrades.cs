@@ -41,9 +41,37 @@ namespace DotsKiller.RegularUpgrading
         }
 
 
+        private void Awake()
+        {
+            foreach (RegularUpgrade upgrade in upgrades)
+            {
+                upgrade.SetData();
+            }
+        }
+
+
         private void Start()
         {
             LoadUpgrades();
+        }
+
+
+        private void LoadUpgrades()
+        {
+            if (!GameStateHandler.Loaded)
+            {
+                return;
+            }
+
+            for (int i = 0; i < upgrades.Count; i++)
+            {
+                upgrades[i].Load();
+            }
+            
+            foreach ((int id, int level) in GameStateHandler.State.RegularUpgradeLevels)
+            {
+                SetAppropriateValue(id, level);
+            }
         }
 
 
@@ -66,32 +94,13 @@ namespace DotsKiller.RegularUpgrading
                 upgrades[i].PurchaseInBulk();
             }
         }
-        
-        
+
+
         public void PurchaseAllInBulk(int amount)
         {
             for (int i = 0; i < upgrades.Count; i++)
             {
                 upgrades[i].PurchaseInBulk(amount);
-            }
-        }
-        
-
-        private void LoadUpgrades()
-        {
-            if (!GameStateHandler.Loaded)
-            {
-                return;
-            }
-
-            for (int i = 0; i < upgrades.Count; i++)
-            {
-                upgrades[i].Load();
-            }
-            
-            foreach ((int id, int level) in GameStateHandler.State.RegularUpgradeLevels)
-            {
-                SetAppropriateValue(id, level);
             }
         }
 

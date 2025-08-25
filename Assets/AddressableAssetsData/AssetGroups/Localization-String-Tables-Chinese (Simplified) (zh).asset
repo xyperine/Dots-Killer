@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5de3ab12076f224438b3040e97a57d02
+    m_Address: Options_zh
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 715031ec69a7f8342bbdfe4a693d0de9
     m_Address: Stats_zh
     m_ReadOnly: 1
