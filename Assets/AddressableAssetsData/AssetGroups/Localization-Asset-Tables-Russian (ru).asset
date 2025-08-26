@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Asset-Tables-Russian (ru)
   m_GUID: 6e43d92cd14283d4aa2cad693a24929c
-  m_SerializeEntries:
-  - m_GUID: 54baecd8cfe443c4a95e9389029564e1
-    m_Address: Fonts_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 26fe5b25eac2ca64e99bd5b21108ba38, type: 2}
   m_SchemaSet:

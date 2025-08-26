@@ -14,16 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Assets-Chinese (Simplified) (zh)
   m_GUID: 5371e749c1c34834189caa7e2bdff75a
-  m_SerializeEntries:
-  - m_GUID: a4362526b3f78374895dd83220841804
-    m_Address: WDXLLubrifontSC-Regular SDF
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-zh
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 26fe5b25eac2ca64e99bd5b21108ba38, type: 2}
   m_SchemaSet:
-    m_Schemas:
-    - {fileID: 11400000, guid: d067f505dccb7c34499dcea7efbfb2f1, type: 2}
-    - {fileID: 11400000, guid: a11bd93a0e9411b4e8ecaf459a225d8e, type: 2}
+    m_Schemas: []
