@@ -40,7 +40,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8662815559958528
-    m_Localized: <color=#{color}>{umbral}</color> Mata
+    m_Localized: <color=#{color}>{threshold}</color> Mata
     m_Metadata:
       m_Items:
       - rid: 265930281649963109

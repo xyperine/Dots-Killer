@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Menu Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Menu
+  m_TableCollectionNameGuidString: f2c02876db45fe34785c52aac1de5cb4
+  m_Entries:
+  - m_Id: 1323503501312
+    m_Key: Menu.Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323587387392
+    m_Key: Menu.Milestones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323587387393
+    m_Key: Menu.Automatons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323587387394
+    m_Key: Menu.Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323587387395
+    m_Key: Menu.Leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323587387396
+    m_Key: Menu.Options
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 265930686671618207
+  references:
+    version: 2
+    RefIds:
+    - rid: 265930686671618207
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1756233218171
