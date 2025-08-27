@@ -17,6 +17,7 @@ namespace DotsKiller.Automatons.Upgrades
 
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
+        public int NextLevel => purchasable.NextAmount;
         public int MaxLevel => purchasable.MaxAmount;
         public bool MaxedOut => purchasable.MaxedOut;
 

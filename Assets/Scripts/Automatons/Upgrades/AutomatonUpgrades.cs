@@ -133,10 +133,10 @@ namespace DotsKiller.Automatons.Upgrades
         }
         
 
-        public string GetBonusText(int id, int level, int maxLevel, Color bonusColor)
+        public string GetBonusText(int id, int level, int nextLevel, int maxLevel, Color bonusColor)
         {
             bool maxedOut = level >= maxLevel;
-            bool maxedOutNextLevel = level + 1 >= maxLevel;
+            bool maxedOutNextLevel = nextLevel >= maxLevel;
 
             string bonusPrefix = GetBonusPrefix(id, maxedOut);
             string bonusSuffix = GetBonusSuffix(id, maxedOut);
@@ -147,7 +147,7 @@ namespace DotsKiller.Automatons.Upgrades
             {
                 string nextLevelBonus = maxedOutNextLevel
                     ? GetMaxedOutBonusText(id, maxLevel)
-                    : Formatting.DefaultFormat(GetBonus(id, level + 1));
+                    : Formatting.DefaultFormat(GetBonus(id, nextLevel));
                 bonuses +=
                     $" >> <color=#{ColorUtility.ToHtmlStringRGB(bonusColor)}>{GetBonusPrefix(id, maxedOutNextLevel)}{nextLevelBonus}{GetBonusSuffix(id, maxedOutNextLevel)}</color>";
             }

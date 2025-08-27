@@ -28,13 +28,13 @@ namespace DotsKiller.UI
         {
             nameLse.SetEntry(_regularUpgrades.GetNameEntryName(regularUpgrade.ID));
             descriptionLse.SetEntry(_regularUpgrades.GetDescriptionEntryName(regularUpgrade.ID));
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, false, bonusColor);
+            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, 1, false, bonusColor);
         }
 
         
         private void Update()
         {
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level, regularUpgrade.MaxedOut, bonusColor);
+            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level, regularUpgrade.NextLevel, regularUpgrade.MaxedOut, bonusColor);
         }
     }
 }

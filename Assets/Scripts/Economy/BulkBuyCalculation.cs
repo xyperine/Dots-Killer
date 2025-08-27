@@ -24,7 +24,14 @@ namespace DotsKiller.Economy
                 cantBuy *= 2f;
                 nextPrice = calculatePrice(alreadyOwned + cantBuy - 1);
             } while (money >= nextPrice);
-
+            
+            // Makes more sense to do it with canBuy variable, but I do this instead for performance(is it worth?)
+            if (maxAmount.HasValue)
+            {
+                cantBuy = BigDouble.Min(cantBuy, maxAmount.Value - alreadyOwned + BigDouble.One);
+            }
+            
+            // If we can buy only 1
             if (cantBuy == 2)
             {
                 return new BulkBuy(BigDouble.One, firstPrice);
@@ -43,11 +50,6 @@ namespace DotsKiller.Economy
                 {
                     cantBuy = middle;
                 }
-            }
-
-            if (maxAmount.HasValue)
-            {
-                canBuy = BigDouble.Min(canBuy, maxAmount.Value - alreadyOwned);
             }
 
             // Calculate the total price

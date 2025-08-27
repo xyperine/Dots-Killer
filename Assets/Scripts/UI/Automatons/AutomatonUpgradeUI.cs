@@ -26,13 +26,13 @@ namespace DotsKiller.UI.Automatons
         private void Start()
         {
             nameLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, automatonUpgrade.MaxLevel, bonusColor);
+            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, 1, automatonUpgrade.MaxLevel, bonusColor);
         }
 
         
         private void Update()
         {
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.MaxLevel, bonusColor);
+            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.NextLevel, automatonUpgrade.MaxLevel, bonusColor);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace DotsKiller.RegularUpgrading
 
         public int ID { get; private set; }
         public int Level => purchasable.Amount;
+        public int NextLevel => purchasable.NextAmount;
         public bool MaxedOut => purchasable.MaxedOut;
         public bool IsAffordable => purchasable.IsAffordable;
 

@@ -26,6 +26,21 @@ namespace DotsKiller.Economy
         public BigDouble Price { get; private set; }
         
         public int Amount { get; private set; }
+        public int NextAmount
+        {
+            get
+            {
+                // BigDouble cast to double and then to int can be a problem
+                int result = IsBulkBuyActive ? Amount + Mathf.Max((int) BulkBuyData.Amount.ToDouble(), 1) : Amount + 1;
+                if (hasMaxAmount)
+                {
+                    result = Mathf.Min(result, MaxAmount);
+                }
+
+                return result;
+            }
+        }
+
         public int MaxAmount => maxAmount;
         public Currency Currency => currency;
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
