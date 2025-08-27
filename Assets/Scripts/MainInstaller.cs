@@ -33,6 +33,8 @@ namespace DotsKiller
         [SerializeField] private PurchaseLocks purchaseLocks;
         [SerializeField] private SaveLoadManager saveLoadManager;
         [SerializeField] private SettingsManager settingsManager;
+        [SerializeField] private EndGoal endGoal;
+        [SerializeField] private GameOverUI gameOverUI;
         
         
         public override void InstallBindings()
@@ -76,6 +78,10 @@ namespace DotsKiller
 
             Container.Bind<SettingsManager>().FromInstance(settingsManager).AsSingle().NonLazy();
 
+            Container.BindInterfacesAndSelfTo<EndGoal>().FromInstance(endGoal).AsSingle().NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<GameOverUI>().FromInstance(gameOverUI).AsSingle().NonLazy();
+
             InstallSignals();
         }
 
@@ -88,6 +94,9 @@ namespace DotsKiller
             Container.DeclareSignal<RecalibrationResetSignal>();
             Container.BindSignal<RecalibrationResetSignal>().ToMethod<IRecalibrationTarget>(t => t.OnRecalibration)
                 .FromResolveAll();
+
+            Container.DeclareSignal<GameOverSignal>();
+            Container.BindSignal<GameOverSignal>().ToMethod<IGameOverTarget>(t => t.OnGameOver).FromResolveAll();
         }
     }
 }

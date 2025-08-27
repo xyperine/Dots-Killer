@@ -39,8 +39,20 @@ MonoBehaviour:
     m_Key: Popups.RecalibrationReset.Message
     m_Metadata:
       m_Items: []
-  - m_Id: 7245031407927296
-    m_Key: Popus.ClearSave.Message
+  - m_Id: 7918863475064832
+    m_Key: Popups.ClearSave.Message
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202176
+    m_Key: Popups.Title.GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202177
+    m_Key: Popups.Actions.OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202178
+    m_Key: Popups.GameOver.Message
     m_Metadata:
       m_Items: []
   m_Metadata:

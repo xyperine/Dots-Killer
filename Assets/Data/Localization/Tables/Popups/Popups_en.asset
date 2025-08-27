@@ -44,9 +44,22 @@ MonoBehaviour:
       upgrades will reset!
     m_Metadata:
       m_Items: []
-  - m_Id: 7245031407927296
+  - m_Id: 7918863475064832
     m_Localized: You are about to delete your saved data! This will reset all your
       progress! You cannot restore this data!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202176
+    m_Localized: Thanks for playing!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202177
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7918863521202178
+    m_Localized: You've reached the end of the current version! Hope it's been a
+      pleasure!
     m_Metadata:
       m_Items: []
   references:

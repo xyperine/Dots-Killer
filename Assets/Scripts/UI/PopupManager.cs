@@ -30,6 +30,7 @@ namespace DotsKiller.UI
         PurgeReset,
         RecalibrationReset,
         ClearSave,
+        EndReached,
     }
 
 
