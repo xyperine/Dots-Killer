@@ -65,11 +65,12 @@ MonoBehaviour:
   enabled: 1
   distributionList:
     distributions: []
-  architectures:
-  - target: 13
-    name: Android
+  targets:
+  - type: 13
+    name: Player
     enabled: 1
     binaryNameFormat: '{0}.apk'
+    subtarget: 0
   variants:
   - variantName: Device Type
     selectedIndex: -1
@@ -193,9 +194,9 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\Data\SuperUnityBuild
   _productParameters:
-    buildCounter: 0
-    buildVersion: 0.0.0.1
-    versionTemplate: 0.0.0.$BUILD
+    buildCounter: 1
+    buildVersion: 0.0.0.8558:5001
+    versionTemplate: 0.0.0.$DAYSSINCE("January 1, 2000"):$SECONDS
     autoGenerate: 0
     syncWithPlayerSettings: 0
   _releaseTypeList:
@@ -280,11 +281,12 @@ MonoBehaviour:
     distributions:
     - distributionName: Itch
       enabled: 1
-  architectures:
-  - target: 20
-    name: WebGL
+  targets:
+  - type: 20
+    name: Player
     enabled: 1
     binaryNameFormat: '{0}'
+    subtarget: 0
   variants: []
   scriptingBackends:
   - scriptingImplementation: 1
