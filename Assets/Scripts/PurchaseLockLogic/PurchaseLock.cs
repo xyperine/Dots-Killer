@@ -4,7 +4,7 @@ using DotsKiller.SaveSystem;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.PurchaseLockLogic
 {
     public class PurchaseLock : MonoBehaviour
     {

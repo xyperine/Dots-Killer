@@ -1,7 +1,7 @@
 ﻿using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
-namespace DotsKiller.UI
+namespace DotsKiller.UI.Popups
 {
     public class PopupManager : MonoBehaviour
     {

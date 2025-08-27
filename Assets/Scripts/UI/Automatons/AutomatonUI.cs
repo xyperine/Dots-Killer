@@ -1,5 +1,6 @@
 ﻿using AYellowpaper;
 using DotsKiller.Automatons;
+using DotsKiller.PurchaseLockLogic;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;

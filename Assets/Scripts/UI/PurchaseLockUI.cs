@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using DotsKiller.PurchaseLockLogic;
+using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class PurchaseLockUI : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.PurchaseLockLogic
 {
     public class PurchaseLocks : MonoBehaviour
     {

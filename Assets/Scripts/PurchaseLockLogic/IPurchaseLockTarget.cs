@@ -1,4 +1,4 @@
-﻿namespace DotsKiller
+﻿namespace DotsKiller.PurchaseLockLogic
 {
     public interface IPurchaseLockTarget
     {

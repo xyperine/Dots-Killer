@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace DotsKiller.UI
+namespace DotsKiller.UI.Popups
 {
-    public class PurgeResetPopupUI : MonoBehaviour
+    public class ClearSavePopupUI : MonoBehaviour
     {
         [SerializeField] private GameObject popupObject;
 
-        private Purge _purge;
+        private SettingsManager _settingsManager;
 
 
         [Inject]
-        public void Initialize(Purge purge)
+        public void Initialize(SettingsManager settingsManager)
         {
-            _purge = purge;
+            _settingsManager = settingsManager;
         }
         
         
@@ -25,7 +25,7 @@ namespace DotsKiller.UI
 
         public void Confirm()
         {
-            _purge.Perform();
+            _settingsManager.ClearSave();
             
             popupObject.SetActive(false);
         }
@@ -34,13 +34,6 @@ namespace DotsKiller.UI
         public void Cancel()
         {
             popupObject.SetActive(false);
-        }
-
-
-        public void SetDoNotShowAgain(bool value)
-        {
-            int i = value ? 1 : 0;
-            PlayerPrefs.SetInt(PlayerPrefsKeys.SHOW_PURGE_RESET_POPUP, i);
         }
     }
 }

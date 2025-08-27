@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace DotsKiller.UI
+namespace DotsKiller.UI.Popups
 {
     public class RecalibrationResetPopupUI : MonoBehaviour
     {

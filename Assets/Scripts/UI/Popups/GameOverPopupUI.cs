@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DotsKiller.UI
+namespace DotsKiller.UI.Popups
 {
     public class GameOverPopupUI : MonoBehaviour
     {

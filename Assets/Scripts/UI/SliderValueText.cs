@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class SliderValueText : MonoBehaviour
     {

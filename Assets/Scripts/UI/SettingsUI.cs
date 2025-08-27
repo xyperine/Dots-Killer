@@ -1,4 +1,4 @@
-﻿using DotsKiller.UI;
+﻿using DotsKiller.UI.Popups;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
@@ -6,7 +6,7 @@ using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.UI
 {
     public class SettingsUI : MonoBehaviour
     {
