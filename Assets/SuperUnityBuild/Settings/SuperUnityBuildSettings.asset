@@ -197,7 +197,7 @@ MonoBehaviour:
     buildCounter: 1
     buildVersion: 0.0.0.8558:5001
     versionTemplate: 0.0.0.$DAYSSINCE("January 1, 2000"):$SECONDS
-    autoGenerate: 0
+    autoGenerate: 1
     syncWithPlayerSettings: 0
   _releaseTypeList:
     releaseTypes:

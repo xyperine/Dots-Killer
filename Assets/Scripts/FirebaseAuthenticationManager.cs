@@ -33,8 +33,8 @@ namespace DotsKiller
             
 #if UNITY_ANDROID
             GoogleSignIn.Configuration = _googleConfiguration;
-            await GoogleSignIn.DefaultInstance.SignIn();
-            await OnGoogleAuthFinished();
+            Task<GoogleSignInUser> signIn = GoogleSignIn.DefaultInstance.SignIn();
+            await OnGoogleAuthFinished(signIn);
 #elif UNITY_EDITOR
             FirebaseAuth auth = FirebaseAuth.DefaultInstance;
 

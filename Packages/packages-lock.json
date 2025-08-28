@@ -16,6 +16,13 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.google.external-dependency-manager": {
+      "version": "1.2.186",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.norska-lib.spreadsheets": {
       "version": "https://github.com/NorskaGames/NorskaLib.Spreadsheets.git",
       "depth": 0,
