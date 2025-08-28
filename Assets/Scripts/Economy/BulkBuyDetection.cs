@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DotsKiller.Economy
 {
@@ -11,7 +12,7 @@ namespace DotsKiller.Economy
 
         private void Update()
         {
-            Active = Input.GetKey(hotKey);
+            Active = Keyboard.current.leftCtrlKey.isPressed;
         }
     }
 }

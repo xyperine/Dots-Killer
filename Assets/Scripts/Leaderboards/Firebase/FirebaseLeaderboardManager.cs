@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !PLATFORM_WEBGL
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BreakInfinity;
@@ -43,7 +44,7 @@ namespace DotsKiller.Leaderboards.Firebase
 
         private async Task InitializeAsync()
         {
-            await authenticationManager.AuthenticateAsync();
+            //await authenticationManager.AuthenticateAsync();
 
             await InitializeDatabaseAsync();
         }
@@ -51,7 +52,7 @@ namespace DotsKiller.Leaderboards.Firebase
 
         private async Task InitializeDatabaseAsync()
         {
-            _userId = authenticationManager.UserID;
+            //_userId = authenticationManager.UserID;
             
             _db = FirebaseDatabase.DefaultInstance.GetReference("/Leaderboard");
         }
@@ -115,3 +116,4 @@ namespace DotsKiller.Leaderboards.Firebase
         }
     }
 }
+#endif

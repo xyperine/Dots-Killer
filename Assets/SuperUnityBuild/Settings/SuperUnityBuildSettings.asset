@@ -19,7 +19,10 @@ MonoBehaviour:
   configureEditor: 0
   filter:
     condition: 0
-    clauses: []
+    clauses:
+    - type: 1
+      comparison: 0
+      test: WEBGL
   inputPath: $BUILDPATH
   outputPath: $BUILDPATH
   outputFileName: $PRODUCT_NAME-$VERSION.zip
@@ -42,7 +45,10 @@ MonoBehaviour:
   configureEditor: 0
   filter:
     condition: 0
-    clauses: []
+    clauses:
+    - type: 3
+      comparison: 0
+      test: ITCH
   pathToButlerExe: C:\Users\ewsan\AppData\Roaming\itch\apps\butler\butler.exe
   nameOfItchUser: xyperine
   nameOfItchGame: dots-killer
@@ -194,20 +200,20 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\Data\SuperUnityBuild
   _productParameters:
-    buildCounter: 1
-    buildVersion: 0.0.0.8558:5001
-    versionTemplate: 0.0.0.$DAYSSINCE("January 1, 2000"):$SECONDS
+    buildCounter: 9
+    buildVersion: 0.0.1.9371:5077
+    versionTemplate: 0.0.1.$DAYSSINCE("January 1, 2000"):$SECONDS
     autoGenerate: 1
     syncWithPlayerSettings: 0
   _releaseTypeList:
     releaseTypes:
     - typeName: Test
-      bundleIdentifier: com.UnityTechnologies.com.unity.template.urpblank
+      bundleIdentifier: com.xyperine.DotsKiller
       companyName: xyperine
       productName: Dots Killer
       syncAppNameWithProduct: 1
       appBuildName: Dots Killer
-      buildOptions: 0
+      buildOptions: 1
       customDefines: 
       sceneList:
         releaseScenes:
@@ -216,21 +222,32 @@ MonoBehaviour:
   _platformList:
     platforms:
     - {fileID: 6458255303047701387}
+    - {fileID: 4080167385577705235}
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffff0400000003000000ffffffff0000000002000000ffffffff
-      _HashCodes: 94620742cdf4c12966dfed70b075cd526678124c0000000000000000
-      _Next: ffffffffffffffff01000000ffffffffffffffff0000000000000000
-      _Count: 5
-      _Version: 5
+      _Buckets: 00000000ffffffff03000000ffffffff0100000006000000ffffffffffffffff05000000ffffffff07000000ffffffff04000000ffffffffffffffffffffffffffffffff
+      _HashCodes: 8e8a066979b74e51e42c156eb075cd52064a20352deca7579aad0b186678124c000000000000000000000000000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffffffffffff02000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000
+      _Count: 8
+      _Version: 8
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Test/WebGL/WebGL/IL2CPP/Itch
-      - Test/WebGL/WebGL/IL2CPP
-      - Test/WebGL/WebGL
+      - Test/WebGL/Player/IL2CPP/Itch
+      - Test/WebGL/Player/IL2CPP
+      - Test/WebGL/Player
       - Test/WebGL
+      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
+      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
+      - Test/Android
       - Test
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
       - 
       - 
       _Values:
@@ -238,16 +255,39 @@ MonoBehaviour:
         childKeys: []
       - enabled: 1
         childKeys:
-        - Test/WebGL/WebGL/IL2CPP/Itch
+        - Test/WebGL/Player/IL2CPP/Itch
       - enabled: 1
         childKeys:
-        - Test/WebGL/WebGL/IL2CPP
+        - Test/WebGL/Player/IL2CPP
       - enabled: 1
         childKeys:
-        - Test/WebGL/WebGL
+        - Test/WebGL/Player
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
       - enabled: 1
         childKeys:
         - Test/WebGL
+        - Test/Android
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -257,13 +297,137 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: 
+    selectedKeyChain: Test/WebGL/Player/IL2CPP/Itch
   _preBuildActions:
     buildActions: []
   _postBuildActions:
     buildActions:
     - {fileID: -8153258985445969603}
     - {fileID: -5914112599317705487}
+--- !u!114 &4080167385577705235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89df54eebccd0704dbbe96915fbb9a6f, type: 3}
+  m_Name: Android
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions: []
+  targets:
+  - type: 13
+    name: Player
+    enabled: 1
+    binaryNameFormat: '{0}.apk'
+    subtarget: 0
+  variants:
+  - variantName: Architecture
+    selectedIndex: 3
+    values:
+    - ARMv7
+    - ARM64
+    - X86
+    - X86_64
+    isFlag: 1
+  - variantName: Texture Compression
+    selectedIndex: 0
+    values:
+    - Generic
+    - DXT
+    - PVRTC
+    - ATC
+    - ETC
+    - ETC2
+    - ASTC
+    isFlag: 0
+  - variantName: Build Output
+    selectedIndex: 0
+    values:
+    - App
+    - Gradle Project
+    isFlag: 0
+  - variantName: Binary Type
+    selectedIndex: 0
+    values:
+    - APK
+    - Split APK
+    - AAB
+    isFlag: 0
+  - variantName: APK Expansion Type
+    selectedIndex: 0
+    values:
+    - Single Binary
+    - Split App Binary
+    isFlag: 0
+  - variantName: Min SDK Version
+    selectedIndex: 0
+    values:
+    - Auto
+    - 16
+    - 17
+    - 18
+    - 19
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    isFlag: 0
+  - variantName: Target SDK Version
+    selectedIndex: 19
+    values:
+    - Auto
+    - 16
+    - 17
+    - 18
+    - 19
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    isFlag: 0
+  - variantName: Create symbols.zip
+    selectedIndex: 0
+    values:
+    - Disabled
+    - Public
+    - Debugging
+    isFlag: 0
+  scriptingBackends:
+  - scriptingImplementation: 0
+    name: Mono
+    enabled: 0
+  - scriptingImplementation: 1
+    name: IL2CPP
+    enabled: 1
+  platformName: Android
+  targetGroup: 7
 --- !u!114 &6458255303047701387
 MonoBehaviour:
   m_ObjectHideFlags: 0

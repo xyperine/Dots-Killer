@@ -20,66 +20,77 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0328acbeca801834facd09689697316e
     m_Address: Milestones_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2a3bd4cc4a1ad6143ae0fec762cc605b
     m_Address: Menu_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3e7ee2f01b2810f4c8d651e32fd413fa
     m_Address: Automatons_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 52e8e571da588e54984a11f464e5364d
     m_Address: RegularUpgrades_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5de3ab12076f224438b3040e97a57d02
     m_Address: Options_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 715031ec69a7f8342bbdfe4a693d0de9
     m_Address: Stats_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4f84dc61d6d9764fa9903a423d581c1
     m_Address: Popups_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c91422e7c5eff0b488a447c963da318a
     m_Address: Units_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e9b787800ada2fe4b8b1d8a7882ba5a8
     m_Address: Purge_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fee88439c69a1de4b88be6ca14c09bea
     m_Address: AutomatonUpgrades_zh
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 26fe5b25eac2ca64e99bd5b21108ba38, type: 2}

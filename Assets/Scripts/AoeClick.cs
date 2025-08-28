@@ -1,5 +1,6 @@
 ﻿using DotsKiller.RegularUpgrading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace DotsKiller
@@ -27,9 +28,9 @@ namespace DotsKiller
                 return;
             }
             
-            if (Input.GetMouseButtonDown(0))
+            if (Pointer.current.press.wasPressedThisFrame)
             {
-                Vector2 center = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 center = Camera.main.ScreenToWorldPoint(Pointer.current.position.value);
                 ContactFilter2D filter = new ContactFilter2D
                 {
                     useLayerMask = true,

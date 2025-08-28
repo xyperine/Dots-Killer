@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿#if !PLATFORM_WEBGL
+using System.Threading.Tasks;
+
 using Firebase.Auth;
 using Google;
 using UnityEngine;
@@ -7,6 +9,8 @@ namespace DotsKiller
 {
     public class FirebaseAuthenticationManager : MonoBehaviour
     {
+#if false
+        
         private const string WEB_CLIENT_ID = "598292494403-vp5c1uog5l4a41916ovlcr9qrith6hie.apps.googleusercontent.com";
 
         private GoogleSignInConfiguration _googleConfiguration;
@@ -107,5 +111,7 @@ namespace DotsKiller
                 }
             });
         }
+#endif
     }
 }
+#endif

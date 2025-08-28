@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !PLATFORM_WEBGL
+using System.Collections.Generic;
 using BreakInfinity;
 using Firebase.Database;
 
@@ -46,3 +47,4 @@ namespace DotsKiller.Leaderboards.Firebase
         }
     }
 }
+#endif
