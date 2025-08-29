@@ -59,7 +59,6 @@ namespace DotsKiller
 
                 string defaultLanguageCode = LanguageCode;
                 LanguageCode = PlayerPrefs.GetString(nameof(LanguageCode), defaultLanguageCode);
-                Debug.Log(LanguageCode);
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(LanguageCode);
             }
         }

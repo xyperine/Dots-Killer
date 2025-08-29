@@ -267,3 +267,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da98268e7124742828a5184dcfdd733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickCollider: {fileID: 3387496863672445305}
