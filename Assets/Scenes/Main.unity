@@ -3696,8 +3696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ba1721560a4221b1b32e162cb2157f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  authenticationManager: {fileID: 1115376239}
-  username: dragonofhell
 --- !u!1 &292454497
 GameObject:
   m_ObjectHideFlags: 0
@@ -6759,6 +6757,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &552765329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552765330}
+  - component: {fileID: 552765331}
+  m_Layer: 0
+  m_Name: Localization_Helper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &552765330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552765329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &552765331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552765329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05f83f2ab9d4c2a9673ee4ec75105ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &557268997
 GameObject:
   m_ObjectHideFlags: 0
@@ -6826,6 +6868,7 @@ MonoBehaviour:
   settingsManager: {fileID: 2004949281}
   endGoal: {fileID: 292454498}
   gameOverUI: {fileID: 116958913}
+  localizationAssetsHelper: {fileID: 552765331}
 --- !u!114 &557269001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6871,7 +6914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7657f271e00c432babce9a944dcd1e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firebaseLeaderboardManager: {fileID: 291349200}
   webGlLeaderboardManager: {fileID: 1187740089}
   yandexLeaderboardManager: {fileID: 1420100304}
 --- !u!1 &582158776
@@ -7131,7 +7173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.0.1.9371:4019
+  m_text: v0.0.1.9372:3766
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
@@ -29325,6 +29367,7 @@ SceneRoots:
   - {fileID: 450708702}
   - {fileID: 2004949280}
   - {fileID: 292454499}
+  - {fileID: 552765330}
   - {fileID: 550437384}
   - {fileID: 1365163552}
   - {fileID: 41930830}

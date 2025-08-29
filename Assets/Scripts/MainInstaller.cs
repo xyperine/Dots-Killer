@@ -9,6 +9,7 @@ using DotsKiller.StatsLogic;
 using DotsKiller.UI;
 using DotsKiller.UI.Popups;
 using DotsKiller.Unlocking;
+using DotsKiller.Utility;
 using UnityEngine;
 using Zenject;
 
@@ -37,6 +38,7 @@ namespace DotsKiller
         [SerializeField] private SettingsManager settingsManager;
         [SerializeField] private EndGoal endGoal;
         [SerializeField] private GameOverUI gameOverUI;
+        [SerializeField] private LocalizationAssetsHelper localizationAssetsHelper;
         
         
         public override void InstallBindings()
@@ -83,6 +85,8 @@ namespace DotsKiller
             Container.BindInterfacesAndSelfTo<EndGoal>().FromInstance(endGoal).AsSingle().NonLazy();
             
             Container.BindInterfacesAndSelfTo<GameOverUI>().FromInstance(gameOverUI).AsSingle().NonLazy();
+
+            Container.Bind<LocalizationAssetsHelper>().FromInstance(localizationAssetsHelper).AsSingle().NonLazy();
 
             InstallSignals();
         }

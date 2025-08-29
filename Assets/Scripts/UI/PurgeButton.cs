@@ -1,10 +1,13 @@
-﻿using BreakInfinity;
+﻿using System;
+using System.Collections;
+using BreakInfinity;
 using DotsKiller.UI.Popups;
 using DotsKiller.Utility;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Zenject;
 
@@ -20,15 +23,20 @@ namespace DotsKiller.UI
 
         private string _format;
 
+        private string _purgeString;
+        private string _shardsString;
+
         private Purge _purge;
         private PopupManager _popupManager;
+        private LocalizationAssetsHelper _localizationAssetsHelper;
 
 
         [Inject]
-        public void Initialize(Purge purge, PopupManager popupManager)
+        public void Initialize(Purge purge, PopupManager popupManager, LocalizationAssetsHelper localizationAssetsHelper)
         {
             _purge = purge;
             _popupManager = popupManager;
+            _localizationAssetsHelper = localizationAssetsHelper;
         }
 
 
@@ -38,15 +46,35 @@ namespace DotsKiller.UI
         }
 
 
+        private void Start()
+        {
+            purgeLocalizedString.StringChanged += PurgeLocalizedStringOnStringChanged;
+
+            AsyncOperationHandle<string> op = purgeLocalizedString.GetLocalizedStringAsync();
+
+            _localizationAssetsHelper.GetLocalizedAsset(op, s => _purgeString = s);
+        }
+
+
+        private void PurgeLocalizedStringOnStringChanged(string value)
+        {
+            _purgeString = value;
+        }
+
+
         private void Update()
         {
             button.interactable = _purge.Available;
-            string purgeText = purgeLocalizedString.GetLocalizedString();
+            string purgeText = _purgeString;
             BigDouble shardsAmount = Formulas.CalculateShardsOnPurge();
             float pluralizationThreshold = 1000f;
-            string shardsText =
-                shardsLocalizedString.GetLocalizedString(shardsAmount < pluralizationThreshold,
-                    shardsAmount.ToDouble());
+            string shardsText = string.Empty;
+
+            AsyncOperationHandle<string> op = shardsLocalizedString.GetLocalizedStringAsync(shardsAmount < pluralizationThreshold,
+                shardsAmount.ToDouble());
+            
+            _localizationAssetsHelper.GetLocalizedAsset(op, s => shardsText = s);
+
             if (shardsAmount >= pluralizationThreshold)
             {
                 shardsText = Formatting.DefaultFormat(shardsAmount) + " " + shardsText;
@@ -64,6 +92,12 @@ namespace DotsKiller.UI
             }
 
             _popupManager.Show(PopupID.PurgeReset);
+        }
+
+
+        private void OnDestroy()
+        {
+            purgeLocalizedString.StringChanged -= PurgeLocalizedStringOnStringChanged;
         }
 
 
