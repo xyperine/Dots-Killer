@@ -6839,6 +6839,7 @@ MonoBehaviour:
   endGoal: {fileID: 292454498}
   gameOverUI: {fileID: 116958913}
   localizationAssetsHelper: {fileID: 552765331}
+  clicksManager: {fileID: 1416170377}
 --- !u!114 &557269001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7144,7 +7145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.0.1.9375:4020
+  m_text: v0.0.1.9375:4253
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
@@ -18399,8 +18400,9 @@ MonoBehaviour:
   dotsMask:
     serializedVersion: 2
     m_Bits: 64
-  clickAssist: 1
-  assistRadius: 0.2
+  defaultClickType: 1
+  defaultClickRadius: 0.15
+  assistRadius: 0.15
 --- !u!4 &1416170378
 Transform:
   m_ObjectHideFlags: 0

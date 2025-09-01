@@ -1,4 +1,5 @@
-﻿using DotsKiller.RegularUpgrading;
+﻿using System;
+using DotsKiller.RegularUpgrading;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,13 +11,27 @@ namespace DotsKiller
     {
         [SerializeField] private float upgradedRadius = 0.5f;
         [SerializeField] private LayerMask dotsMask = 0;
-        [SerializeField, Tooltip("When missed will still count if clicked in a certain radius around clickable")] 
-        private bool clickAssist = true;
-        [SerializeField, ShowIf(nameof(clickAssist))] private float assistRadius = 0.2f;
+        [SerializeField] private ClickType defaultClickType = ClickType.AoeByDefault;
+        [SerializeField, ShowIf(nameof(defaultClickType), ClickType.AoeByDefault)] 
+        private float defaultClickRadius = 0.15f;
+        [SerializeField, ShowIf(nameof(defaultClickType), ClickType.WithAssist),
+         Tooltip("When missed will still count if clicked in a certain radius around clickable")] 
+        private float assistRadius = 0.2f;
+        
+        private enum ClickType
+        {
+            Normal,
+            AoeByDefault,
+            WithAssist,
+        }
         
         private readonly Collider2D[] _queryResults = new Collider2D[64]; // maybe need more than 64
+        private ContactFilter2D _dotsContactFilter;
         
         private RegularUpgrades _regularUpgrades;
+
+        public float DefaultRadius => defaultClickRadius;
+        public float UpgradedRadius => upgradedRadius;
 
 
         [Inject]
@@ -24,7 +39,18 @@ namespace DotsKiller
         {
             _regularUpgrades = regularUpgrades;
         }
-        
+
+
+        private void Awake()
+        {
+            _dotsContactFilter = new ContactFilter2D
+            {
+                useLayerMask = true,
+                layerMask = dotsMask,
+                useTriggers = true,
+            };
+        }
+
 
         private void Update()
         {
@@ -46,13 +72,7 @@ namespace DotsKiller
 
         private void PerformAoeClick(Vector2 clickPosition)
         {
-            ContactFilter2D filter = new ContactFilter2D
-            {
-                useLayerMask = true,
-                layerMask = dotsMask,
-                useTriggers = true,
-            };
-            int size = Physics2D.OverlapCircle(clickPosition, upgradedRadius, filter, _queryResults);
+            int size = Physics2D.OverlapCircle(clickPosition, upgradedRadius, _dotsContactFilter, _queryResults);
                     
             for (int i = 0; i < size; i++)
             {
@@ -72,49 +92,70 @@ namespace DotsKiller
 
         private void PerformRegularClick(Vector2 clickPosition)
         {
-            if (clickAssist)
+            switch (defaultClickType)
             {
-                ContactFilter2D filter = new ContactFilter2D
+                case ClickType.AoeByDefault:
                 {
-                    useLayerMask = true,
-                    layerMask = dotsMask,
-                    useTriggers = true,
-                };
-                int size = Physics2D.OverlapCircle(clickPosition, assistRadius, filter, _queryResults);
-                if (size < 1)
-                {
-                    return;
-                }
-
-                Collider2D closestResult = _queryResults[0];
-                float closesPosition = float.PositiveInfinity;
-                for (int i = 0; i < _queryResults.Length; i++)
-                {
-                    Collider2D result = _queryResults[i];
-                    if (!result)
+                    int size = Physics2D.OverlapCircle(clickPosition, defaultClickRadius, _dotsContactFilter, _queryResults);
+                    if (size < 1)
                     {
-                        continue;
+                        return;
+                    }
+                
+                    foreach (Collider2D result in _queryResults)
+                    {
+                        if (!result)
+                        {
+                            continue;
+                        }
+                        
+                        ClickOnTarget(result);
                     }
 
-                    float distance = Vector2.Distance(result.transform.position, clickPosition);
-                    if (distance < closesPosition)
-                    {
-                        closestResult = result;
-                        closesPosition = distance;
-                    }
+                    break;
                 }
-
-                ClickOnTarget(closestResult);
-            }
-            else
-            {
-                RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero, 100f, dotsMask.value);
-                if (!hit)
+                case ClickType.WithAssist:
                 {
-                    return;
-                }
+                    int size = Physics2D.OverlapCircle(clickPosition, assistRadius, _dotsContactFilter, _queryResults);
+                    if (size < 1)
+                    {
+                        return;
+                    }
 
-                ClickOnTarget(hit.transform);
+                    Collider2D closestResult = _queryResults[0];
+                    float closesPosition = float.PositiveInfinity;
+                    for (int i = 0; i < _queryResults.Length; i++)
+                    {
+                        Collider2D result = _queryResults[i];
+                        if (!result)
+                        {
+                            continue;
+                        }
+
+                        float distance = Vector2.Distance(result.transform.position, clickPosition);
+                        if (distance < closesPosition)
+                        {
+                            closestResult = result;
+                            closesPosition = distance;
+                        }
+                    }
+
+                    ClickOnTarget(closestResult);
+                    break;
+                }
+                case ClickType.Normal:
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero, 100f, dotsMask.value);
+                    if (!hit)
+                    {
+                        return;
+                    }
+
+                    ClickOnTarget(hit.transform);
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

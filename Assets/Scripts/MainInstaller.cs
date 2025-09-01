@@ -39,6 +39,7 @@ namespace DotsKiller
         [SerializeField] private EndGoal endGoal;
         [SerializeField] private GameOverUI gameOverUI;
         [SerializeField] private LocalizationAssetsHelper localizationAssetsHelper;
+        [SerializeField] private ClicksManager clicksManager;
         
         
         public override void InstallBindings()
@@ -87,6 +88,8 @@ namespace DotsKiller
             Container.BindInterfacesAndSelfTo<GameOverUI>().FromInstance(gameOverUI).AsSingle().NonLazy();
 
             Container.Bind<LocalizationAssetsHelper>().FromInstance(localizationAssetsHelper).AsSingle().NonLazy();
+
+            Container.Bind<ClicksManager>().FromInstance(clicksManager).AsSingle().NonLazy();
 
             InstallSignals();
         }

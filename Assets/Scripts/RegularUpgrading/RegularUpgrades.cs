@@ -19,6 +19,7 @@ namespace DotsKiller.RegularUpgrading
         private Stats _stats;
         private DotsTracker _dotsTracker;
         private Milestones _milestones;
+        private ClicksManager _clicksManager;
         
         public BigDouble PointsOnKill { get; private set; } = BigDouble.Zero;
         public BigDouble KillsFactor { get; private set; } = BigDouble.One;
@@ -33,11 +34,12 @@ namespace DotsKiller.RegularUpgrading
 
 
         [Inject]
-        public void Initialize(Stats stats, DotsTracker dotsTracker, Milestones milestones)
+        public void Initialize(Stats stats, DotsTracker dotsTracker, Milestones milestones, ClicksManager clicksManager)
         {
             _stats = stats;
             _dotsTracker = dotsTracker;
             _milestones = milestones;
+            _clicksManager = clicksManager;
         }
 
 
@@ -168,6 +170,7 @@ namespace DotsKiller.RegularUpgrading
                 5 => level == 0 ? BigDouble.One :_stats.TotalPoints.PositiveSafeLog10() * 0.7f * level + BigDouble.One,
                 6 => (0.05d * level) + BigDouble.One,
                 7 => (0.03f * level) + BigDouble.One,
+                8 => level >= 1 ? _clicksManager.UpgradedRadius : _clicksManager.DefaultRadius,
                 _ => BigDouble.One,
             };
 
