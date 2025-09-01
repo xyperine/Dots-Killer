@@ -17,6 +17,8 @@ namespace DotsKiller
         [SerializeField, ShowIf(nameof(defaultClickType), ClickType.WithAssist),
          Tooltip("When missed will still count if clicked in a certain radius around clickable")] 
         private float assistRadius = 0.2f;
+        [SerializeField] private bool debugClicks;
+        [SerializeField, ShowIf(nameof(debugClicks))] private Transform debugCircle;
         
         private enum ClickType
         {
@@ -57,6 +59,20 @@ namespace DotsKiller
             if (Pointer.current.press.wasPressedThisFrame)
             {
                 Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.value);
+                
+                if (debugClicks)
+                {
+                    debugCircle.gameObject.SetActive(true);
+
+                    debugCircle.position = clickPosition;
+                    debugCircle.localScale = Vector3.one * defaultClickRadius * 2 * 5; // sprite size specific
+                }
+                else
+                {
+                    debugCircle.gameObject.SetActive(false);
+                }
+                
+                Array.Clear(_queryResults, 0, 64);
 
                 if (_regularUpgrades.AoeClicks)
                 {
