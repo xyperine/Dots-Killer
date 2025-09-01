@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.0.1.9373:5199
+  bundleVersion: 0.0.1.9375:4051
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: 11400000, guid: 0c5422aea4358084ab92fa457825d284, type: 2}
@@ -166,16 +166,16 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.xyperine.DotsKiller
-    Standalone: com.Unity-Technologies.com.unity.template.urp-blank
+    Standalone: com.xyperine.DotsKiller
     WebGL: com.xyperine.Dots-Killer
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
-    Standalone: 36
+    Standalone: 39
     VisionOS: 0
-    iPhone: 36
+    iPhone: 39
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 37
+  AndroidBundleVersionCode: 40
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 35
   AndroidPreferredInstallLocation: 1
@@ -532,6 +532,9 @@ PlayerSettings:
   - m_BuildTarget: WebGL
     m_StaticBatching: 0
     m_DynamicBatching: 0
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -837,12 +840,13 @@ PlayerSettings:
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
     Android: BUILD_TYPE_TEST;BUILD_PLATFORM_ANDROID;BUILD_TARGET_PLAYER;BUILD_BACKEND_IL2CPP;LEVELPLAY_DEPENDENCIES_INSTALLED;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;Localization_yg;Authorization_yg;Leaderboards_yg
-    Standalone: PLUGIN_YG_2;Localization_yg;TMP_YG2;NJSON_YG2;LEVELPLAY_DEPENDENCIES_INSTALLED;Authorization_yg;Leaderboards_yg
+    Standalone: BUILD_TYPE_TEST;BUILD_PLATFORM_WINDOWS;BUILD_TARGET_PLAYER;BUILD_BACKEND_IL2CPP;PLUGIN_YG_2;Localization_yg;TMP_YG2;NJSON_YG2;LEVELPLAY_DEPENDENCIES_INSTALLED;Authorization_yg;Leaderboards_yg
     WebGL: PLUGIN_YG_2;Localization_yg;TMP_YG2;NJSON_YG2;LEVELPLAY_DEPENDENCIES_INSTALLED;Authorization_yg;Leaderboards_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
+    Standalone: 1
     WebGL: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration:

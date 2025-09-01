@@ -21,7 +21,7 @@ namespace DotsKiller.Leaderboards
         {
 #if YandexGamesPlatform_yg
             Container.Bind<ILeaderboardManager>().FromInstance(yandexLeaderboardManager).AsSingle().NonLazy();
-#elif PLATFORM_WEBGL || UNITY_EDITOR
+#elif PLATFORM_WEBGL || PLATFORM_STANDALONE || UNITY_EDITOR
             Container.Bind<ILeaderboardManager>().FromInstance(webGlLeaderboardManager).AsSingle().NonLazy();
 #elif UNITY_ANDROID
             Container.Bind<ILeaderboardManager>().FromInstance(firebaseLeaderboardManager).AsSingle().NonLazy();

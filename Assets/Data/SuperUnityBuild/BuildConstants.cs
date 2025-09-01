@@ -15,6 +15,7 @@ namespace SuperUnityBuild.Generated
         None,
         WebGL,
         Android,
+        Windows,
     }
 
     public enum ScriptingBackend
@@ -37,11 +38,11 @@ namespace SuperUnityBuild.Generated
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638920034233016589);
-        public const string version = "0.0.1.9371:4495";
-        public const int buildCounter = 4;
+        public static readonly DateTime buildDate = new DateTime(638923423649508610);
+        public const string version = "0.0.1.9375:4051";
+        public const int buildCounter = 12;
         public const ReleaseType releaseType = ReleaseType.Test;
-        public const Platform platform = Platform.Android;
+        public const Platform platform = Platform.Windows;
         public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;
         public const Target target = Target.Player;
         public const Distribution distribution = Distribution.None;

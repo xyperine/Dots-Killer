@@ -56,6 +56,55 @@ MonoBehaviour:
   channelName: $PLATFORM
   showUploadProgress: 1
   itchChannelOverride: 
+--- !u!114 &-4088580602753518369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2786f6b2301a94f4288672ff5305244c, type: 3}
+  m_Name: Windows
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions: []
+  targets:
+  - type: 19
+    name: Player
+    enabled: 1
+    binaryNameFormat: '{0}.exe'
+    subtarget: 2
+  - type: 19
+    name: Dedicated Server
+    enabled: 0
+    binaryNameFormat: '{0}.exe'
+    subtarget: 1
+  variants:
+  - variantName: Architecture
+    selectedIndex: 0
+    values:
+    - Intel 64-bit
+    - Intel 32-bit
+    - ARM 64-bit
+    isFlag: 0
+  - variantName: Build Output
+    selectedIndex: 0
+    values:
+    - App
+    - Visual Studio Solution
+    isFlag: 0
+  scriptingBackends:
+  - scriptingImplementation: 0
+    name: Mono
+    enabled: 0
+  - scriptingImplementation: 1
+    name: IL2CPP
+    enabled: 1
+  platformName: Windows
+  targetGroup: 1
 --- !u!114 &-375978421973128620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,12 +245,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _basicSettings:
     baseBuildFolder: C:\Users\ewsan\Desktop\Gamedev\Builds
-    buildPath: Dots Killer/$VERSION/$RELEASE_TYPE/$PLATFORM
+    buildPath: Dots Killer/$RELEASE_TYPE/$PLATFORM/$VERSION
     openFolderPostBuild: 1
     constantsFileLocation: Assets\Data\SuperUnityBuild
   _productParameters:
-    buildCounter: 9
-    buildVersion: 0.0.1.9371:5077
+    buildCounter: 12
+    buildVersion: 0.0.1.9375:4051
     versionTemplate: 0.0.1.$DAYSSINCE("January 1, 2000"):$SECONDS
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -213,7 +262,7 @@ MonoBehaviour:
       productName: Dots Killer
       syncAppNameWithProduct: 1
       appBuildName: Dots Killer
-      buildOptions: 1
+      buildOptions: 129
       customDefines: 
       sceneList:
         releaseScenes:
@@ -223,13 +272,14 @@ MonoBehaviour:
     platforms:
     - {fileID: 6458255303047701387}
     - {fileID: 4080167385577705235}
+    - {fileID: -4088580602753518369}
   _projectConfigurations:
     configSet:
-      _Buckets: 00000000ffffffff03000000ffffffff0100000006000000ffffffffffffffff05000000ffffffff07000000ffffffff04000000ffffffffffffffffffffffffffffffff
-      _HashCodes: 8e8a066979b74e51e42c156eb075cd52064a20352deca7579aad0b186678124c000000000000000000000000000000000000000000000000000000000000000000000000
-      _Next: ffffffffffffffffffffffffffffffff02000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000
-      _Count: 8
-      _Version: 8
+      _Buckets: 00000000ffffffff03000000080000000100000006000000ffffffffffffffff09000000ffffffff0a000000ffffffff04000000ffffffffffffffffffffffff07000000
+      _HashCodes: 8e8a066979b74e51e42c156eb075cd52064a20352deca7579aad0b1837bdec0cceb7a84b8c621d736678124c000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffffffffffff02000000ffffffffffffffffffffffffffffffff05000000ffffffff000000000000000000000000000000000000000000000000
+      _Count: 11
+      _Version: 11
       _FreeList: -1
       _FreeCount: 0
       _Keys:
@@ -240,10 +290,10 @@ MonoBehaviour:
       - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
       - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
       - Test/Android
+      - Test/Windows/Player (Intel 64-bit,App)/IL2CPP
+      - Test/Windows/Player (Intel 64-bit,App)
+      - Test/Windows
       - Test
-      - 
-      - 
-      - 
       - 
       - 
       - 
@@ -271,15 +321,18 @@ MonoBehaviour:
         childKeys:
         - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
       - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Test/Windows/Player (Intel 64-bit,App)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Test/Windows/Player (Intel 64-bit,App)
+      - enabled: 1
         childKeys:
         - Test/WebGL
         - Test/Android
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
+        - Test/Windows
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -297,7 +350,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Test/WebGL/Player/IL2CPP/Itch
+    selectedKeyChain: Test/Windows/Player (Intel 64-bit,App)/IL2CPP
   _preBuildActions:
     buildActions: []
   _postBuildActions:
