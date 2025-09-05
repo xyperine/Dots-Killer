@@ -1,5 +1,4 @@
-﻿using System;
-using NaughtyAttributes;
+﻿using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,17 +39,28 @@ namespace DotsKiller.ColorPaletteSystem
 
             foreach (ColorPaletteTarget target in targets)
             {
-                Color color = paletteSO.GetColorFor(target.ID);
-                
-                if (target.TryGetComponent(out Graphic graphic))
-                {
-                    graphic.color = color;
-                }
+                ApplyTo(target, paletteSO);
+            }
+        }
 
-                if (target.TryGetComponent(out SpriteRenderer spriteRenderer))
-                {
-                    spriteRenderer.color = color;
-                }
+
+        public void ApplyTo(ColorPaletteTarget target)
+        {
+            ApplyTo(target, activePaletteSO);
+        }
+        
+        
+        public void ApplyTo(ColorPaletteTarget target, ColorPaletteSO paletteSO)
+        {
+            Color color = paletteSO.GetColorFor(target.ID);
+                
+            if (target.TryGetComponent(out Graphic graphic))
+            {
+                graphic.color = color;
+            } 
+            else if (target.TryGetComponent(out SpriteRenderer spriteRenderer))
+            {
+                spriteRenderer.color = color;
             }
         }
 
