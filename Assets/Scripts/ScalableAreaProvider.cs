@@ -5,7 +5,10 @@ namespace DotsKiller
 {
     public class ScalableAreaProvider : MonoBehaviour, IAreaProvider
     {
-        [SerializeField] private RectTransform rectTransform;
+        /// <summary>
+        /// Has to be under a screen space canvas
+        /// </summary>
+        [SerializeField, Tooltip("Has to be under a screen space canvas")] private RectTransform rectTransform;
 
         public Vector3 Center => rectTransform.TransformPoint(rectTransform.rect.center);
         public Vector3 Extents => rectTransform.TransformVector( rectTransform.rect.size * 0.5f);
