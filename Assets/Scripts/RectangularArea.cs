@@ -4,7 +4,7 @@ using UnityEngine;
 namespace DotsKiller
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class SquareArea : MonoBehaviour, IAreaProvider
+    public class RectangularArea : MonoBehaviour, IAreaProvider
     {
         // Using colliders because of their convenient gizmos
         [SerializeField] private BoxCollider2D collider;
