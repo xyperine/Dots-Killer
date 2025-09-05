@@ -27723,7 +27723,6 @@ GameObject:
   - component: {fileID: 2067038059}
   - component: {fileID: 2067038062}
   - component: {fileID: 2067038061}
-  - component: {fileID: 2067038060}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -27750,19 +27749,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 56, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2067038060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067038058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f8f8eb28774f16b89f1362d23173cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ID>k__BackingField: 5
 --- !u!114 &2067038061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27776,15 +27762,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5372549, g: 0.105882354, b: 0.23529412, a: 1}
+  m_Color: {r: 0.26415092, g: 0.18316126, b: 0.20745817, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1896696461, guid: 50044b1e5623d8d49801bc1f035543ab, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ab5cdb60a7c914e4ab476f2ce0d41f5d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
