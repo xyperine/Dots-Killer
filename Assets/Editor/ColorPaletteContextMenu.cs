@@ -1,4 +1,5 @@
-﻿using DotsKiller.ColorPaletteSystem;
+﻿using System;
+using DotsKiller.ColorPaletteSystem;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace DotsKiller.Editor
     {
         private const string COMPONENT_CONTEXT_PATH = "CONTEXT/Component/Set Color Palette ID/";
         private const string GAME_OBJECT_CONTEXT_PATH = "GameObject/Set Color Palette ID/";
-        
+
         private const string BACKGROUND_NAME = nameof(ColorPaletteTargetID.Background);
         private const string DOT_NAME = nameof(ColorPaletteTargetID.Dot);
         private const string PRIMARY_NAME = nameof(ColorPaletteTargetID.Primary);
@@ -18,6 +19,37 @@ namespace DotsKiller.Editor
         private const string ACCENT_TEXT_NAME = nameof(ColorPaletteTargetID.AccentText);
 
 
+        [MenuItem("Tools/Color Palette/Try Apply Colors")]
+        private static void TryApplyColors()
+        {
+            GameObject[] selectedGameObjects = Selection.gameObjects;
+            if (selectedGameObjects.Length == 0)
+            {
+                throw new NullReferenceException("Select game objects first!");
+            }
+            
+            ColorPaletteApplier applier = GameObject.FindFirstObjectByType<ColorPaletteApplier>(FindObjectsInactive.Include);
+            if (applier == null)
+            {
+                throw new NullReferenceException($"No {nameof(ColorPaletteApplier)} was found!");
+            }
+            
+            foreach (GameObject gameObject in selectedGameObjects)
+            {
+                if (gameObject.TryGetComponent(out ColorPaletteTarget target))
+                {
+                    applier.ApplyTo(target);
+                    
+                    EditorUtility.SetDirty(target);
+                }
+                else
+                {
+                    Debug.LogWarning($"No {nameof(ColorPaletteTarget)} component was found on {gameObject.name}!");
+                }
+            }
+        }
+        
+        
         private static void AddIDScript(ColorPaletteTargetID id)
         {
             Transform[] selectedTransforms = Selection.transforms;
