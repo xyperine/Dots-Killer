@@ -48,7 +48,7 @@ namespace DotsKiller.Economy
 
         public bool IsBulkBuyActive => canBeBulkBought && _bulkBuyStateProvider.Active;
         public BigDouble BulkPrice => BulkBuyData.Price;
-        public BulkBuy BulkBuyData => GetBulkBuyData();
+        public BulkBuyData BulkBuyData => GetBulkBuyData();
 
         public event Action Purchasing;
         public event Action Purchased;
@@ -172,7 +172,7 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuy bb = GetBulkBuyData();
+            BulkBuyData bb = GetBulkBuyData();
 
             if (!_balance.IsAffordable(bb.Price, currency))
             {
@@ -195,7 +195,7 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuy bb = GetBulkBuyData();
+            BulkBuyData bb = GetBulkBuyData();
 
             if (!_balance.IsAffordable(bb.Price, currency))
             {
@@ -265,7 +265,7 @@ namespace DotsKiller.Economy
         }
 
 
-        private BulkBuy GetBulkBuyData()
+        private BulkBuyData GetBulkBuyData()
         {
             return BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
                 hasMaxAmount ? maxAmount : null);

@@ -8,12 +8,12 @@ namespace DotsKiller.Economy
         public delegate BigDouble PriceCalculation(BigDouble ownedAmount);
         
         
-        public static BulkBuy GetBulkBuyData(BigDouble alreadyOwned, BigDouble money, PriceCalculation calculatePrice, BigDouble? maxAmount = null)
+        public static BulkBuyData GetBulkBuyData(BigDouble alreadyOwned, BigDouble money, PriceCalculation calculatePrice, BigDouble? maxAmount = null)
         {
             BigDouble firstPrice = calculatePrice(alreadyOwned);
             if (money < firstPrice)
             {
-                return new BulkBuy(BigDouble.Zero, firstPrice);
+                return new BulkBuyData(BigDouble.Zero, firstPrice);
             }
             
             // Find the price we cannot afford
@@ -34,7 +34,7 @@ namespace DotsKiller.Economy
             // If we can buy only 1
             if (cantBuy == 2)
             {
-                return new BulkBuy(BigDouble.One, firstPrice);
+                return new BulkBuyData(BigDouble.One, firstPrice);
             }
 
             // Find the actual amount we can buy
@@ -80,7 +80,7 @@ namespace DotsKiller.Economy
                 totalPrice = smallerPrices;
             }
             
-            return new BulkBuy(canBuy, totalPrice);
+            return new BulkBuyData(canBuy, totalPrice);
         }
     }
 }
