@@ -11,7 +11,7 @@ namespace DotsKiller
 
         public void Click()
         {
-            Debug.Log("I'm clicked");
+            //Debug.Log("I'm clicked");
 
             OnClicked?.Invoke();
         }
