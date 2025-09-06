@@ -217,19 +217,17 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyData bb = GetBulkBuyData();
-
-            if (!_balance.IsAffordable(bb.Price, currency))
+            BulkBuyProvider p = new BulkBuyProvider
             {
-                return;
-            }
-
-            _balance.Subtract(bb.Price, currency);
-
-            Amount += (int) bb.Amount.ToDouble();
-            UpdatePrice();
-                
-            BulkPurchased?.Invoke(bb.Amount);
+                Active = true,
+                Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
+                {
+                    {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount {Value = null, Max = true}},
+                    {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount {Value = null, Max = true}},
+                },
+            };
+            
+            BulkPurchase(p);
         }
 
 
