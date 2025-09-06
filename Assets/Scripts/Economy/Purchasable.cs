@@ -19,6 +19,7 @@ namespace DotsKiller.Economy
 
         private Balance _balance;
         private IBulkBuyStateProvider _bulkBuyStateProvider;
+        private BulkBuyProfile _bulkBuyProfile;
 
         private bool _complexScaling;
 
@@ -48,7 +49,7 @@ namespace DotsKiller.Economy
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
 
-        public bool IsBulkBuyActive => canBeBulkBought && _bulkBuyStateProvider.Active;
+        public bool IsBulkBuyActive => canBeBulkBought && (_bulkBuyStateProvider.Active || _bulkBuyProfile.Provider.Active);
         public BigDouble BulkPrice => BulkBuyData.Price;
         public BulkBuyData BulkBuyData => GetBulkBuyData();
 
@@ -59,10 +60,11 @@ namespace DotsKiller.Economy
         
         
         [Inject]
-        public void Initialize(Balance balance, IBulkBuyStateProvider bulkBuyStateProvider)
+        public void Initialize(Balance balance, IBulkBuyStateProvider bulkBuyStateProvider, BulkBuyProfile bulkBuyProfile)
         {
             _balance = balance;
             _bulkBuyStateProvider = bulkBuyStateProvider;
+            _bulkBuyProfile = bulkBuyProfile;
         }
         
 
@@ -174,7 +176,7 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            if (!GetRequestedAmount().Max && !GetRequestedAmount().Value.HasValue)
+            if (!GetRequestedAmount(provider).Max && !GetRequestedAmount(provider).Value.HasValue)
             {
                 return;
             }
@@ -186,29 +188,35 @@ namespace DotsKiller.Economy
                 return;
             }
             
-            PerformPurchase(bb.Price, GetActualAmount(bb.Amount));
+            PerformPurchase(bb.Price, GetActualAmount(provider, bb.Amount));
 
-            BulkBuyAmount GetRequestedAmount()
-            {
-                return provider.Modes[bulkBuyCategory];
-            }
-
-            BigDouble GetActualAmount(BigDouble affordableAmount)
-            {
-                return GetRequestedAmount().Max ? affordableAmount : BigDouble.Min(affordableAmount, GetRequestedAmount().Value.GetValueOrDefault(BigDouble.One));
-            }
-
-            void PerformPurchase(BigDouble price, BigDouble amount)
-            {
-                _balance.Subtract(price, currency);
-
-                Amount += (int) amount.ToDouble();
-                UpdatePrice();
-                
-                BulkPurchased?.Invoke(amount);
-            }
         }
-        
+
+
+        private BulkBuyAmount GetRequestedAmount(BulkBuyProvider provider)
+        {
+            return provider.Modes[bulkBuyCategory];
+        }
+
+
+        private BigDouble GetActualAmount(BulkBuyProvider provider, BigDouble affordableAmount)
+        {
+            return GetRequestedAmount(provider).Max
+                ? affordableAmount
+                : BigDouble.Min(affordableAmount, GetRequestedAmount(provider).Value.GetValueOrDefault(BigDouble.One));
+        }
+
+
+        private void PerformPurchase(BigDouble price, BigDouble amount)
+        {
+            _balance.Subtract(price, currency);
+
+            Amount += (int) amount.ToDouble();
+            UpdatePrice();
+            
+            BulkPurchased?.Invoke(amount);
+        }
+
 
         public void BulkPurchase()
         {
@@ -227,7 +235,7 @@ namespace DotsKiller.Economy
                 },
             };
             
-            BulkPurchase(p);
+            BulkPurchase(_bulkBuyProfile.Provider);
         }
 
 
@@ -306,8 +314,9 @@ namespace DotsKiller.Economy
 
         private BulkBuyData GetBulkBuyData()
         {
-            return BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
+            var a = BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
                 hasMaxAmount ? maxAmount : null);
+            return a with {Amount = GetActualAmount(_bulkBuyProfile.Provider, a.Amount)};
         }
     }
 }

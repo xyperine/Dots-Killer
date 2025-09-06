@@ -12,7 +12,7 @@ namespace DotsKiller.Economy
         {
             Provider = new BulkBuyProvider
             {
-                Active = true,
+                Active = amount.Value.Value > 1 || amount.Max,
                 Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
                 {
                     {category, amount},
