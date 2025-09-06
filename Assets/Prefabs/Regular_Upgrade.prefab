@@ -782,6 +782,7 @@ MonoBehaviour:
   hasMaxAmount: 0
   maxAmount: 0
   canBeBulkBought: 1
+  bulkBuyCategory: 1
 --- !u!114 &4021694764754159677
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -665,6 +665,7 @@ MonoBehaviour:
   hasMaxAmount: 0
   maxAmount: 0
   canBeBulkBought: 1
+  bulkBuyCategory: 2
 --- !u!114 &3157419193404423622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameLse: {fileID: 945139696017532676}
-  descriptionLse: {fileID: 0}
   bonusText: {fileID: 4327287953090787595}
   automatonUpgrade: {fileID: 223215244111606042}
   bonusColor: {r: 0.8509804, g: 0.20392157, b: 0.4, a: 1}

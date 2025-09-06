@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BreakInfinity;
 using NaughtyAttributes;
 using UnityEngine;
@@ -14,7 +15,8 @@ namespace DotsKiller.Economy
         [SerializeField] private bool hasMaxAmount;
         [SerializeField, ShowIf(nameof(hasMaxAmount))] private int maxAmount;
         [SerializeField] private bool canBeBulkBought;
-        
+        [SerializeField, ShowIf(nameof(canBeBulkBought))] private BulkBuyCategory bulkBuyCategory;
+
         private Balance _balance;
         private IBulkBuyStateProvider _bulkBuyStateProvider;
 
@@ -165,6 +167,49 @@ namespace DotsKiller.Economy
         }
 
 
+        public void BulkPurchase(BulkBuyProvider provider)
+        {
+            if (!provider.Active)
+            {
+                return;
+            }
+
+            if (!GetRequestedAmount().Max && !GetRequestedAmount().Value.HasValue)
+            {
+                return;
+            }
+            
+            BulkBuyData bb = GetBulkBuyData();
+
+            if (!_balance.IsAffordable(bb.Price, currency))
+            {
+                return;
+            }
+            
+            PerformPurchase(bb.Price, GetActualAmount(bb.Amount));
+
+            BulkBuyAmount GetRequestedAmount()
+            {
+                return provider.Modes[bulkBuyCategory];
+            }
+
+            BigDouble GetActualAmount(BigDouble affordableAmount)
+            {
+                return GetRequestedAmount().Max ? affordableAmount : BigDouble.Min(affordableAmount, GetRequestedAmount().Value.GetValueOrDefault(BigDouble.One));
+            }
+
+            void PerformPurchase(BigDouble price, BigDouble amount)
+            {
+                _balance.Subtract(price, currency);
+
+                Amount += (int) amount.ToDouble();
+                UpdatePrice();
+                
+                BulkPurchased?.Invoke(amount);
+            }
+        }
+        
+
         public void BulkPurchase()
         {
             if (MaxedOut)
@@ -195,21 +240,17 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyData bb = GetBulkBuyData();
-
-            if (!_balance.IsAffordable(bb.Price, currency))
+            BulkBuyProvider p = new BulkBuyProvider
             {
-                return;
-            }
-
-            BigDouble amount = BigDouble.Min(bb.Amount, amountLimit);
-
-            _balance.Subtract(bb.Price, currency);
-
-            Amount += (int) amount.ToDouble();
-            UpdatePrice();
-                
-            BulkPurchased?.Invoke(bb.Amount);
+                Active = true,
+                Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
+                {
+                    {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount {Value = amountLimit, Max = false}},
+                    {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount {Value = amountLimit, Max = false}},
+                },
+            };
+            
+            BulkPurchase(p);
         }
 
 
