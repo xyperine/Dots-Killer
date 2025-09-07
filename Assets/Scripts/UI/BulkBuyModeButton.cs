@@ -9,11 +9,11 @@ namespace DotsKiller.UI
     public class BulkBuyModeButton : MonoBehaviour
     {
         [SerializeField] private BulkBuyCategory category;
-        [SerializeField] private List<SerializableBulkBuyAmount> bulkOptions;
+        [SerializeField] private List<SerializableBulkBuyMode> bulkOptions;
         [SerializeField] private TMP_Text text;
 
         private PlayerBulkBuy _playerBulkBuy;
-        private IEnumerator<SerializableBulkBuyAmount> _enumerator;
+        private IEnumerator<SerializableBulkBuyMode> _enumerator;
 
 
         [Inject]
@@ -43,9 +43,9 @@ namespace DotsKiller.UI
                 _enumerator.MoveNext();
             }
 
-            BulkBuyAmount amount = _enumerator.Current.CreateNonSerializable();
-            text.SetText(amount.Max ? "MAX" : amount.Value.Value.ToString("G0"));
-            _playerBulkBuy.SetCategoryAmount(category, amount);
+            BulkBuyMode mode = _enumerator.Current.CreateNonSerializable();
+            text.SetText(mode.Max ? "MAX" : mode.Amount.Value.ToString("G0"));
+            _playerBulkBuy.SetCategoryMode(category, mode);
         }
     }
 }

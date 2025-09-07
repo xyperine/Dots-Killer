@@ -16,7 +16,7 @@ namespace DotsKiller.Economy.BulkBuy
         }
 
 
-        private BulkBuyAmount GetRequestedAmount(BulkBuyUser user)
+        private BulkBuyMode GetRequestedMode(BulkBuyUser user)
         {
             return user.Modes[_category];
         }
@@ -24,9 +24,9 @@ namespace DotsKiller.Economy.BulkBuy
 
         private BigDouble GetActualAmount(BulkBuyUser user, BigDouble affordableAmount)
         {
-            return GetRequestedAmount(user).Max
+            return GetRequestedMode(user).Max
                 ? affordableAmount
-                : BigDouble.Min(affordableAmount, GetRequestedAmount(user).Value.GetValueOrDefault(BigDouble.One));
+                : BigDouble.Min(affordableAmount, GetRequestedMode(user).Amount.GetValueOrDefault(BigDouble.One));
         }
 
 
@@ -110,16 +110,16 @@ namespace DotsKiller.Economy.BulkBuy
         public bool VerifyPurchase(BulkBuyUser user)
         {
             return user.IsActive(_category) &&
-                   (GetRequestedAmount(user).Max || GetRequestedAmount(user).Value.HasValue);
+                   (GetRequestedMode(user).Max || GetRequestedMode(user).Amount.HasValue);
         }
         
         
         public BulkBuyUser ConstructAutomatonUser(int amountLimit)
         {
-            return new BulkBuyUser(new Dictionary<BulkBuyCategory, BulkBuyAmount>
+            return new BulkBuyUser(new Dictionary<BulkBuyCategory, BulkBuyMode>
             {
-                {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
-                {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
+                {BulkBuyCategory.RegularUpgrades, BulkBuyMode.CreateAsNumber(amountLimit)},
+                {BulkBuyCategory.AutomatonUpgrades, BulkBuyMode.CreateAsNumber(amountLimit)},
             });
         }
     }

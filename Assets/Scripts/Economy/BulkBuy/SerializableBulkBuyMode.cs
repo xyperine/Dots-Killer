@@ -6,15 +6,15 @@ using UnityEngine;
 namespace DotsKiller.Economy.BulkBuy
 {
     [Serializable]
-    public struct SerializableBulkBuyAmount
+    public struct SerializableBulkBuyMode
     {
         [SerializeField] private bool max;
-        [SerializeField, HideIf(nameof(max))] private BigDouble value;
+        [SerializeField, HideIf(nameof(max))] private BigDouble amount;
 
 
-        public BulkBuyAmount CreateNonSerializable()
+        public BulkBuyMode CreateNonSerializable()
         {
-            return new BulkBuyAmount(value, max);
+            return new BulkBuyMode(amount, max);
         }
     }
 }
