@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using BreakInfinity;
 using NaughtyAttributes;
 using UnityEngine;
@@ -19,6 +18,7 @@ namespace DotsKiller.Economy
 
         private Balance _balance;
         private PlayerBulkBuy _playerBulkBuy;
+        private BulkBuyProcessor _bulkBuyProcessor;
 
         private bool _complexScaling;
 
@@ -50,7 +50,7 @@ namespace DotsKiller.Economy
 
         public bool IsBulkBuyActive => canBeBulkBought && _playerBulkBuy.User.Active;
         public BigDouble BulkPrice => BulkBuyData.Price;
-        public BulkBuyData BulkBuyData => GetBulkBuyData();
+        public BulkBuyData BulkBuyData => GetBulkBuyData(_playerBulkBuy.User);
 
         public event Action Purchasing;
         public event Action Purchased;
@@ -68,6 +68,11 @@ namespace DotsKiller.Economy
 
         private void Awake()
         {
+            if (canBeBulkBought)
+            {
+                _bulkBuyProcessor = new BulkBuyProcessor(bulkBuyCategory);
+            }
+            
             UpdatePrice();
         }
 
@@ -157,41 +162,20 @@ namespace DotsKiller.Economy
 
         public void BulkPurchase(BulkBuyUser user)
         {
-            if (!user.Active)
-            {
-                return;
-            }
-
-            if (!GetRequestedAmount(user).Max && !GetRequestedAmount(user).Value.HasValue)
+            BulkBuyData bb = GetBulkBuyData(user);
+            if (!_bulkBuyProcessor.VerifyPurchase(user))
             {
                 return;
             }
             
-            BulkBuyData bb = GetBulkBuyData();
-
             if (!_balance.IsAffordable(bb.Price, currency))
             {
                 return;
             }
             
-            PerformBulkPurchase(bb.Price, GetActualAmount(user, bb.Amount));
-
+            PerformBulkPurchase(bb.Price, bb.Amount);
         }
-
-
-        private BulkBuyAmount GetRequestedAmount(BulkBuyUser user)
-        {
-            return user.Modes[bulkBuyCategory];
-        }
-
-
-        private BigDouble GetActualAmount(BulkBuyUser user, BigDouble affordableAmount)
-        {
-            return GetRequestedAmount(user).Max
-                ? affordableAmount
-                : BigDouble.Min(affordableAmount, GetRequestedAmount(user).Value.GetValueOrDefault(BigDouble.One));
-        }
-
+        
 
         private void PerformBulkPurchase(BigDouble price, BigDouble amount)
         {
@@ -234,11 +218,7 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyUser user = new BulkBuyUser(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
-            {
-                {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
-                {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
-            });
+            BulkBuyUser user = _bulkBuyProcessor.ConstructAutomatonUser(amountLimit);
 
             BulkPurchase(user);
         }
@@ -296,12 +276,10 @@ namespace DotsKiller.Economy
         }
 
 
-        private BulkBuyData GetBulkBuyData()
+        private BulkBuyData GetBulkBuyData(BulkBuyUser user)
         {
-
-            BulkBuyData bb = BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
+            return _bulkBuyProcessor.GetBulkBuyData(user, Amount, _balance.Available(currency), CalculatePrice,
                 hasMaxAmount ? maxAmount : null);
-            return bb with {Amount = GetActualAmount(_playerBulkBuy.User, bb.Amount)};
         }
     }
 }

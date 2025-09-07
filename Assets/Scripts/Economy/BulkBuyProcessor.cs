@@ -1,14 +1,36 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using BreakInfinity;
 
 namespace DotsKiller.Economy
 {
-    public static class BulkBuyCalculation
+    public class BulkBuyProcessor
     {
+        private readonly BulkBuyCategory _category;
+        
         public delegate BigDouble PriceCalculation(BigDouble ownedAmount);
         
         
-        public static BulkBuyData GetBulkBuyData(BigDouble alreadyOwned, BigDouble money, PriceCalculation calculatePrice, BigDouble? maxAmount = null)
+        public BulkBuyProcessor(BulkBuyCategory category)
+        {
+            _category = category;
+        }
+
+
+        private BulkBuyAmount GetRequestedAmount(BulkBuyUser user)
+        {
+            return user.Modes[_category];
+        }
+
+
+        private BigDouble GetActualAmount(BulkBuyUser user, BigDouble affordableAmount)
+        {
+            return GetRequestedAmount(user).Max
+                ? affordableAmount
+                : BigDouble.Min(affordableAmount, GetRequestedAmount(user).Value.GetValueOrDefault(BigDouble.One));
+        }
+
+
+        public BulkBuyData GetBulkBuyData(BulkBuyUser user, BigDouble alreadyOwned, BigDouble money, PriceCalculation calculatePrice, BigDouble? maxAmount = null)
         {
             BigDouble firstPrice = calculatePrice(alreadyOwned);
             if (money < firstPrice)
@@ -79,8 +101,26 @@ namespace DotsKiller.Economy
                 --canBuy;
                 totalPrice = smallerPrices;
             }
-            
+
+            canBuy = GetActualAmount(user, canBuy);
             return new BulkBuyData(canBuy, totalPrice);
+        }
+
+
+        public bool VerifyPurchase(BulkBuyUser user)
+        {
+            return user.Active &&
+                   (GetRequestedAmount(user).Max || GetRequestedAmount(user).Value.HasValue);
+        }
+        
+        
+        public BulkBuyUser ConstructAutomatonUser(int amountLimit)
+        {
+            return new BulkBuyUser(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
+            {
+                {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
+                {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
+            });
         }
     }
 }
