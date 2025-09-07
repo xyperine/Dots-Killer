@@ -39,7 +39,7 @@ namespace DotsKiller
         [SerializeField] private GameOverUI gameOverUI;
         [SerializeField] private LocalizationAssetsHelper localizationAssetsHelper;
         [SerializeField] private ClicksManager clicksManager;
-        [SerializeField] private BulkBuyProfile bulkBuyProfile;
+        [SerializeField] private PlayerBulkBuy playerBulkBuy;
         
         
         public override void InstallBindings()
@@ -89,7 +89,7 @@ namespace DotsKiller
 
             Container.Bind<ClicksManager>().FromInstance(clicksManager).AsSingle().NonLazy();
 
-            Container.Bind<BulkBuyProfile>().FromInstance(bulkBuyProfile).AsSingle().NonLazy();
+            Container.Bind<PlayerBulkBuy>().FromInstance(playerBulkBuy).AsSingle().NonLazy();
 
             InstallSignals();
         }

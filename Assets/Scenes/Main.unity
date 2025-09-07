@@ -6941,7 +6941,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 116958913}
   localizationAssetsHelper: {fileID: 552765331}
   clicksManager: {fileID: 1416170377}
-  bulkBuyProfile: {fileID: 1505296560}
+  playerBulkBuy: {fileID: 1505296560}
 --- !u!114 &557269001
 MonoBehaviour:
   m_ObjectHideFlags: 0

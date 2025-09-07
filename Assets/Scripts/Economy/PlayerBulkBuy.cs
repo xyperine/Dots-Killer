@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace DotsKiller.Economy
 {
-    public class BulkBuyProfile : MonoBehaviour
+    public class PlayerBulkBuy : MonoBehaviour
     {
-        public BulkBuyProvider Provider { get; private set; }
+        public BulkBuyUser User { get; private set; }
 
 
         public void Recreate(BulkBuyCategory category, BulkBuyAmount amount)
         {
-            Provider = new BulkBuyProvider(amount.Value.Value > 1 || amount.Max,
+            User = new BulkBuyUser(amount.Value.Value > 1 || amount.Max,
                 new Dictionary<BulkBuyCategory, BulkBuyAmount>
                 {
                     {category, amount},

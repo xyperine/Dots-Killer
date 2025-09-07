@@ -18,7 +18,7 @@ namespace DotsKiller.Economy
         [SerializeField, ShowIf(nameof(canBeBulkBought))] private BulkBuyCategory bulkBuyCategory;
 
         private Balance _balance;
-        private BulkBuyProfile _bulkBuyProfile;
+        private PlayerBulkBuy _playerBulkBuy;
 
         private bool _complexScaling;
 
@@ -48,7 +48,7 @@ namespace DotsKiller.Economy
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
 
-        public bool IsBulkBuyActive => canBeBulkBought && _bulkBuyProfile.Provider.Active;
+        public bool IsBulkBuyActive => canBeBulkBought && _playerBulkBuy.User.Active;
         public BigDouble BulkPrice => BulkBuyData.Price;
         public BulkBuyData BulkBuyData => GetBulkBuyData();
 
@@ -59,10 +59,10 @@ namespace DotsKiller.Economy
         
         
         [Inject]
-        public void Initialize(Balance balance, BulkBuyProfile bulkBuyProfile)
+        public void Initialize(Balance balance, PlayerBulkBuy playerBulkBuy)
         {
             _balance = balance;
-            _bulkBuyProfile = bulkBuyProfile;
+            _playerBulkBuy = playerBulkBuy;
         }
         
 
@@ -151,18 +151,18 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkPurchase(_bulkBuyProfile.Provider);
+            BulkPurchase(_playerBulkBuy.User);
         }
 
 
-        public void BulkPurchase(BulkBuyProvider provider)
+        public void BulkPurchase(BulkBuyUser user)
         {
-            if (!provider.Active)
+            if (!user.Active)
             {
                 return;
             }
 
-            if (!GetRequestedAmount(provider).Max && !GetRequestedAmount(provider).Value.HasValue)
+            if (!GetRequestedAmount(user).Max && !GetRequestedAmount(user).Value.HasValue)
             {
                 return;
             }
@@ -174,22 +174,22 @@ namespace DotsKiller.Economy
                 return;
             }
             
-            PerformBulkPurchase(bb.Price, GetActualAmount(provider, bb.Amount));
+            PerformBulkPurchase(bb.Price, GetActualAmount(user, bb.Amount));
 
         }
 
 
-        private BulkBuyAmount GetRequestedAmount(BulkBuyProvider provider)
+        private BulkBuyAmount GetRequestedAmount(BulkBuyUser user)
         {
-            return provider.Modes[bulkBuyCategory];
+            return user.Modes[bulkBuyCategory];
         }
 
 
-        private BigDouble GetActualAmount(BulkBuyProvider provider, BigDouble affordableAmount)
+        private BigDouble GetActualAmount(BulkBuyUser user, BigDouble affordableAmount)
         {
-            return GetRequestedAmount(provider).Max
+            return GetRequestedAmount(user).Max
                 ? affordableAmount
-                : BigDouble.Min(affordableAmount, GetRequestedAmount(provider).Value.GetValueOrDefault(BigDouble.One));
+                : BigDouble.Min(affordableAmount, GetRequestedAmount(user).Value.GetValueOrDefault(BigDouble.One));
         }
 
 
@@ -234,13 +234,13 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyProvider provider = new BulkBuyProvider(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
+            BulkBuyUser user = new BulkBuyUser(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
             {
                 {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
                 {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
             });
 
-            BulkPurchase(provider);
+            BulkPurchase(user);
         }
 
 
@@ -300,7 +300,7 @@ namespace DotsKiller.Economy
         {
             var a = BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
                 hasMaxAmount ? maxAmount : null);
-            return a with {Amount = GetActualAmount(_bulkBuyProfile.Provider, a.Amount)};
+            return a with {Amount = GetActualAmount(_playerBulkBuy.User, a.Amount)};
         }
     }
 }

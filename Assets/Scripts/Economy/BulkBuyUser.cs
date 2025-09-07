@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace DotsKiller.Economy
 {
-    public struct BulkBuyProvider
+    public struct BulkBuyUser
     {
         public bool Active { get; init; }
         public Dictionary<BulkBuyCategory, BulkBuyAmount> Modes { get; init; }
 
 
-        public BulkBuyProvider(bool active, Dictionary<BulkBuyCategory, BulkBuyAmount> modes)
+        public BulkBuyUser(bool active, Dictionary<BulkBuyCategory, BulkBuyAmount> modes)
         {
             Active = active;
             Modes = modes;
