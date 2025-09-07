@@ -12,7 +12,7 @@ namespace DotsKiller.Economy
         [SerializeField] private TMP_Text text;
 
         private BulkBuyProfile _bulkBuyProfile;
-        private IEnumerator<SerializableBulkBuyAmount> e;
+        private IEnumerator<SerializableBulkBuyAmount> _enumerator;
 
 
         [Inject]
@@ -24,21 +24,21 @@ namespace DotsKiller.Economy
 
         private void Awake()
         {
-            e = bulkOptions.GetEnumerator();
+            _enumerator = bulkOptions.GetEnumerator();
         }
 
 
         public void Change()
         {
-            if (!e.MoveNext())
+            if (!_enumerator.MoveNext())
             {
-                e.Reset();
-                e.MoveNext();
+                _enumerator.Reset();
+                _enumerator.MoveNext();
             }
 
-            BulkBuyAmount a = e.Current.CreateNonSerializable();
-            text.SetText(a.Max ? "MAX" : a.Value.Value.ToString("G0"));
-            _bulkBuyProfile.Recreate(category, a);
+            BulkBuyAmount amount = _enumerator.Current.CreateNonSerializable();
+            text.SetText(amount.Max ? "MAX" : amount.Value.Value.ToString("G0"));
+            _bulkBuyProfile.Recreate(category, amount);
         }
     }
 }
