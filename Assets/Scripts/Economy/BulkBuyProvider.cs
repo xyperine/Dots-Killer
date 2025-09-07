@@ -31,6 +31,18 @@ namespace DotsKiller.Economy
             Value = value;
             Max = max;
         }
+        
+        
+        public static BulkBuyAmount CreateAsNumber(BigDouble amount)
+        {
+            return new BulkBuyAmount(amount);
+        }
+
+
+        public static BulkBuyAmount CreateAsMax()
+        {
+            return new BulkBuyAmount(max: true);
+        }
     }
 
 

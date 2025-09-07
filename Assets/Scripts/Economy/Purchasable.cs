@@ -236,8 +236,8 @@ namespace DotsKiller.Economy
 
             BulkBuyProvider provider = new BulkBuyProvider(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
             {
-                {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount(amountLimit, false)},
-                {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount(amountLimit, false)},
+                {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
+                {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
             });
 
             BulkPurchase(provider);
