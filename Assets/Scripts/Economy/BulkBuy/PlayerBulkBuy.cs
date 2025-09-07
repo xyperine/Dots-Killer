@@ -5,16 +5,15 @@ namespace DotsKiller.Economy.BulkBuy
 {
     public class PlayerBulkBuy : MonoBehaviour
     {
-        public BulkBuyUser User { get; private set; }
+        public BulkBuyUser User { get; } = new BulkBuyUser(new Dictionary<BulkBuyCategory, BulkBuyAmount>());
 
 
-        public void Recreate(BulkBuyCategory category, BulkBuyAmount amount)
+        public void SetCategoryAmount(BulkBuyCategory category, BulkBuyAmount amount)
         {
-            User = new BulkBuyUser(amount.Value.Value > 1 || amount.Max,
-                new Dictionary<BulkBuyCategory, BulkBuyAmount>
-                {
-                    {category, amount},
-                });
+            if (!User.Modes.TryAdd(category, amount))
+            {
+                User.Modes[category] = amount;
+            }
         }
     }
 }

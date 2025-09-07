@@ -45,7 +45,7 @@ namespace DotsKiller.UI
 
             BulkBuyAmount amount = _enumerator.Current.CreateNonSerializable();
             text.SetText(amount.Max ? "MAX" : amount.Value.Value.ToString("G0"));
-            _playerBulkBuy.Recreate(category, amount);
+            _playerBulkBuy.SetCategoryAmount(category, amount);
         }
     }
 }

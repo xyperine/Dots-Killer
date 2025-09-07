@@ -2,15 +2,19 @@
 
 namespace DotsKiller.Economy.BulkBuy
 {
-    public struct BulkBuyUser
+    public readonly struct BulkBuyUser
     {
-        public bool Active { get; init; }
         public Dictionary<BulkBuyCategory, BulkBuyAmount> Modes { get; init; }
 
 
-        public BulkBuyUser(bool active, Dictionary<BulkBuyCategory, BulkBuyAmount> modes)
+        public bool IsActive(BulkBuyCategory category)
         {
-            Active = active;
+            return Modes.ContainsKey(category) && (Modes[category].Value > 1 || Modes[category].Max);
+        }
+        
+
+        public BulkBuyUser(Dictionary<BulkBuyCategory, BulkBuyAmount> modes)
+        {
             Modes = modes;
         }
     }

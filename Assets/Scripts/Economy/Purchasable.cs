@@ -49,7 +49,7 @@ namespace DotsKiller.Economy
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
 
-        public bool IsBulkBuyActive => canBeBulkBought && _playerBulkBuy.User.Active;
+        public bool IsBulkBuyActive => canBeBulkBought && _playerBulkBuy.User.IsActive(bulkBuyCategory);
         public BigDouble BulkPrice => BulkBuyData.Price;
         public BulkBuyData BulkBuyData => GetBulkBuyData(_playerBulkBuy.User);
 

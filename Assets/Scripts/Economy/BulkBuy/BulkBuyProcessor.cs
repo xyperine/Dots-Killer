@@ -109,14 +109,14 @@ namespace DotsKiller.Economy.BulkBuy
 
         public bool VerifyPurchase(BulkBuyUser user)
         {
-            return user.Active &&
+            return user.IsActive(_category) &&
                    (GetRequestedAmount(user).Max || GetRequestedAmount(user).Value.HasValue);
         }
         
         
         public BulkBuyUser ConstructAutomatonUser(int amountLimit)
         {
-            return new BulkBuyUser(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
+            return new BulkBuyUser(new Dictionary<BulkBuyCategory, BulkBuyAmount>
             {
                 {BulkBuyCategory.RegularUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
                 {BulkBuyCategory.AutomatonUpgrades, BulkBuyAmount.CreateAsNumber(amountLimit)},
