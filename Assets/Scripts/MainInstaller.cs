@@ -19,7 +19,6 @@ namespace DotsKiller
     {
         [SerializeField] private Balance balance;
         [SerializeField] private BalanceModifiersCalculator balanceModifiersCalculator;
-        [SerializeField] private BulkBuyDetection bulkBuyDetection;
         [SerializeField] private RegularUpgrades regularUpgrades;
         [SerializeField] private AutomatonUpgrades automatonUpgrades;
         [SerializeField] private Milestones milestones;
@@ -49,8 +48,6 @@ namespace DotsKiller
             
             Container.Bind<BalanceModifiersCalculator>().FromInstance(balanceModifiersCalculator).AsSingle().NonLazy();
             
-            Container.BindInterfacesAndSelfTo<BulkBuyDetection>().FromInstance(bulkBuyDetection).AsSingle().NonLazy();
-
             Container.BindInterfacesAndSelfTo<RegularUpgrades>().FromInstance(regularUpgrades).AsSingle().NonLazy();
             
             Container.BindInterfacesAndSelfTo<AutomatonUpgrades>().FromInstance(automatonUpgrades).AsSingle().NonLazy();

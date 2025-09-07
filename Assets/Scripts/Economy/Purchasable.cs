@@ -18,7 +18,6 @@ namespace DotsKiller.Economy
         [SerializeField, ShowIf(nameof(canBeBulkBought))] private BulkBuyCategory bulkBuyCategory;
 
         private Balance _balance;
-        private IBulkBuyStateProvider _bulkBuyStateProvider;
         private BulkBuyProfile _bulkBuyProfile;
 
         private bool _complexScaling;
@@ -49,7 +48,7 @@ namespace DotsKiller.Economy
         public bool IsAffordable => _balance.IsAffordable(Price, currency);
         public bool MaxedOut => hasMaxAmount && Amount >= maxAmount;
 
-        public bool IsBulkBuyActive => canBeBulkBought && (_bulkBuyStateProvider.Active || _bulkBuyProfile.Provider.Active);
+        public bool IsBulkBuyActive => canBeBulkBought && _bulkBuyProfile.Provider.Active;
         public BigDouble BulkPrice => BulkBuyData.Price;
         public BulkBuyData BulkBuyData => GetBulkBuyData();
 
@@ -60,10 +59,9 @@ namespace DotsKiller.Economy
         
         
         [Inject]
-        public void Initialize(Balance balance, IBulkBuyStateProvider bulkBuyStateProvider, BulkBuyProfile bulkBuyProfile)
+        public void Initialize(Balance balance, BulkBuyProfile bulkBuyProfile)
         {
             _balance = balance;
-            _bulkBuyStateProvider = bulkBuyStateProvider;
             _bulkBuyProfile = bulkBuyProfile;
         }
         
