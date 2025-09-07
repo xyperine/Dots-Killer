@@ -186,7 +186,7 @@ namespace DotsKiller.Economy
                 return;
             }
             
-            PerformPurchase(bb.Price, GetActualAmount(provider, bb.Amount));
+            PerformBulkPurchase(bb.Price, GetActualAmount(provider, bb.Amount));
 
         }
 
@@ -205,7 +205,7 @@ namespace DotsKiller.Economy
         }
 
 
-        private void PerformPurchase(BigDouble price, BigDouble amount)
+        private void PerformBulkPurchase(BigDouble price, BigDouble amount)
         {
             _balance.Subtract(price, currency);
 
@@ -223,16 +223,6 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyProvider p = new BulkBuyProvider
-            {
-                Active = true,
-                Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
-                {
-                    {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount {Value = null, Max = true}},
-                    {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount {Value = null, Max = true}},
-                },
-            };
-            
             BulkPurchase(_bulkBuyProfile.Provider);
         }
 
@@ -244,7 +234,7 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyProvider p = new BulkBuyProvider
+            BulkBuyProvider provider = new BulkBuyProvider
             {
                 Active = true,
                 Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
@@ -254,7 +244,7 @@ namespace DotsKiller.Economy
                 },
             };
             
-            BulkPurchase(p);
+            BulkPurchase(provider);
         }
 
 
