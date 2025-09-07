@@ -298,9 +298,10 @@ namespace DotsKiller.Economy
 
         private BulkBuyData GetBulkBuyData()
         {
-            var a = BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
+
+            BulkBuyData bb = BulkBuyCalculation.GetBulkBuyData(Amount, _balance.Available(currency), CalculatePrice,
                 hasMaxAmount ? maxAmount : null);
-            return a with {Amount = GetActualAmount(_playerBulkBuy.User, a.Amount)};
+            return bb with {Amount = GetActualAmount(_playerBulkBuy.User, bb.Amount)};
         }
     }
 }
