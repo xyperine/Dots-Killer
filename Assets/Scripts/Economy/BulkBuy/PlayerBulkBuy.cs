@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace DotsKiller.Economy
+namespace DotsKiller.Economy.BulkBuy
 {
     public class PlayerBulkBuy : MonoBehaviour
     {

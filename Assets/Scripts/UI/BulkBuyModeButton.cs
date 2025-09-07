@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DotsKiller.Economy.BulkBuy;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace DotsKiller.Economy
+namespace DotsKiller.UI
 {
     public class BulkBuyModeButton : MonoBehaviour
     {

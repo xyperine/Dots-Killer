@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using BreakInfinity;
 
-namespace DotsKiller.Economy
+namespace DotsKiller.Economy.BulkBuy
 {
     public class BulkBuyProcessor
     {

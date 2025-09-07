@@ -1,4 +1,4 @@
-﻿namespace DotsKiller.Economy
+﻿namespace DotsKiller.Economy.BulkBuy
 {
     public enum BulkBuyCategory
     {

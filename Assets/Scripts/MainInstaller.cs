@@ -1,6 +1,7 @@
 using DotsKiller.Automatons.Upgrades;
 using DotsKiller.Dots;
 using DotsKiller.Economy;
+using DotsKiller.Economy.BulkBuy;
 using DotsKiller.MilestonesLogic;
 using DotsKiller.PurchaseLockLogic;
 using DotsKiller.RegularUpgrading;

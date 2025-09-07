@@ -3,7 +3,7 @@ using BreakInfinity;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace DotsKiller.Economy
+namespace DotsKiller.Economy.BulkBuy
 {
     [Serializable]
     public struct SerializableBulkBuyAmount

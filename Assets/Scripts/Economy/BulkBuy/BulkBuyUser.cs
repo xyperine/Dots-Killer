@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DotsKiller.Economy
+namespace DotsKiller.Economy.BulkBuy
 {
     public struct BulkBuyUser
     {
