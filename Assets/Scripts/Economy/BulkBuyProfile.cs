@@ -10,14 +10,11 @@ namespace DotsKiller.Economy
 
         public void Recreate(BulkBuyCategory category, BulkBuyAmount amount)
         {
-            Provider = new BulkBuyProvider
-            {
-                Active = amount.Value.Value > 1 || amount.Max,
-                Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
+            Provider = new BulkBuyProvider(amount.Value.Value > 1 || amount.Max,
+                new Dictionary<BulkBuyCategory, BulkBuyAmount>
                 {
                     {category, amount},
-                },
-            };
+                });
         }
     }
 }

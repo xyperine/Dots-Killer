@@ -144,26 +144,14 @@ namespace DotsKiller.Economy
         }
 
 
-        public void PurchaseSingle()
+        public void BulkPurchase()
         {
-            if (!_balance.IsAffordable(Price, currency))
-            {
-                return;
-            }
-
             if (MaxedOut)
             {
                 return;
             }
 
-            Purchasing?.Invoke();
-
-            _balance.Subtract(Price, currency);
-
-            Amount++;
-            UpdatePrice();
-
-            Purchased?.Invoke();
+            BulkPurchase(_bulkBuyProfile.Provider);
         }
 
 
@@ -216,14 +204,26 @@ namespace DotsKiller.Economy
         }
 
 
-        public void BulkPurchase()
+        public void PurchaseSingle()
         {
+            if (!_balance.IsAffordable(Price, currency))
+            {
+                return;
+            }
+
             if (MaxedOut)
             {
                 return;
             }
 
-            BulkPurchase(_bulkBuyProfile.Provider);
+            Purchasing?.Invoke();
+
+            _balance.Subtract(Price, currency);
+
+            Amount++;
+            UpdatePrice();
+
+            Purchased?.Invoke();
         }
 
 
@@ -234,16 +234,12 @@ namespace DotsKiller.Economy
                 return;
             }
 
-            BulkBuyProvider provider = new BulkBuyProvider
+            BulkBuyProvider provider = new BulkBuyProvider(true, new Dictionary<BulkBuyCategory, BulkBuyAmount>
             {
-                Active = true,
-                Modes = new Dictionary<BulkBuyCategory, BulkBuyAmount>
-                {
-                    {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount {Value = amountLimit, Max = false}},
-                    {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount {Value = amountLimit, Max = false}},
-                },
-            };
-            
+                {BulkBuyCategory.RegularUpgrades, new BulkBuyAmount(amountLimit, false)},
+                {BulkBuyCategory.AutomatonUpgrades, new BulkBuyAmount(amountLimit, false)},
+            });
+
             BulkPurchase(provider);
         }
 

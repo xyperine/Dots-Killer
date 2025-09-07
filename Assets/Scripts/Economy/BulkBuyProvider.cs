@@ -10,6 +10,13 @@ namespace DotsKiller.Economy
     {
         public bool Active { get; init; }
         public Dictionary<BulkBuyCategory, BulkBuyAmount> Modes { get; init; }
+
+
+        public BulkBuyProvider(bool active, Dictionary<BulkBuyCategory, BulkBuyAmount> modes)
+        {
+            Active = active;
+            Modes = modes;
+        }
     }
 
     
