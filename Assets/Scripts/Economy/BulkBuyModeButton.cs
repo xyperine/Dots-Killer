@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -25,6 +26,12 @@ namespace DotsKiller.Economy
         private void Awake()
         {
             _enumerator = bulkOptions.GetEnumerator();
+        }
+
+
+        private void Start()
+        {
+            Change();
         }
 
 
