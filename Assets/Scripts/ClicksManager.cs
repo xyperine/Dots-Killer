@@ -54,6 +54,12 @@ namespace DotsKiller
         }
 
 
+        private void Start()
+        {
+            debugCircle.gameObject.SetActive(debugClicks);
+        }
+
+
         private void Update()
         {
             if (Pointer.current.press.wasPressedThisFrame)
