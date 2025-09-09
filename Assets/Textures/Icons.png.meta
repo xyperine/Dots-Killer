@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 634708f657a431d4c8610de00c06d9ad
-      internalID: -175945689
+      spriteID: 8b58c0d450d4cfb4e83307d91dafe5a2
+      internalID: -890747622
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93a3e34b512832846a1bc681b6304d7c
-      internalID: 1772893557
+      spriteID: c2a6545c3f0f7324aa69b141b80dc779
+      internalID: -1090442338
       vertices: []
       indices: 
       edges: []
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5763e94a019cff44bf32d4df12ca29a
-      internalID: -1578458611
+      spriteID: a89153f6d46c14842be033fb7c30eaaa
+      internalID: 956131130
       vertices: []
       indices: 
       edges: []
@@ -217,8 +217,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4c903ec43e290e4592931bf0ae8f1b5
-      internalID: 2101356185
+      spriteID: ce7a3ffafe8d2c447964ae1cb4b217ed
+      internalID: 1039171883
       vertices: []
       indices: 
       edges: []
@@ -227,7 +227,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: aa4ac54ad735ee046aef15e366107347
+    spriteID: acc52e98dc9d3c648aab55acddbba01b
     internalID: 0
     vertices: []
     indices: 
@@ -237,12 +237,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Icons_0: -175945689
-      Icons_1: 1772893557
-      Icons_2: -1578458611
-      Icons_3: 2101356185
+      Icons_0: -890747622
+      Icons_1: -1090442338
+      Icons_2: 956131130
+      Icons_3: 1039171883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
