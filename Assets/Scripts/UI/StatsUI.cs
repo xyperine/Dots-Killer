@@ -31,11 +31,11 @@ namespace DotsKiller.UI
         {
             ConstructTotalPlaytimeString();
 
-            statUIs[0].SetText("Kills", Formatting.DefaultFormat(_stats.Kills));
-            statUIs[1].SetText("TotalPoints", Formatting.DefaultFormat(_stats.TotalPoints));
-            statUIs[2].SetText("PointsPerKill", Formatting.DefaultFormat(_stats.PointsPerKill));
+            statUIs[0].SetText("Kills", Formatting.DefaultFormat(_stats.Kills) + " <sprite=2 color=#DBDBDB>");
+            statUIs[1].SetText("TotalPoints", Formatting.DefaultFormat(_stats.TotalPoints) + " <sprite=0 color=#DBDBDB>");
+            statUIs[2].SetText("PointsPerKill", Formatting.DefaultFormat(_stats.PointsPerKill) + " <sprite=0 color=#DBDBDB>");
             statUIs[3].SetText("TotalPlaytime", _playtimeString);
-            statUIs[4].SetText("Purges", Formatting.DefaultFormat(_stats.Purges));
+            statUIs[4].SetText("Purges", Formatting.DefaultFormat(_stats.Purges) + " <sprite=3 color=#DBDBDB>");
             statUIs[5].SetText("PointsIncomeExponent", "^" + Formatting.DefaultFormat(_stats.PointsIncomeExponent));
         }
 

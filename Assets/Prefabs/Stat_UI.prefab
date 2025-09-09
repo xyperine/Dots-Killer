@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e8d4006dbb497cae1df2fa75abbdab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: {fileID: 3798614757320040264}
   valueText: {fileID: 32601717417782049}
   labelLse: {fileID: 4881554529007740728}
 --- !u!1 &2764072426855842468
@@ -137,7 +136,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: e22ebbc616acc9c4ba1b131b9ed8b83a, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
