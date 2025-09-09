@@ -31,7 +31,7 @@ namespace DotsKiller.UI
         {
             ConstructTotalPlaytimeString();
 
-            statUIs[0].SetText("Kills", Formatting.DefaultFormat(_stats.Kills) + " <sprite=2 color=#DBDBDB>");
+            statUIs[0].SetText("Kills", Formatting.DefaultFormat(_stats.Kills) + " <sprite=1 color=#DBDBDB>");
             statUIs[1].SetText("TotalPoints", Formatting.DefaultFormat(_stats.TotalPoints) + " <sprite=0 color=#DBDBDB>");
             statUIs[2].SetText("PointsPerKill", Formatting.DefaultFormat(_stats.PointsPerKill) + " <sprite=0 color=#DBDBDB>");
             statUIs[3].SetText("TotalPlaytime", _playtimeString);
