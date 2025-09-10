@@ -41,6 +41,7 @@ namespace DotsKiller
         [SerializeField] private LocalizationAssetsHelper localizationAssetsHelper;
         [SerializeField] private ClicksManager clicksManager;
         [SerializeField] private PlayerBulkBuy playerBulkBuy;
+        [SerializeField] private AudioManager audioManager;
         
         
         public override void InstallBindings()
@@ -91,6 +92,8 @@ namespace DotsKiller
             Container.Bind<ClicksManager>().FromInstance(clicksManager).AsSingle().NonLazy();
 
             Container.Bind<PlayerBulkBuy>().FromInstance(playerBulkBuy).AsSingle().NonLazy();
+            
+            Container.Bind<AudioManager>().FromInstance(audioManager).AsSingle().NonLazy();
 
             InstallSignals();
         }
