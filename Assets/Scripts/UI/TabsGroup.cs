@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace DotsKiller.UI
 {
@@ -7,17 +8,24 @@ namespace DotsKiller.UI
     {
         [SerializeField] private List<TabButton> tabs;
         [SerializeField] private List<GameObject> pages;
-        [SerializeField] private AudioSource audioSource;
 
         [SerializeField] private Color defaultColor;
         [SerializeField] private Color selectColor;
         [SerializeField] private Color clickColor;
 
         private TabButton _clickedTab;
+        private AudioManager _audioManager;
 
         private readonly Dictionary<int, int> _newItems = new Dictionary<int, int>();
 
 
+        [Inject]
+        public void Initialize(AudioManager audioManager)
+        {
+            _audioManager = audioManager;
+        }
+        
+        
         private void Start()
         {
             Close();
@@ -99,13 +107,15 @@ namespace DotsKiller.UI
                 return;
             }
             
+            _audioManager.PlaySound(AudioID.ButtonHover);
+            
             tabButton.background.color = selectColor;
         }
 
 
         public void OnTabClick(TabButton tabButton)
         {
-            audioSource.Play();
+            _audioManager.PlaySound(AudioID.ButtonClick);
             
             if (_clickedTab == tabButton)
             {
