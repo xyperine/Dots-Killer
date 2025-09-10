@@ -12,8 +12,7 @@ namespace DotsKiller
 {
     public class SettingsManager : MonoBehaviour
     {
-        [SerializeField] private AudioMixer musicMixer;
-        [SerializeField] private AudioMixer sfxMixer;
+        [SerializeField] private AudioMixer mixer;
 
         private SaveLoadManager _saveLoadManager;
 
@@ -40,10 +39,10 @@ namespace DotsKiller
         private void Start()
         {
             SfxVolume = PlayerPrefs.GetFloat(nameof(SfxVolume), SfxVolume);
-            sfxMixer.SetFloat("Volume", RemapVolume(0f, 100f, SfxVolume));
+            mixer.SetFloat("SfxVolume", RemapVolume(0f, 100f, SfxVolume));
 
             MusicVolume = PlayerPrefs.GetFloat(nameof(MusicVolume), MusicVolume);
-            musicMixer.SetFloat("Volume", RemapVolume(0f, 100f, MusicVolume));
+            mixer.SetFloat("MusicVolume", RemapVolume(0f, 100f, MusicVolume));
             
             LoadLanguage();
         }
@@ -81,7 +80,7 @@ namespace DotsKiller
         public void SetSfxVolume(float value)
         {
             SfxVolume = value;
-            sfxMixer.SetFloat("Volume", RemapVolume(0f, 100f, SfxVolume));
+            mixer.SetFloat("SfxVolume", RemapVolume(0f, 100f, SfxVolume));
             
             Save();
 
@@ -101,7 +100,7 @@ namespace DotsKiller
         public void SetMusicVolume(float value)
         {
             MusicVolume = value;
-            musicMixer.SetFloat("Volume", RemapVolume(0f, 100f, MusicVolume));
+            mixer.SetFloat("MusicVolume", RemapVolume(0f, 100f, MusicVolume));
 
             Save();
 

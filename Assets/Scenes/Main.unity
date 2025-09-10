@@ -27393,8 +27393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9c7ebebd9e4c2db5ac99beb737494d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicMixer: {fileID: 24100000, guid: ea39fa582116c4546948a4bbcb50105b, type: 2}
-  sfxMixer: {fileID: 24100000, guid: 589fd33cfe94010429aece4908a8b9c9, type: 2}
+  mixer: {fileID: 24100000, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
 --- !u!1 &2012173789
 GameObject:
   m_ObjectHideFlags: 0
