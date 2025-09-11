@@ -272,7 +272,7 @@ namespace DotsKiller.Economy
         public void Load(int amount)
         {
             Amount = amount;
-            
+            _bulkBuyProcessor ??= new BulkBuyProcessor(bulkBuyCategory);
             UpdatePrice();
         }
 
