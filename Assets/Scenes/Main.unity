@@ -5335,8 +5335,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7769274446250729459, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: aa665a1d309234d47ac43ac1b74e841a, type: 3}
-  m_Resource: {fileID: 8300000, guid: aa665a1d309234d47ac43ac1b74e841a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ebb03b2b009894845b81a64051a5c698, type: 3}
+  m_Resource: {fileID: 8300000, guid: ebb03b2b009894845b81a64051a5c698, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6474,10 +6474,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7769274446250729459, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1c9ab8f1fb4c3164393d8eadc5aa901b, type: 3}
-  m_Resource: {fileID: 8300000, guid: 1c9ab8f1fb4c3164393d8eadc5aa901b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bdb08458eee8f714d87101d84fb4b99b, type: 3}
+  m_Resource: {fileID: 8300000, guid: bdb08458eee8f714d87101d84fb4b99b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.315
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8850,10 +8850,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7769274446250729459, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f4d198266a1a5a044b4c6d59ddc8b6c8, type: 3}
-  m_Resource: {fileID: 8300000, guid: f4d198266a1a5a044b4c6d59ddc8b6c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8fc95a475480c0b479be697641558228, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8fc95a475480c0b479be697641558228, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.37
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21591,8 +21591,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7769274446250729459, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 951c51e1678004a439a5b08597719974, type: 3}
-  m_Resource: {fileID: 8300000, guid: 951c51e1678004a439a5b08597719974, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
