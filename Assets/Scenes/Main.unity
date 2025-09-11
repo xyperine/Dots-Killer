@@ -13389,6 +13389,7 @@ GameObject:
   - component: {fileID: 969711871}
   - component: {fileID: 969711874}
   - component: {fileID: 969711875}
+  - component: {fileID: 969711876}
   m_Layer: 0
   m_Name: Bulk_Buy_Mode_Button
   m_TagString: Untagged
@@ -13550,6 +13551,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 5
+--- !u!114 &969711876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969711868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 969711871}
 --- !u!1 &982378790
 GameObject:
   m_ObjectHideFlags: 0
@@ -27201,6 +27215,7 @@ GameObject:
   - component: {fileID: 1976182453}
   - component: {fileID: 1976182452}
   - component: {fileID: 1976182451}
+  - component: {fileID: 1976182456}
   m_Layer: 0
   m_Name: Bulk_Buy_Mode_Button
   m_TagString: Untagged
@@ -27362,6 +27377,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976182449}
   m_CullTransparentMesh: 1
+--- !u!114 &1976182456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976182449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1976182453}
 --- !u!1 &1980849268
 GameObject:
   m_ObjectHideFlags: 0
