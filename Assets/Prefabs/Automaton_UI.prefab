@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 8745082322877145991}
   - component: {fileID: 4149206699729574402}
   - component: {fileID: 8356908495830767291}
+  - component: {fileID: 316087628757263001}
   m_Layer: 0
   m_Name: Purchase_Lock
   m_TagString: Untagged
@@ -847,6 +848,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   purchaseLock: {fileID: 4773295839158475059}
   purchasableLockOverlay: {fileID: 4909146369522928314}
+--- !u!114 &316087628757263001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909146369522928314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7660887661614773904}
 --- !u!1 &5979883864957757655
 GameObject:
   m_ObjectHideFlags: 0
