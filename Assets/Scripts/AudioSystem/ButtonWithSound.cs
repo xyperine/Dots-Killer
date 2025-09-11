@@ -3,14 +3,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.AudioSystem
 {
-    // Maybe it's smarter to combine all these scripts into one like SelectableWithSound?
-    [RequireComponent(typeof(Slider))]
-    public class SliderWithSound : MonoBehaviour, IPointerEnterHandler, IPointerUpHandler
+    [RequireComponent(typeof(Button))]
+    public class ButtonWithSound : MonoBehaviour, IPointerEnterHandler
     {
-        [SerializeField] private Slider slider;
-                
+        [SerializeField] private Button button;
+        
         private AudioManager _audioManager;
 
 
@@ -19,14 +18,21 @@ namespace DotsKiller
         {
             _audioManager = audioManager;
         }
-        
+
+
         private void OnValidate()
         {
-            slider = GetComponent<Slider>();
+            button = GetComponent<Button>();
         }
 
 
-        private void PlayOnClick()
+        private void OnEnable()
+        {
+            button.onClick.AddListener(PlayOnClick);
+        }
+
+
+        public void PlayOnClick()
         {
             _audioManager.PlaySound(AudioID.ButtonClick);
         }
@@ -34,7 +40,7 @@ namespace DotsKiller
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!slider.interactable)
+            if (!button.interactable)
             {
                 return;
             }
@@ -49,9 +55,9 @@ namespace DotsKiller
         }
 
 
-        public void OnPointerUp(PointerEventData eventData)
+        private void OnDisable()
         {
-            PlayOnClick();
+            button.onClick.RemoveListener(PlayOnClick);
         }
     }
 }

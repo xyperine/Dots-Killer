@@ -1,7 +1,7 @@
 ﻿using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
-namespace DotsKiller
+namespace DotsKiller.AudioSystem
 {
     public class AudioManager : MonoBehaviour
     {
@@ -13,15 +13,5 @@ namespace DotsKiller
         {
             sources[id].Play();
         }
-    }
-
-
-    public enum AudioID
-    {
-        FieldClick,
-        DotKill,
-        ButtonClick,
-        ButtonHover,
-        PointsGainedActively,
     }
 }

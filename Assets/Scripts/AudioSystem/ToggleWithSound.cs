@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DotsKiller
+namespace DotsKiller.AudioSystem
 {
-    [RequireComponent(typeof(Button))]
-    public class ButtonWithSound : MonoBehaviour, IPointerEnterHandler
+    [RequireComponent(typeof(Toggle))]
+    public class ToggleWithSound : MonoBehaviour, IPointerEnterHandler
     {
-        [SerializeField] private Button button;
+        [SerializeField] private Toggle toggle;
         
         private AudioManager _audioManager;
 
@@ -23,17 +22,17 @@ namespace DotsKiller
 
         private void OnValidate()
         {
-            button = GetComponent<Button>();
+            toggle = GetComponent<Toggle>();
         }
 
 
         private void OnEnable()
         {
-            button.onClick.AddListener(PlayOnClick);
+            toggle.onValueChanged.AddListener(PlayOnClick);
         }
 
 
-        public void PlayOnClick()
+        public void PlayOnClick(bool _)
         {
             _audioManager.PlaySound(AudioID.ButtonClick);
         }
@@ -41,7 +40,7 @@ namespace DotsKiller
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!button.interactable)
+            if (!toggle.interactable)
             {
                 return;
             }
@@ -58,7 +57,7 @@ namespace DotsKiller
 
         private void OnDisable()
         {
-            button.onClick.RemoveListener(PlayOnClick);
+            toggle.onValueChanged.RemoveListener(PlayOnClick);
         }
     }
 }
