@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 8643780230376068196}
   - component: {fileID: 4021694764754159677}
   - component: {fileID: 5633206031079946526}
+  - component: {fileID: 642271630808871242}
   m_Layer: 0
   m_Name: Regular_Upgrade
   m_TagString: Untagged
@@ -828,6 +829,19 @@ MonoBehaviour:
   bonusText: {fileID: 5618034527130401782}
   regularUpgrade: {fileID: 2099172896116619737}
   bonusColor: {r: 0.851, g: 0.205091, b: 0.39886382, a: 1}
+--- !u!114 &642271630808871242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334226097492836897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2735592478297823368}
 --- !u!1 &7454667402824021401
 GameObject:
   m_ObjectHideFlags: 0
