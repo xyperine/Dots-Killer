@@ -33,6 +33,11 @@ namespace DotsKiller
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (!button.interactable)
+            {
+                return;
+            }
+            
             PlayOnHover();
         }
 
