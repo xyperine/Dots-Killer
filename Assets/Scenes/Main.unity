@@ -4689,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_AnchorMin.x
@@ -4697,11 +4697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 387.84003
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4737,11 +4737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 193.92001
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -384
       objectReference: {fileID: 0}
     - target: {fileID: 3202995286190901905, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4769,7 +4769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460573001185809135, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
       propertyPath: m_Name
-      value: Leaderboards
+      value: Leaderboards(needs more work)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460573001185809135, guid: e568f953c9ef36b4c8959bf820c00ad1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
