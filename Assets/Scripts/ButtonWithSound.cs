@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
 namespace DotsKiller
 {
+    [RequireComponent(typeof(Button))]
     public class ButtonWithSound : MonoBehaviour, IPointerEnterHandler
     {
         [SerializeField] private Button button;
@@ -16,6 +18,12 @@ namespace DotsKiller
         public void Initialize(AudioManager audioManager)
         {
             _audioManager = audioManager;
+        }
+
+
+        private void OnValidate()
+        {
+            button = GetComponent<Button>();
         }
 
 
