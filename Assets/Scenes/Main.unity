@@ -11570,6 +11570,7 @@ GameObject:
   - component: {fileID: 850406855}
   - component: {fileID: 850406859}
   - component: {fileID: 850406860}
+  - component: {fileID: 850406861}
   m_Layer: 5
   m_Name: Purge_Button
   m_TagString: Untagged
@@ -11739,6 +11740,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 5
+--- !u!114 &850406861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850406853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 850406855}
 --- !u!1001 &854893429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19975,7 +19989,6 @@ MonoBehaviour:
   - {fileID: 1258782542}
   - {fileID: 961678039}
   - {fileID: 1425048772}
-  audioSource: {fileID: 1459916763}
   defaultColor: {r: 0.10980393, g: 0.10980393, b: 0.10980393, a: 1}
   selectColor: {r: 0.26415092, g: 0.11089354, b: 0.1505966, a: 1}
   clickColor: {r: 0.5377358, g: 0.10399607, b: 0.23353091, a: 1}
