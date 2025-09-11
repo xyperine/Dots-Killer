@@ -1,4 +1,5 @@
 ﻿using System;
+using DotsKiller.AudioSystem;
 using DotsKiller.RegularUpgrading;
 using NaughtyAttributes;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace DotsKiller
         private float assistRadius = 0.2f;
         [SerializeField] private bool debugClicks;
         [SerializeField, ShowIf(nameof(debugClicks))] private Transform debugCircle;
-        
+
         private enum ClickType
         {
             Normal,
@@ -31,15 +32,17 @@ namespace DotsKiller
         private ContactFilter2D _dotsContactFilter;
         
         private RegularUpgrades _regularUpgrades;
+        private AudioManager _audioManager;
 
         public float DefaultRadius => defaultClickRadius;
         public float UpgradedRadius => upgradedRadius;
 
 
         [Inject]
-        public void Initialize(RegularUpgrades regularUpgrades)
+        public void Initialize(RegularUpgrades regularUpgrades, AudioManager audioManager)
         {
             _regularUpgrades = regularUpgrades;
+            _audioManager = audioManager;
         }
 
 
@@ -95,6 +98,11 @@ namespace DotsKiller
         private void PerformAoeClick(Vector2 clickPosition)
         {
             int size = Physics2D.OverlapCircle(clickPosition, upgradedRadius, _dotsContactFilter, _queryResults);
+
+            if (size >= 1)
+            {
+                PlayAudio();
+            }
                     
             for (int i = 0; i < size; i++)
             {
@@ -102,6 +110,12 @@ namespace DotsKiller
             }
         }
 
+
+        private void PlayAudio()
+        {
+            _audioManager.PlaySound(AudioID.Clickable);
+        }
+        
 
         private void ClickOnTarget(Component component)
         {
@@ -123,7 +137,9 @@ namespace DotsKiller
                     {
                         return;
                     }
-                
+                    
+                    PlayAudio();
+
                     foreach (Collider2D result in _queryResults)
                     {
                         if (!result)
@@ -143,6 +159,8 @@ namespace DotsKiller
                     {
                         return;
                     }
+                    
+                    PlayAudio();
 
                     Collider2D closestResult = _queryResults[0];
                     float closesPosition = float.PositiveInfinity;
@@ -172,6 +190,8 @@ namespace DotsKiller
                     {
                         return;
                     }
+                    
+                    PlayAudio();
 
                     ClickOnTarget(hit.transform);
                     break;

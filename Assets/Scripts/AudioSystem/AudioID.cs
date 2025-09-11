@@ -3,7 +3,7 @@
     public enum AudioID
     {
         FieldClick,
-        DotKill,
+        Clickable,
         ButtonClick,
         ButtonHover,
         PointsGainedActively,
