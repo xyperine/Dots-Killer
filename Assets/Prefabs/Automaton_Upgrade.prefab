@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 2989514148371230883}
   - component: {fileID: 3157419193404423622}
   - component: {fileID: 6626557437550235604}
+  - component: {fileID: 1364424371494892490}
   m_Layer: 0
   m_Name: Automaton_Upgrade
   m_TagString: Untagged
@@ -710,6 +711,19 @@ MonoBehaviour:
   bonusText: {fileID: 4327287953090787595}
   automatonUpgrade: {fileID: 223215244111606042}
   bonusColor: {r: 0.8509804, g: 0.20392157, b: 0.4, a: 1}
+--- !u!114 &1364424371494892490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633250558405060650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc276303b0d486daff20bf5732afb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7779667086021263571}
 --- !u!1 &7862118984121612201
 GameObject:
   m_ObjectHideFlags: 0
