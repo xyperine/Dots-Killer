@@ -72,15 +72,9 @@ namespace DotsKiller
                 return;
             }
 
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (IsOverUI())
             {
-                foreach (RaycastResult result in GetAllElementsUnderPointer())
-                {
-                    if (!result.gameObject.CompareTag("Field"))
-                    {
-                        return;
-                    }
-                }
+                return;
             }
 
             Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.value);
@@ -106,6 +100,30 @@ namespace DotsKiller
             else
             {
                 PerformRegularClick(clickPosition);
+            }
+        }
+
+
+        private bool IsOverUI()
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                return false;
+            }
+
+            return DidFoundBlockingElement();
+
+            bool DidFoundBlockingElement()
+            {
+                foreach (RaycastResult result in GetAllElementsUnderPointer())
+                {
+                    if (!result.gameObject.CompareTag("Field"))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
             }
         }
 
