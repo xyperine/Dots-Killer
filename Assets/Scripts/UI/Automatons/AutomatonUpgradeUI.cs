@@ -9,11 +9,14 @@ namespace DotsKiller.UI.Automatons
     public class AutomatonUpgradeUI : MonoBehaviour
     {
         [SerializeField] private LocalizeStringEvent nameLse;
+        [SerializeField] private TMP_Text titleText;
         [SerializeField] private TMP_Text bonusText;
         [SerializeField] private AutomatonUpgrade automatonUpgrade;
         [SerializeField] private Color bonusColor;
 
         private AutomatonUpgrades _automatonUpgrades;
+        
+        private string _localizedTitle;
 
 
         [Inject]
@@ -23,6 +26,18 @@ namespace DotsKiller.UI.Automatons
         }
         
         
+        private void OnEnable()
+        {
+            nameLse.OnUpdateString.AddListener(UpdateTitle);
+        }
+        
+        
+        private void UpdateTitle(string localizedTitle)
+        {
+            _localizedTitle = localizedTitle;
+        }
+
+
         private void Start()
         {
             nameLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
@@ -33,6 +48,13 @@ namespace DotsKiller.UI.Automatons
         private void Update()
         {
             bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.NextLevel, automatonUpgrade.MaxLevel, bonusColor);
+            titleText.SetText($"{_localizedTitle} ({automatonUpgrade.Level})");
+        }
+        
+        
+        private void OnDisable()
+        {
+            nameLse.OnUpdateString.RemoveListener(UpdateTitle);
         }
     }
 }
