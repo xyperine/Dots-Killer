@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using DotsKiller.AudioSystem;
 using DotsKiller.RegularUpgrading;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -65,32 +67,45 @@ namespace DotsKiller
 
         private void Update()
         {
-            if (Pointer.current.press.wasPressedThisFrame)
+            if (!Pointer.current.press.wasPressedThisFrame)
             {
-                Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.value);
-                
-                if (debugClicks)
-                {
-                    debugCircle.gameObject.SetActive(true);
+                return;
+            }
 
-                    debugCircle.position = clickPosition;
-                    debugCircle.localScale = Vector3.one * defaultClickRadius * 2 * 5; // sprite size specific
-                }
-                else
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                foreach (RaycastResult result in GetAllElementsUnderPointer())
                 {
-                    debugCircle.gameObject.SetActive(false);
+                    if (!result.gameObject.CompareTag("Field"))
+                    {
+                        return;
+                    }
                 }
-                
-                Array.Clear(_queryResults, 0, 64);
+            }
 
-                if (_regularUpgrades.AoeClicks)
-                {
-                    PerformAoeClick(clickPosition);
-                }
-                else
-                {
-                    PerformRegularClick(clickPosition);
-                }
+            Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.value);
+                
+            if (debugClicks)
+            {
+                debugCircle.gameObject.SetActive(true);
+
+                debugCircle.position = clickPosition;
+                debugCircle.localScale = Vector3.one * defaultClickRadius * 2 * 5; // sprite size specific
+            }
+            else
+            {
+                debugCircle.gameObject.SetActive(false);
+            }
+                
+            Array.Clear(_queryResults, 0, 64);
+
+            if (_regularUpgrades.AoeClicks)
+            {
+                PerformAoeClick(clickPosition);
+            }
+            else
+            {
+                PerformRegularClick(clickPosition);
             }
         }
 
@@ -108,6 +123,18 @@ namespace DotsKiller
             {
                 ClickOnTarget(_queryResults[i]);
             }
+        }
+
+
+        private List<RaycastResult> GetAllElementsUnderPointer()
+        {
+            PointerEventData eventData = new PointerEventData(EventSystem.current)
+            {
+                position = Pointer.current.position.value,
+            };
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+            return raycastResults;
         }
 
 
