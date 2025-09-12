@@ -83,11 +83,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10248544052363264
-    m_Localized: Bomb
+    m_Localized: Expansion
     m_Metadata:
       m_Items: []
   - m_Id: 10248544090112000
-    m_Localized: Clicks kill in area
+    m_Localized: Increases click radius
     m_Metadata:
       m_Items: []
   references:

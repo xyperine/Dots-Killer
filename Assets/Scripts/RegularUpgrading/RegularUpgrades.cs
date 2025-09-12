@@ -306,7 +306,7 @@ namespace DotsKiller.RegularUpgrading
                 5 => string.Empty,
                 6 => string.Empty,
                 7 => string.Empty,
-                8 => string.Empty,
+                8 => "m",
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null),
             };
         }

@@ -86,11 +86,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10248544052363264
-    m_Localized: Bomba
+    m_Localized: "Expansi\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 10248544090112000
-    m_Localized: "Los clics matan en el \xE1rea"
+    m_Localized: Aumenta el radio de clic
     m_Metadata:
       m_Items: []
   references:
