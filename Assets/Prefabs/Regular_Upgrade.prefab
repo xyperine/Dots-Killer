@@ -826,6 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameLse: {fileID: 7567274582548735125}
   descriptionLse: {fileID: 1241642325708198595}
+  titleText: {fileID: 8209135891538534716}
   bonusText: {fileID: 5618034527130401782}
   regularUpgrade: {fileID: 2099172896116619737}
   bonusColor: {r: 0.851, g: 0.205091, b: 0.39886382, a: 1}
