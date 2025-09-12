@@ -8,7 +8,7 @@ namespace DotsKiller.UI
 {
     public class RegularUpgradeUI : MonoBehaviour
     {
-        [SerializeField] private LocalizeStringEvent nameLse;
+        [SerializeField] private LocalizeStringEvent titleLse;
         [SerializeField] private LocalizeStringEvent descriptionLse;
         [SerializeField] private TMP_Text titleText;
         [SerializeField] private TMP_Text bonusText;
@@ -29,7 +29,7 @@ namespace DotsKiller.UI
 
         private void OnEnable()
         {
-            nameLse.OnUpdateString.AddListener(UpdateTitle);
+            titleLse.OnUpdateString.AddListener(UpdateTitle);
         }
 
 
@@ -41,23 +41,23 @@ namespace DotsKiller.UI
 
         private void Start()
         {
-            nameLse.SetEntry(_regularUpgrades.GetNameEntryName(regularUpgrade.ID));
+            titleLse.SetEntry(_regularUpgrades.GetNameEntryName(regularUpgrade.ID));
             descriptionLse.SetEntry(_regularUpgrades.GetDescriptionEntryName(regularUpgrade.ID));
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, 0, 1, false, bonusColor);
+            bonusText.SetText(_regularUpgrades.GetBonusText(regularUpgrade.ID, 0, 1, false, bonusColor));
         }
 
 
         private void Update()
         {
-            bonusText.text = _regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level, regularUpgrade.NextLevel, regularUpgrade.MaxedOut, bonusColor);
+            bonusText.SetText(_regularUpgrades.GetBonusText(regularUpgrade.ID, regularUpgrade.Level,
+                regularUpgrade.NextLevel, regularUpgrade.MaxedOut, bonusColor));
             titleText.SetText($"{_localizedTitle} ({regularUpgrade.Level})");
-            //Debug.Log(_localizedTitle);
         }
 
 
         private void OnDisable()
         {
-            nameLse.OnUpdateString.AddListener(UpdateTitle);
+            titleLse.OnUpdateString.RemoveListener(UpdateTitle);
         }
     }
 }
