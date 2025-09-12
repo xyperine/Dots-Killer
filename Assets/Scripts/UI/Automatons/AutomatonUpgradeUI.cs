@@ -8,7 +8,7 @@ namespace DotsKiller.UI.Automatons
 {
     public class AutomatonUpgradeUI : MonoBehaviour
     {
-        [SerializeField] private LocalizeStringEvent nameLse;
+        [SerializeField] private LocalizeStringEvent titleLse;
         [SerializeField] private TMP_Text titleText;
         [SerializeField] private TMP_Text bonusText;
         [SerializeField] private AutomatonUpgrade automatonUpgrade;
@@ -28,7 +28,7 @@ namespace DotsKiller.UI.Automatons
         
         private void OnEnable()
         {
-            nameLse.OnUpdateString.AddListener(UpdateTitle);
+            titleLse.OnUpdateString.AddListener(UpdateTitle);
         }
         
         
@@ -40,21 +40,23 @@ namespace DotsKiller.UI.Automatons
 
         private void Start()
         {
-            nameLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, 1, automatonUpgrade.MaxLevel, bonusColor);
+            titleLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
+            bonusText.SetText(_automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, 1, automatonUpgrade.MaxLevel,
+                bonusColor));
         }
 
         
         private void Update()
         {
-            bonusText.text = _automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level, automatonUpgrade.NextLevel, automatonUpgrade.MaxLevel, bonusColor);
+            bonusText.SetText(_automatonUpgrades.GetBonusText(automatonUpgrade.ID, automatonUpgrade.Level,
+                automatonUpgrade.NextLevel, automatonUpgrade.MaxLevel, bonusColor));
             titleText.SetText($"{_localizedTitle} ({automatonUpgrade.Level})");
         }
         
         
         private void OnDisable()
         {
-            nameLse.OnUpdateString.RemoveListener(UpdateTitle);
+            titleLse.OnUpdateString.RemoveListener(UpdateTitle);
         }
     }
 }

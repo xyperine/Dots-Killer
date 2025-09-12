@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aefea52cbb74537ad6bb47e63b0b5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLse: {fileID: 945139696017532676}
+  titleLse: {fileID: 945139696017532676}
   titleText: {fileID: 2108499800979004809}
   bonusText: {fileID: 4327287953090787595}
   automatonUpgrade: {fileID: 223215244111606042}
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 945139696017532676}
   - component: {fileID: 5646769750962106108}
   m_Layer: 0
-  m_Name: Name
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
