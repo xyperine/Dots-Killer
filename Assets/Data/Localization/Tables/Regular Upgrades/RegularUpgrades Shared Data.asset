@@ -16,39 +16,39 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: a5ac71fe06fc7d84ba2842c4f00642d0
   m_Entries:
   - m_Id: 255830835200
-    m_Key: RegularUpgrades.PointsOnKill.Name
+    m_Key: RegularUpgrades.PointsOnKill.Title
     m_Metadata:
       m_Items: []
   - m_Id: 95197882269696
-    m_Key: RegularUpgrades.KillsFactor.Name
+    m_Key: RegularUpgrades.KillsFactor.Title
     m_Metadata:
       m_Items: []
   - m_Id: 98464141983744
-    m_Key: RegularUpgrades.CleanFactor.Name
+    m_Key: RegularUpgrades.CleanFactor.Title
     m_Metadata:
       m_Items: []
   - m_Id: 283326262067200
-    m_Key: RegularUpgrades.TimeFactor.Name
+    m_Key: RegularUpgrades.TimeFactor.Title
     m_Metadata:
       m_Items: []
   - m_Id: 319054325006336
-    m_Key: RegularUpgrades.Bounty.Name
+    m_Key: RegularUpgrades.Bounty.Title
     m_Metadata:
       m_Items: []
   - m_Id: 319378485985280
-    m_Key: RegularUpgrades.AccumulationFactor.Name
+    m_Key: RegularUpgrades.AccumulationFactor.Title
     m_Metadata:
       m_Items: []
   - m_Id: 321652897660928
-    m_Key: RegularUpgrades.Growth.Name
+    m_Key: RegularUpgrades.Growth.Title
     m_Metadata:
       m_Items: []
   - m_Id: 322130695995392
-    m_Key: RegularUpgrades.Boost.Name
+    m_Key: RegularUpgrades.Boost.Title
     m_Metadata:
       m_Items: []
   - m_Id: 10248544052363264
-    m_Key: RegularUpgrades.Bomb.Name
+    m_Key: RegularUpgrades.Bomb.Title
     m_Metadata:
       m_Items: []
   - m_Id: 1815319199744

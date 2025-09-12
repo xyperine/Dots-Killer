@@ -111,12 +111,12 @@ namespace DotsKiller.Automatons.Upgrades
         }
         
         
-        public string GetNameTableEntryName(int id)
+        public string GetTitleTableEntryName(int id)
         {
             string tableName = "AutomatonUpgrades";
             string entryName = GetEntryTableName(id);
 
-            return string.Join('.', tableName, entryName, "Name");
+            return string.Join('.', tableName, entryName, "Title");
         }
 
 

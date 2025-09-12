@@ -40,7 +40,7 @@ namespace DotsKiller.UI.Automatons
 
         private void Start()
         {
-            titleLse.SetEntry(_automatonUpgrades.GetNameTableEntryName(automatonUpgrade.ID));
+            titleLse.SetEntry(_automatonUpgrades.GetTitleTableEntryName(automatonUpgrade.ID));
             bonusText.SetText(_automatonUpgrades.GetBonusText(automatonUpgrade.ID, 0, 1, automatonUpgrade.MaxLevel,
                 bonusColor));
         }

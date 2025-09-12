@@ -223,12 +223,12 @@ namespace DotsKiller.RegularUpgrading
         }
         
         
-        public string GetNameEntryName(int id)
+        public string GetTitleEntryName(int id)
         {
             string tableName = "RegularUpgrades";
             string entryName = GetEntryName(id);
 
-            return string.Join('.', tableName, entryName, "Name");
+            return string.Join('.', tableName, entryName, "Title");
         }
 
 

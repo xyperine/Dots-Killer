@@ -16,19 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 424eb211de4f70440b69102c32bb316c
   m_Entries:
   - m_Id: 1858767179530240
-    m_Key: AutomatonUpgrades.AutoKill.Tickspeed.Name
+    m_Key: AutomatonUpgrades.AutoKill.Tickspeed.Title
     m_Metadata:
       m_Items: []
   - m_Id: 1858767187918848
-    m_Key: AutomatonUpgrades.AutoPurchase.Tickspeed.Name
+    m_Key: AutomatonUpgrades.AutoPurchase.Tickspeed.Title
     m_Metadata:
       m_Items: []
   - m_Id: 1858767187918849
-    m_Key: AutomatonUpgrades.AutoKill.APT.Name
+    m_Key: AutomatonUpgrades.AutoKill.APT.Title
     m_Metadata:
       m_Items: []
   - m_Id: 1858767187918850
-    m_Key: AutomatonUpgrades.AutoPurchase.APT.Name
+    m_Key: AutomatonUpgrades.AutoPurchase.APT.Title
     m_Metadata:
       m_Items: []
   m_Metadata:
