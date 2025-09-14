@@ -7323,9 +7323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7657f271e00c432babce9a944dcd1e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firebaseLeaderboardManager: {fileID: 0}
   webGlLeaderboardManager: {fileID: 1187740089}
-  yandexLeaderboardManager: {fileID: 1420100304}
 --- !u!1 &582158776
 GameObject:
   m_ObjectHideFlags: 0
@@ -7583,7 +7581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.0.1.9376:5327
+  m_text: v0.0.1.9388:3539
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
@@ -19862,51 +19860,6 @@ Transform:
   - {fileID: 1044144109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1420100302
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1420100303}
-  - component: {fileID: 1420100304}
-  m_Layer: 0
-  m_Name: Yandex_Leaderboard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1420100303
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420100302}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2095658235}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1420100304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420100302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a88cb12cbda4206b7ba80e16a91a716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lbName: big score
 --- !u!1 &1424208305
 GameObject:
   m_ObjectHideFlags: 0
@@ -30757,7 +30710,6 @@ Transform:
   m_Children:
   - {fileID: 291349199}
   - {fileID: 1187740090}
-  - {fileID: 1420100303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2095658239
