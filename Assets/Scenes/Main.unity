@@ -5342,7 +5342,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: ebb03b2b009894845b81a64051a5c698, type: 3}
   m_Resource: {fileID: 8300000, guid: ebb03b2b009894845b81a64051a5c698, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.384
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6481,7 +6481,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: bdb08458eee8f714d87101d84fb4b99b, type: 3}
   m_Resource: {fileID: 8300000, guid: bdb08458eee8f714d87101d84fb4b99b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.315
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7581,7 +7581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.0.1.b9388:4719
+  m_text: v0.0.1.b9388:5155
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
@@ -8855,7 +8855,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 8fc95a475480c0b479be697641558228, type: 3}
   m_Resource: {fileID: 8300000, guid: 8fc95a475480c0b479be697641558228, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.37
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21548,10 +21548,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7769274446250729459, guid: f0c3ba135bb5ad945a4aa1bf21a156c0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
-  m_Resource: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 41c5c2b983676c14abbebce504e00d9a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 41c5c2b983676c14abbebce504e00d9a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.795
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
