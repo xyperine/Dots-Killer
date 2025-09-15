@@ -7323,6 +7323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7657f271e00c432babce9a944dcd1e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firebaseLeaderboardManager: {fileID: 0}
   webGlLeaderboardManager: {fileID: 1187740089}
 --- !u!1 &582158776
 GameObject:
@@ -7581,7 +7582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.0.1.b9389:3065
+  m_text: v0.0.1.b9389:4571
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 663b7024251aa3642970b090d65a0474, type: 2}
   m_sharedMaterial: {fileID: 3128361203738959082, guid: 663b7024251aa3642970b090d65a0474, type: 2}
@@ -20109,6 +20110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1430780139}
   - component: {fileID: 1430780138}
+  - component: {fileID: 1430780140}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -20186,6 +20188,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1430780140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430780137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d8b9684c2249b0af2edc2d001e5bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 1430780138}
+  webGLMaterial: {fileID: 2100000, guid: e9be15a16c54a424a96b291c94d6e291, type: 2}
+  pcMaterial: {fileID: 2100000, guid: e9be15a16c54a424a96b291c94d6e291, type: 2}
+  mobileMaterial: {fileID: 2100000, guid: 7b5c25328512ce54eba3671857720256, type: 2}
 --- !u!1 &1441785141
 GameObject:
   m_ObjectHideFlags: 0
