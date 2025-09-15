@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Dots Killer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -167,7 +167,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.xyperine.DotsKiller
     Standalone: com.xyperine.DotsKiller
-    WebGL: com.xyperine.DotsKiller
+    WebGL: com.xyperine.Dots-Killer
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
     Standalone: 66
@@ -844,7 +844,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     Android: BUILD_TYPE_TEST;BUILD_PLATFORM_ANDROID;BUILD_TARGET_PLAYER;BUILD_BACKEND_IL2CPP;LEVELPLAY_DEPENDENCIES_INSTALLED
     Standalone: BUILD_TYPE_TEST;BUILD_PLATFORM_WINDOWS;BUILD_TARGET_PLAYER;BUILD_BACKEND_IL2CPP;LEVELPLAY_DEPENDENCIES_INSTALLED
-    WebGL: BUILD_TYPE_TEST;BUILD_PLATFORM_WEBGL;BUILD_TARGET_PLAYER;BUILD_BACKEND_IL2CPP;BUILD_DIST_ITCH;LEVELPLAY_DEPENDENCIES_INSTALLED
+    WebGL: LEVELPLAY_DEPENDENCIES_INSTALLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
