@@ -38,9 +38,9 @@ namespace SuperUnityBuild.Generated
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638935658032344382);
-        public const string version = "0.0.1.b9389:4974";
-        public const int buildCounter = 23;
+        public static readonly DateTime buildDate = new DateTime(638935828601095218);
+        public const string version = "0.0.1.b9390:351";
+        public const int buildCounter = 25;
         public const ReleaseType releaseType = ReleaseType.Test;
         public const Platform platform = Platform.Android;
         public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;

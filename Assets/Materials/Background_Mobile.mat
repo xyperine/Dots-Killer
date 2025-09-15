@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Background_Mobile
-  m_Shader: {fileID: -6465566751694194690, guid: 5bb254c0daa552148bd5dc61f4016823, type: 3}
-  m_Parent: {fileID: 2100000, guid: e9be15a16c54a424a96b291c94d6e291, type: 2}
+  m_Shader: {fileID: -6465566751694194690, guid: c4dd9ac49d37b3b49b821ce0e0355573, type: 3}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -23,10 +23,37 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Noise1:
+        m_Texture: {fileID: 2800000, guid: df0309f1694019a44b942a0512979e2c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise2:
+        m_Texture: {fileID: 2800000, guid: dff423fb7be42dc4caf742056498c791, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Alpha: 0.01
+    - _Fluctuation_Speed: 0.17
+    - _Grid_Scale: 1
+    - _Grid_Width: 0.1
+    - _Scale: 11.61
+    - _Scroll_Speed: 0.1
     m_Colors:
+    - _Base_Color: {r: 0.9141776, g: 0.82961017, b: 0.9716981, a: 1}
     - _FBM_Octaves: {r: 1, g: 2, b: 4, a: 0}
     - _Scroll_Speed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
