@@ -64,7 +64,7 @@ Material:
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
     - _Float: 0
-    - _Grid_Width: 0.04
+    - _Grid_Width: 0.03
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1
