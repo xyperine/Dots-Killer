@@ -251,7 +251,7 @@ MonoBehaviour:
   _productParameters:
     buildCounter: 22
     buildVersion: 0.0.1.b9389:4571
-    versionTemplate: 0.0.1.b$DAYSSINCE("January 1, 2000"):$SECONDS
+    versionTemplate: 0.1.0.b$DAYSSINCE("January 1, 2000"):$SECONDS
     autoGenerate: 1
     syncWithPlayerSettings: 0
   _releaseTypeList:
