@@ -65,20 +65,12 @@ namespace DotsKiller.UI
         private void Update()
         {
             button.interactable = _purge.Available;
-            string purgeText = _purgeString;
-            BigDouble shardsAmount = Formulas.CalculateShardsOnPurge();
-            float pluralizationThreshold = 1000f;
-            string shardsText = string.Empty;
-
-            AsyncOperationHandle<string> op = shardsLocalizedString.GetLocalizedStringAsync(shardsAmount < pluralizationThreshold,
-                shardsAmount.ToDouble());
             
-            _localizationAssetsHelper.GetLocalizedAsset(op, s => shardsText = s);
-
-            if (shardsAmount >= pluralizationThreshold)
-            {
-                shardsText = Formatting.DefaultFormat(shardsAmount) + " " + shardsText;
-            }
+            string purgeText = _purgeString;
+            
+            BigDouble shardsAmount = Formulas.CalculateShardsOnPurge();
+            string shardsText = Formatting.DefaultFormat(shardsAmount);
+            
             buttonText.text = string.Format(_format, purgeText, shardsText);
         }
 

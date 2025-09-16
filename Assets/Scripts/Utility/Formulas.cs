@@ -86,7 +86,7 @@ namespace DotsKiller.Utility
 
         public static BigDouble CalculateShardsOnPurge()
         {
-            return new BigDouble(1, 2931);
+            return BigDouble.One;
         }
 
 
