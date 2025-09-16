@@ -70,7 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enabled: 1
   distributionList:
-    distributions: []
+    distributions:
+    - distributionName: Itch
+      enabled: 1
   targets:
   - type: 19
     name: Player
@@ -249,8 +251,8 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\Data\SuperUnityBuild
   _productParameters:
-    buildCounter: 22
-    buildVersion: 0.0.1.b9389:4571
+    buildCounter: 25
+    buildVersion: 0.1.0.b9390:4057
     versionTemplate: 0.1.0.b$DAYSSINCE("January 1, 2000"):$SECONDS
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -268,6 +270,18 @@ MonoBehaviour:
         releaseScenes:
         - fileGUID: 99c9720ab356a0642a771bea13969a05
           sceneActive: 1
+    - typeName: Release
+      bundleIdentifier: com.xyperine.DotsKiller
+      companyName: xyperine
+      productName: Dots Killer
+      syncAppNameWithProduct: 1
+      appBuildName: Dots Killer
+      buildOptions: 0
+      customDefines: 
+      sceneList:
+        releaseScenes:
+        - fileGUID: 99c9720ab356a0642a771bea13969a05
+          sceneActive: 1
   _platformList:
     platforms:
     - {fileID: 6458255303047701387}
@@ -275,11 +289,11 @@ MonoBehaviour:
     - {fileID: -4088580602753518369}
   _projectConfigurations:
     configSet:
-      _Buckets: 00000000ffffffff03000000080000000100000006000000ffffffffffffffff09000000ffffffff0a000000ffffffff04000000ffffffffffffffffffffffff07000000
-      _HashCodes: 8e8a066979b74e51e42c156eb075cd52064a20352deca7579aad0b1837bdec0cceb7a84b8c621d736678124c000000000000000000000000000000000000000000000000
-      _Next: ffffffffffffffffffffffffffffffff02000000ffffffffffffffffffffffffffffffff05000000ffffffff000000000000000000000000000000000000000000000000
-      _Count: 11
-      _Version: 11
+      _Buckets: ffffffff1100000006000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff17000000ffffffffffffffff19000000ffffffff020000000d00000000000000180000000f000000ffffffffffffffffffffffff05000000140000001500000013000000ffffffff0800000009000000ffffffff10000000ffffffff0e000000160000000b000000
+      _HashCodes: 8e8a066979b74e51e42c156eb075cd52ff521c3a8bad867f2433c7729aad0b186c30700d37bdec0cceb7a84b8c621d736678124c7f73bc757a901961b1d5304f6da5e2350085122ec88d9c1f83cff820ed64316da583475b6a97f7567f388d4369f086712d6dfd480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffff01000000ffffffffffffffffffffffff03000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0a000000ffffffff0700000004000000ffffffffffffffff0c00000012000000ffffffffffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Count: 26
+      _Version: 26
       _FreeList: -1
       _FreeCount: 0
       _Keys:
@@ -287,13 +301,33 @@ MonoBehaviour:
       - Test/WebGL/Player/IL2CPP
       - Test/WebGL/Player
       - Test/WebGL
-      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
-      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
+      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Anywhere
+      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)
       - Test/Android
+      - Test/Windows/Player (Intel 64-bit,App)/IL2CPP/Itch
       - Test/Windows/Player (Intel 64-bit,App)/IL2CPP
       - Test/Windows/Player (Intel 64-bit,App)
       - Test/Windows
       - Test
+      - Release/WebGL/Player/IL2CPP/Itch
+      - Release/WebGL/Player/IL2CPP
+      - Release/WebGL/Player
+      - Release/WebGL
+      - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Anywhere
+      - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release/Android
+      - Release/Windows/Player (Intel 64-bit,App)/IL2CPP/Itch
+      - Release/Windows/Player (Intel 64-bit,App)/IL2CPP
+      - Release/Windows/Player (Intel 64-bit,App)
+      - Release/Windows
+      - Release
+      - 
+      - 
+      - 
+      - 
+      - 
       - 
       - 
       - 
@@ -301,7 +335,7 @@ MonoBehaviour:
       - 
       - 
       _Values:
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
@@ -316,12 +350,18 @@ MonoBehaviour:
         childKeys: []
       - enabled: 1
         childKeys:
-        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
+        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Anywhere
       - enabled: 1
         childKeys:
-        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)
+        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)
       - enabled: 1
         childKeys: []
+      - enabled: 0
+        childKeys:
+        - Test/Windows/Player (Intel 64-bit,App)/IL2CPP/Itch
       - enabled: 1
         childKeys:
         - Test/Windows/Player (Intel 64-bit,App)/IL2CPP
@@ -333,6 +373,54 @@ MonoBehaviour:
         - Test/WebGL
         - Test/Android
         - Test/Windows
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Release/WebGL/Player/IL2CPP/Itch
+      - enabled: 1
+        childKeys:
+        - Release/WebGL/Player/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Release/WebGL/Player
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Anywhere
+      - enabled: 1
+        childKeys:
+        - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Release/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,Auto,Disabled)
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Release/Windows/Player (Intel 64-bit,App)/IL2CPP/Itch
+      - enabled: 1
+        childKeys:
+        - Release/Windows/Player (Intel 64-bit,App)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Release/Windows/Player (Intel 64-bit,App)
+      - enabled: 1
+        childKeys:
+        - Release/WebGL
+        - Release/Android
+        - Release/Windows
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -350,7 +438,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Test/Android/Player (ARMv7+ARM64,Generic,App,APK,Single Binary,Auto,35,Disabled)/IL2CPP
+    selectedKeyChain: Test/Windows/Player (Intel 64-bit,App)/IL2CPP
   _preBuildActions:
     buildActions: []
   _postBuildActions:
@@ -371,7 +459,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enabled: 1
   distributionList:
-    distributions: []
+    distributions:
+    - distributionName: Anywhere
+      enabled: 1
   targets:
   - type: 13
     name: Player
@@ -442,7 +532,7 @@ MonoBehaviour:
     - 35
     isFlag: 0
   - variantName: Target SDK Version
-    selectedIndex: 19
+    selectedIndex: 0
     values:
     - Auto
     - 16
