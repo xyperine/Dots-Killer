@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.1.0.b9390:4363
+  bundleVersion: 0.1.0.b9391:86
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: 11400000, guid: 0c5422aea4358084ab92fa457825d284, type: 2}
@@ -170,12 +170,12 @@ PlayerSettings:
     WebGL: com.xyperine.Dots-Killer
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
-    Standalone: 80
+    Standalone: 82
     VisionOS: 0
-    iPhone: 80
+    iPhone: 82
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 81
+  AndroidBundleVersionCode: 83
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
