@@ -52,7 +52,7 @@ Material:
     m_Floats:
     - _Alpha: 0.015
     - _Fluctuation_Speed: 0.17
-    - _Grid_Scale: 1.25
+    - _Grid_Scale: 0.95
     - _Grid_Width: 0.1
     - _Scale: 11.61
     - _Scroll_Speed: 0.1
