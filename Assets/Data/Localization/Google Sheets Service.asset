@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Google Sheets Service
   m_EditorClassIdentifier: 
   m_ApiKey: 
-  m_ClientId: ***REMOVED***
-  m_ClientSecret: ***REMOVED***
+  m_ClientId: 
+  m_ClientSecret: 
   m_AuthenticationType: 1
   m_ApplicationName: Dots Killer
   m_NewSheetProperties:
